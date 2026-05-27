@@ -1,26 +1,20 @@
 [
   {
     "name": "Dry",
-    "size": "50g",
-    "price": 175,
-    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
-  },
-  {
-    "name": "Dry",
-    "size": "100g",
-    "price": 300,
-    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
+    "image": "media/images/dry.jpg",
+    "variants": [
+      { "size": "50g", "price": 175 },
+      { "size": "100g", "price": 300 },
+      { "size": "500g", "price": 1350 }
+    ]
   },
   {
     "name": "Static Sift",
-    "size": "10g",
-    "price": 135,
-    "image": "https://images.unsplash.com/photo-1470163395405-d2b80e7450ed"
-  },
-  {
-    "name": "Amnesia",
-    "size": "10g",
-    "price": 50,
-    "image": "https://images.unsplash.com/photo-1461354464878-ad92f492a5a0"
+    "image": "media/images/static.jpg",
+    "variants": [
+      { "size": "10g", "price": 135 },
+      { "size": "50g", "price": 650 },
+      { "size": "100g", "price": 1200 }
+    ]
   }
 ]
