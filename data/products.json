@@ -1,6 +1,6 @@
 [
   {
-    "category": "Dry"
+    "category": "Dry",
     "name": "Dry",
     "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6",
     "variants": [
@@ -20,7 +20,7 @@
   },
 
   {
-    "category": "Static Sift"
+    "category": "Static Sift",
     "name": "Static Sift",
     "image": "https://images.unsplash.com/photo-1470163395405-d2b80e7450ed",
     "variants": [
@@ -40,7 +40,7 @@
   },
 
   {
-    "category": "Amnesia"
+    "category": "Amnesia",
     "name": "Amnesia",
     "image": "https://images.unsplash.com/photo-1461354464878-ad92f492a5a0",
     "variants": [
