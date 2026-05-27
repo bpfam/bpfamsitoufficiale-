@@ -219,10 +219,14 @@ Ora si aprirà Telegram.
 Incolla il messaggio nella chat BPFAM e invia.`
   );
 
-  window.open(
-    "https://t.me/BPFAMPRIVATE_CLUB",
-    "_blank"
-  );
+  setTimeout(function() {
+
+    window.open(
+      "https://t.me/BPFAMPRIVATE_CLUB",
+      "_blank"
+    );
+
+  }, 300);
 
 }
 
@@ -259,10 +263,14 @@ Ora si aprirà Signal.
 Incolla il messaggio e invia.`
   );
 
-  window.open(
-    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
-    "_blank"
-  );
+  setTimeout(function() {
+
+    window.open(
+      "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
+      "_blank"
+    );
+
+  }, 300);
 
 }
 
@@ -294,10 +302,14 @@ Ora si aprirà Telegram.
 Incolla il messaggio nella chat BPFAM e invia.`
   );
 
-  window.open(
-    "https://t.me/BPFAMPRIVATE_CLUB",
-    "_blank"
-  );
+  setTimeout(function() {
+
+    window.open(
+      "https://t.me/BPFAMPRIVATE_CLUB",
+      "_blank"
+    );
+
+  }, 300);
 
 }
 
@@ -329,10 +341,14 @@ Ora si aprirà Signal.
 Incolla il messaggio e invia.`
   );
 
-  window.open(
-    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
-    "_blank"
-  );
+  setTimeout(function() {
+
+    window.open(
+      "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
+      "_blank"
+    );
+
+  }, 300);
 
 }
 
