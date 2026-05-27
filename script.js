@@ -10,19 +10,21 @@ async function loadProducts() {
       <div class="product-card">
         <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
-        <p class="price">${product.price}</p>
+
+        <p class="price">Prezzo: €${product.price}</p>
+        <p class="total" id="total-${index}">Totale: €${product.price}</p>
 
         <div class="qty-box">
-          <button onclick="changeQty(${index}, -1)">-</button>
+          <button onclick="changeQty(${index}, -1, ${product.price})">-</button>
           <span id="qty-${index}">1</span>
-          <button onclick="changeQty(${index}, 1)">+</button>
+          <button onclick="changeQty(${index}, 1, ${product.price})">+</button>
         </div>
 
-        <button onclick="orderTelegram('${product.name}', '${product.price}', ${index})">
+        <button onclick="orderTelegram('${product.name}', ${product.price}, ${index})">
           ORDER TELEGRAM
         </button>
 
-        <button onclick="orderSignal('${product.name}', '${product.price}', ${index})">
+        <button onclick="orderSignal('${product.name}', ${product.price}, ${index})">
           CONTACT SIGNAL
         </button>
       </div>
@@ -30,39 +32,39 @@ async function loadProducts() {
   });
 }
 
-function changeQty(index, amount) {
+function changeQty(index, amount, price) {
   const qtyElement = document.getElementById(`qty-${index}`);
-  let qty = parseInt(qtyElement.innerText);
+  const totalElement = document.getElementById(`total-${index}`);
 
+  let qty = parseInt(qtyElement.innerText);
   qty += amount;
 
-  if (qty < 1) {
-    qty = 1;
-  }
+  if (qty < 1) qty = 1;
 
   qtyElement.innerText = qty;
+  totalElement.innerText = `Totale: €${qty * price}`;
 }
 
 function orderTelegram(productName, price, index) {
   const qty = document.getElementById(`qty-${index}`).innerText;
+  const total = qty * price;
 
   const message = `Ciao BPFAM, vorrei info su:
 Prodotto: ${productName}
 Quantità: ${qty}
-Prezzo/Menu: ${price}`;
+Totale: €${total}`;
 
-  const telegramUrl = `https://t.me/BPFAMPRIVATE_CLUB?text=${encodeURIComponent(message)}`;
-
-  window.open(telegramUrl, "_blank");
+  window.open(`https://t.me/BPFAMPRIVATE_CLUB?text=${encodeURIComponent(message)}`, "_blank");
 }
 
 function orderSignal(productName, price, index) {
   const qty = document.getElementById(`qty-${index}`).innerText;
+  const total = qty * price;
 
   const message = `Ciao BPFAM, vorrei info su:
 Prodotto: ${productName}
 Quantità: ${qty}
-Prezzo/Menu: ${price}`;
+Totale: €${total}`;
 
   alert(message);
 
