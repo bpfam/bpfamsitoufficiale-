@@ -13,20 +13,20 @@ header{
 }
 
 header h1{
-  font-size:50px;
+  font-size:55px;
   margin:0;
   letter-spacing:5px;
 }
 
 header p{
-  color:#888;
+  color:#777;
   margin-top:10px;
 }
 
 nav{
   display:flex;
   justify-content:center;
-  gap:20px;
+  gap:25px;
   padding:20px;
   border-bottom:1px solid #222;
 }
@@ -44,11 +44,11 @@ nav a:hover{
 
 .hero{
   text-align:center;
-  padding:80px 20px;
+  padding:100px 20px;
 }
 
 .hero h2{
-  font-size:35px;
+  font-size:40px;
   margin-bottom:20px;
 }
 
@@ -57,7 +57,8 @@ nav a:hover{
   margin-bottom:40px;
 }
 
-.hero a{
+.hero a,
+.contact-buttons a{
   display:inline-block;
   margin:10px;
   padding:15px 30px;
@@ -69,6 +70,74 @@ nav a:hover{
   transition:0.3s;
 }
 
-.hero a:hover{
-  background:#888;
+.hero a:hover,
+.contact-buttons a:hover{
+  background:#777;
+}
+
+.vetrina{
+  padding:80px 20px;
+}
+
+.vetrina h2{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:50px;
+}
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.product-card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:#555;
+}
+
+.product-card img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.product-card h3{
+  padding:20px 20px 10px;
+  margin:0;
+}
+
+.product-card p{
+  padding:0 20px;
+  color:#aaa;
+}
+
+.product-card button{
+  margin:20px;
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.contacts{
+  text-align:center;
+  padding:100px 20px;
+  border-top:1px solid #222;
+}
+
+.contacts h2{
+  font-size:35px;
+  margin-bottom:40px;
 }
