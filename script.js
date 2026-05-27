@@ -4,6 +4,7 @@ async function loadProducts() {
 
   const container = document.getElementById("products");
   container.innerHTML = "";
+
   window.productsData = products;
 
   products.forEach((product, index) => {
@@ -12,6 +13,7 @@ async function loadProducts() {
     container.innerHTML += `
       <div class="product-card">
         <img src="${product.image}" alt="${product.name}">
+
         <h3>${product.name}</h3>
 
         <select id="variant-${index}" onchange="updateTotal(${index})">
@@ -28,6 +30,9 @@ async function loadProducts() {
           <span id="qty-${index}">1</span>
           <button onclick="changeQty(${index}, 1)">+</button>
         </div>
+
+        <button onclick="orderTelegram(${index})">ORDER TELEGRAM</button>
+        <button onclick="orderSignal(${index})">CONTACT SIGNAL</button>
       </div>
     `;
   });
@@ -41,16 +46,56 @@ function getSelectedVariant(index) {
 function updateTotal(index) {
   const variant = getSelectedVariant(index);
   const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const total = variant.price * qty;
+
   document.getElementById(`price-${index}`).innerText = `Prezzo: €${variant.price}`;
-  document.getElementById(`total-${index}`).innerText = `Totale: €${variant.price * qty}`;
+  document.getElementById(`total-${index}`).innerText = `Totale: €${total}`;
 }
 
 function changeQty(index, amount) {
   const qtyEl = document.getElementById(`qty-${index}`);
-  let qty = parseInt(qtyEl.innerText) + amount;
+
+  let qty = parseInt(qtyEl.innerText);
+  qty += amount;
+
   if (qty < 1) qty = 1;
+
   qtyEl.innerText = qty;
   updateTotal(index);
+}
+
+function orderTelegram(index) {
+  const product = window.productsData[index];
+  const variant = getSelectedVariant(index);
+  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const total = variant.price * qty;
+
+  const message = `Ciao BPFAM, vorrei info su:
+Prodotto: ${product.name}
+Formato: ${variant.size}
+Quantità: ${qty}
+Totale: €${total}`;
+
+  const url = `https://t.me/BPFAMPRIVATE_CLUB?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+}
+
+function orderSignal(index) {
+  const product = window.productsData[index];
+  const variant = getSelectedVariant(index);
+  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const total = variant.price * qty;
+
+  const message = `Ciao BPFAM, vorrei info su:
+Prodotto: ${product.name}
+Formato: ${variant.size}
+Quantità: ${qty}
+Totale: €${total}`;
+
+  alert(message);
+
+  window.open("https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ", "_blank");
 }
 
 loadProducts();
