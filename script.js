@@ -213,20 +213,13 @@ Totale: €${total}`;
   navigator.clipboard.writeText(text);
 
   alert(
-`Ordine copiato automaticamente.
+`Ordine copiato.
 
-Ora si aprirà Telegram.
-Incolla il messaggio nella chat BPFAM e invia.`
+Ora incollalo nella chat Telegram BPFAM.`
   );
 
-  setTimeout(function() {
-
-    window.open(
-      "https://t.me/BPFAMPRIVATE_CLUB",
-      "_blank"
-    );
-
-  }, 300);
+  window.location.href =
+    "https://t.me/BPFAMPRIVATE_CLUB";
 
 }
 
@@ -257,20 +250,13 @@ Totale: €${total}`;
   navigator.clipboard.writeText(text);
 
   alert(
-`Ordine copiato automaticamente.
+`Ordine copiato.
 
-Ora si aprirà Signal.
-Incolla il messaggio e invia.`
+Ora incollalo nella chat Signal.`
   );
 
-  setTimeout(function() {
-
-    window.open(
-      "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
-      "_blank"
-    );
-
-  }, 300);
+  window.location.href =
+    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
 
 }
 
@@ -296,20 +282,13 @@ function checkoutTelegram() {
   navigator.clipboard.writeText(message);
 
   alert(
-`Carrello copiato automaticamente.
+`Carrello copiato.
 
-Ora si aprirà Telegram.
-Incolla il messaggio nella chat BPFAM e invia.`
+Ora incollalo nella chat Telegram BPFAM.`
   );
 
-  setTimeout(function() {
-
-    window.open(
-      "https://t.me/BPFAMPRIVATE_CLUB",
-      "_blank"
-    );
-
-  }, 300);
+  window.location.href =
+    "https://t.me/BPFAMPRIVATE_CLUB";
 
 }
 
@@ -335,20 +314,13 @@ function checkoutSignal() {
   navigator.clipboard.writeText(message);
 
   alert(
-`Carrello copiato automaticamente.
+`Carrello copiato.
 
-Ora si aprirà Signal.
-Incolla il messaggio e invia.`
+Ora incollalo nella chat Signal.`
   );
 
-  setTimeout(function() {
-
-    window.open(
-      "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ",
-      "_blank"
-    );
-
-  }, 300);
+  window.location.href =
+    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
 
 }
 
