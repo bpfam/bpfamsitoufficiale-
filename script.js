@@ -1,19 +1,20 @@
-[
-  {
-    "name": "Dry",
-    "price": "Premium Menu",
-    "image": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
-  },
+async function loadProducts() {
+  const response = await fetch("data/products.json");
+  const products = await response.json();
 
-  {
-    "name": "Static Sift",
-    "price": "VIP Selection",
-    "image": "https://images.unsplash.com/photo-1470163395405-d2b80e7450ed"
-  },
+  const container = document.getElementById("products");
+  container.innerHTML = "";
 
-  {
-    "name": "Amnesia",
-    "price": "Top Shelf",
-    "image": "https://images.unsplash.com/photo-1461354464878-ad92f492a5a0"
-  }
-]
+  products.forEach(product => {
+    container.innerHTML += `
+      <div class="product-card">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.price}</p>
+        <button>ORDER</button>
+      </div>
+    `;
+  });
+}
+
+loadProducts();
