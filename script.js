@@ -1,4 +1,5 @@
 let cart = [];
+let currentCategory = "ALL";
 
 async function loadProducts() {
 
@@ -7,12 +8,62 @@ async function loadProducts() {
 
   window.productsData = products;
 
+  renderCategories(products);
+  renderProducts(products);
+
+}
+
+function renderCategories(products) {
+
+  const categoriesBox =
+    document.getElementById("categories");
+
+  const categories = [
+    "ALL",
+    ...new Set(products.map(product => product.category))
+  ];
+
+  categoriesBox.innerHTML = "";
+
+  categories.forEach(category => {
+
+    categoriesBox.innerHTML += `
+      <button onclick="filterCategory('${category}')">
+        ${category}
+      </button>
+    `;
+
+  });
+
+}
+
+function filterCategory(category) {
+
+  currentCategory = category;
+
+  renderProducts(window.productsData);
+
+}
+
+function renderProducts(products) {
+
   const container =
     document.getElementById("products");
 
   container.innerHTML = "";
 
-  products.forEach((product, index) => {
+  let filteredProducts = products;
+
+  if (currentCategory !== "ALL") {
+    filteredProducts = products.filter(
+      product => product.category === currentCategory
+    );
+  }
+
+  filteredProducts.forEach((product, index) => {
+
+    const realIndex =
+      window.productsData.indexOf(product);
 
     const firstVariant =
       product.variants[0];
@@ -24,8 +75,8 @@ async function loadProducts() {
 
         <h3>${product.name}</h3>
 
-        <select id="variant-${index}"
-          onchange="updateTotal(${index})">
+        <select id="variant-${realIndex}"
+          onchange="updateTotal(${realIndex})">
 
           ${product.variants.map((variant, i) => `
             <option value="${i}">
@@ -35,39 +86,39 @@ async function loadProducts() {
 
         </select>
 
-        <p id="price-${index}">
+        <p id="price-${realIndex}">
           Prezzo: €${firstVariant.price}
         </p>
 
-        <p id="total-${index}">
+        <p id="total-${realIndex}">
           Totale: €${firstVariant.price}
         </p>
 
         <div class="qty-box">
 
-          <button onclick="changeQty(${index}, -1)">
+          <button onclick="changeQty(${realIndex}, -1)">
             -
           </button>
 
-          <span id="qty-${index}">
+          <span id="qty-${realIndex}">
             1
           </span>
 
-          <button onclick="changeQty(${index}, 1)">
+          <button onclick="changeQty(${realIndex}, 1)">
             +
           </button>
 
         </div>
 
-        <button onclick="addToCart(${index})">
+        <button onclick="addToCart(${realIndex})">
           ADD TO CART
         </button>
 
-        <button onclick="orderTelegram(${index})">
+        <button onclick="orderTelegram(${realIndex})">
           ORDER TELEGRAM
         </button>
 
-        <button onclick="orderSignal(${index})">
+        <button onclick="orderSignal(${realIndex})">
           CONTACT SIGNAL
         </button>
 
