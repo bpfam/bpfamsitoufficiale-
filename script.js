@@ -55,9 +55,11 @@ function renderProducts(products) {
   let filteredProducts = products;
 
   if (currentCategory !== "ALL") {
+
     filteredProducts = products.filter(
       product => product.category === currentCategory
     );
+
   }
 
   filteredProducts.forEach((product, index) => {
@@ -69,6 +71,7 @@ function renderProducts(products) {
       product.variants[0];
 
     container.innerHTML += `
+
       <div class="product-card">
 
         <img src="${product.image}" alt="${product.name}">
@@ -123,6 +126,7 @@ function renderProducts(products) {
         </button>
 
       </div>
+
     `;
 
   });
@@ -205,6 +209,14 @@ function addToCart(index) {
 
 }
 
+function removeFromCart(index) {
+
+  cart.splice(index, 1);
+
+  renderCart();
+
+}
+
 function renderCart() {
 
   const cartItems =
@@ -217,17 +229,27 @@ function renderCart() {
 
   let finalTotal = 0;
 
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
 
     finalTotal += item.total;
 
     cartItems.innerHTML += `
-      <p>
-        ${item.name} •
-        ${item.size} •
-        x${item.qty}
-        = €${item.total}
-      </p>
+
+      <div class="cart-item">
+
+        <span>
+          ${item.name} •
+          ${item.size} •
+          x${item.qty}
+          = €${item.total}
+        </span>
+
+        <button onclick="removeFromCart(${index})">
+          X
+        </button>
+
+      </div>
+
     `;
 
   });
