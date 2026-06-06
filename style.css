@@ -1,59 +1,60 @@
 body{
   margin:0;
-  padding:0;
-  background:#0a0a0a;
+  background:#070707;
   color:white;
   font-family:Arial,sans-serif;
 }
 
 .site-header{
   text-align:center;
-  padding:45px 20px;
+  padding:35px 20px 25px;
   border-bottom:1px solid #222;
 }
 
 .main-logo{
-  width:180px;
-  height:180px;
+  width:160px;
+  height:160px;
   object-fit:cover;
   border-radius:50%;
-  margin-bottom:20px;
-  border:3px solid #333;
+  border:3px solid #444;
+  box-shadow:0 0 25px rgba(255,180,0,.35);
 }
 
 .site-header h1{
-  font-size:60px;
-  margin:0;
-  letter-spacing:5px;
+  font-size:58px;
+  margin:18px 0 5px;
+  letter-spacing:6px;
 }
 
 .site-header p{
-  color:#777;
+  color:#aaa;
   letter-spacing:2px;
+  font-weight:bold;
 }
 
-.navbar{
+nav{
   display:flex;
   justify-content:center;
-  gap:28px;
-  padding:22px 10px;
+  gap:25px;
+  padding:20px 10px;
   border-bottom:1px solid #222;
   flex-wrap:wrap;
 }
 
-.navbar a{
+nav a{
   color:white;
   text-decoration:none;
   font-weight:bold;
+  font-size:15px;
 }
 
 .hero{
   text-align:center;
-  padding:110px 20px;
+  padding:75px 20px;
 }
 
 .hero h2{
-  font-size:38px;
+  font-size:36px;
 }
 
 .hero p{
@@ -61,57 +62,49 @@ body{
   font-size:18px;
 }
 
-.hero-buttons a,
+.hero a,
 .contact-buttons a,
-.checkout-buttons button,
+.cart-box button,
 .product-card button{
   display:inline-block;
   margin:10px;
-  padding:15px 26px;
-  border-radius:12px;
-  border:none;
+  padding:15px 28px;
   background:white;
   color:black;
-  font-weight:bold;
+  border-radius:14px;
   text-decoration:none;
-  cursor:pointer;
+  font-weight:bold;
+  border:none;
 }
 
 .vetrina{
-  padding:70px 20px;
+  padding:55px 20px;
 }
 
 .vetrina h2{
-  font-size:42px;
+  font-size:40px;
 }
 
 .categories-box{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
-  margin:25px 0 35px;
+  margin:25px 0;
 }
 
 .categories-box button{
   padding:13px 22px;
   border-radius:999px;
-  border:1px solid #444;
   background:#111;
   color:white;
+  border:1px solid #555;
   font-weight:bold;
-  letter-spacing:1px;
-  cursor:pointer;
-}
-
-.categories-box button:hover{
-  background:white;
-  color:black;
 }
 
 .products-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  gap:28px;
 }
 
 .product-card{
@@ -134,17 +127,13 @@ body{
   margin-right:22px;
 }
 
-.product-card h3{
-  font-size:28px;
-}
-
 .product-card select{
   width:calc(100% - 44px);
   padding:14px;
   border-radius:10px;
-  border:1px solid #333;
   background:#050505;
   color:white;
+  border:1px solid #333;
 }
 
 .qty-box{
@@ -159,68 +148,45 @@ body{
   width:45px;
   height:45px;
   border-radius:50%;
-  border:none;
-  background:white;
-  color:black;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.qty-box span{
-  font-size:22px;
-  font-weight:bold;
 }
 
 .cart-box{
   margin-top:55px;
   padding:25px;
+  background:#101010;
   border:1px solid #222;
   border-radius:22px;
-  background:#0f0f0f;
 }
 
 .cart-item{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:14px 0;
   border-bottom:1px solid #222;
+  padding:12px 0;
 }
 
 .cart-item button{
-  width:auto;
-  padding:8px 14px;
   background:#ff4d4d;
   color:white;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
 }
 
 .contacts{
   text-align:center;
-  padding:80px 20px;
+  padding:70px 20px;
   border-top:1px solid #222;
 }
 
 @media(max-width:600px){
-
-  .main-logo{
-    width:140px;
-    height:140px;
+  .site-header h1{
+    font-size:46px;
   }
 
-  .site-header h1{
-    font-size:48px;
+  .main-logo{
+    width:135px;
+    height:135px;
   }
 
   .hero h2{
-    font-size:30px;
+    font-size:28px;
   }
-
-  .navbar{
-    gap:18px;
-  }
-
 }
