@@ -1,8 +1,28 @@
 let cart = [];
 let currentCategory = "ALL";
 
-async function loadProducts() {
+function enterSite(){
+  const age = document.getElementById("ageCheck").checked;
+  const terms = document.getElementById("termsCheck").checked;
 
+  if(!age || !terms){
+    alert("Devi confermare età e termini per accedere.");
+    return;
+  }
+
+  localStorage.setItem("bpfam_access", "yes");
+  document.getElementById("ageGate").style.display = "none";
+  document.getElementById("siteContent").classList.remove("hidden");
+}
+
+if(localStorage.getItem("bpfam_access") === "yes"){
+  window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("ageGate").style.display = "none";
+    document.getElementById("siteContent").classList.remove("hidden");
+  });
+}
+
+async function loadProducts(){
   const response = await fetch("data/products.json");
   const products = await response.json();
 
@@ -10,13 +30,10 @@ async function loadProducts() {
 
   renderCategories(products);
   renderProducts(products);
-
 }
 
-function renderCategories(products) {
-
-  const categoriesBox =
-    document.getElementById("categories");
+function renderCategories(products){
+  const categoriesBox = document.getElementById("categories");
 
   const categories = [
     "ALL",
@@ -26,375 +43,249 @@ function renderCategories(products) {
   categoriesBox.innerHTML = "";
 
   categories.forEach(category => {
-
     categoriesBox.innerHTML += `
-      <button onclick="filterCategory('${category}')">
-        ${category}
-      </button>
+      <button onclick="filterCategory('${category}')">${category}</button>
     `;
-
   });
-
 }
 
-function filterCategory(category) {
-
+function filterCategory(category){
   currentCategory = category;
-
   renderProducts(window.productsData);
-
 }
 
-function renderProducts(products) {
-
-  const container =
-    document.getElementById("products");
-
+function renderProducts(products){
+  const container = document.getElementById("products");
   container.innerHTML = "";
 
   let filteredProducts = products;
 
-  if (currentCategory !== "ALL") {
-
-    filteredProducts = products.filter(
-      product => product.category === currentCategory
-    );
-
+  if(currentCategory !== "ALL"){
+    filteredProducts = products.filter(product => product.category === currentCategory);
   }
 
-  filteredProducts.forEach((product, index) => {
-
-    const realIndex =
-      window.productsData.indexOf(product);
-
-    const firstVariant =
-      product.variants[0];
+  filteredProducts.forEach(product => {
+    const realIndex = window.productsData.indexOf(product);
+    const firstVariant = product.variants[0];
 
     container.innerHTML += `
-
       <div class="product-card">
-
         <img src="${product.image}" alt="${product.name}">
 
         <h3>${product.name}</h3>
 
-        <select id="variant-${realIndex}"
-          onchange="updateTotal(${realIndex})">
-
+        <label>Scegli formato</label>
+        <select id="variant-${realIndex}" onchange="updateTotal(${realIndex})">
           ${product.variants.map((variant, i) => `
-            <option value="${i}">
-              ${variant.size} - €${variant.price}
-            </option>
+            <option value="${i}">${variant.size} - €${variant.price}</option>
           `).join("")}
-
         </select>
 
-        <p id="price-${realIndex}">
-          Prezzo: €${firstVariant.price}
-        </p>
-
-        <p id="total-${realIndex}">
-          Totale: €${firstVariant.price}
-        </p>
+        <p id="price-${realIndex}">Prezzo: €${firstVariant.price}</p>
+        <p id="total-${realIndex}">Totale: €${firstVariant.price}</p>
 
         <div class="qty-box">
-
-          <button onclick="changeQty(${realIndex}, -1)">
-            -
-          </button>
-
-          <span id="qty-${realIndex}">
-            1
-          </span>
-
-          <button onclick="changeQty(${realIndex}, 1)">
-            +
-          </button>
-
+          <button onclick="changeQty(${realIndex}, -1)">-</button>
+          <span id="qty-${realIndex}">1</span>
+          <button onclick="changeQty(${realIndex}, 1)">+</button>
         </div>
 
-        <button onclick="addToCart(${realIndex})">
-          ADD TO CART
-        </button>
-
-        <button onclick="orderTelegram(${realIndex})">
-          ORDER TELEGRAM
-        </button>
-
-        <button onclick="orderSignal(${realIndex})">
-          CONTACT SIGNAL
-        </button>
-
+        <button onclick="addToCart(${realIndex})">ADD TO CART</button>
       </div>
-
     `;
-
   });
-
 }
 
-function getVariant(index) {
-
-  const variantIndex =
-    document.getElementById(`variant-${index}`).value;
-
-  return window.productsData[index]
-    .variants[variantIndex];
-
+function getVariant(index){
+  const variantIndex = document.getElementById(`variant-${index}`).value;
+  return window.productsData[index].variants[variantIndex];
 }
 
-function updateTotal(index) {
+function updateTotal(index){
+  const variant = getVariant(index);
+  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const total = variant.price * qty;
 
-  const variant =
-    getVariant(index);
-
-  const qty =
-    parseInt(
-      document.getElementById(`qty-${index}`).innerText
-    );
-
-  const total =
-    variant.price * qty;
-
-  document.getElementById(`price-${index}`).innerText =
-    `Prezzo: €${variant.price}`;
-
-  document.getElementById(`total-${index}`).innerText =
-    `Totale: €${total}`;
-
+  document.getElementById(`price-${index}`).innerText = `Prezzo: €${variant.price}`;
+  document.getElementById(`total-${index}`).innerText = `Totale: €${total}`;
 }
 
-function changeQty(index, amount) {
-
-  const qtyEl =
-    document.getElementById(`qty-${index}`);
-
-  let qty =
-    parseInt(qtyEl.innerText);
+function changeQty(index, amount){
+  const qtyEl = document.getElementById(`qty-${index}`);
+  let qty = parseInt(qtyEl.innerText);
 
   qty += amount;
-
-  if (qty < 1) qty = 1;
+  if(qty < 1) qty = 1;
 
   qtyEl.innerText = qty;
-
   updateTotal(index);
-
 }
 
-function addToCart(index) {
-
-  const product =
-    window.productsData[index];
-
-  const variant =
-    getVariant(index);
-
-  const qty =
-    parseInt(
-      document.getElementById(`qty-${index}`).innerText
-    );
-
-  const total =
-    variant.price * qty;
+function addToCart(index){
+  const product = window.productsData[index];
+  const variant = getVariant(index);
+  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const total = variant.price * qty;
 
   cart.push({
     name: product.name,
     size: variant.size,
-    qty: qty,
-    total: total
+    qty,
+    total
   });
 
   renderCart();
-
 }
 
-function removeFromCart(index) {
-
+function removeFromCart(index){
   cart.splice(index, 1);
-
   renderCart();
-
 }
 
-function renderCart() {
-
-  const cartItems =
-    document.getElementById("cart-items");
-
-  const cartTotal =
-    document.getElementById("cart-total");
+function renderCart(){
+  const cartItems = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
 
   cartItems.innerHTML = "";
 
   let finalTotal = 0;
 
   cart.forEach((item, index) => {
-
     finalTotal += item.total;
 
     cartItems.innerHTML += `
-
       <div class="cart-item">
-
-        <span>
-          ${item.name} •
-          ${item.size} •
-          x${item.qty}
-          = €${item.total}
-        </span>
-
-        <button onclick="removeFromCart(${index})">
-          X
-        </button>
-
+        <span>${item.name} • ${item.size} • x${item.qty} = €${item.total}</span>
+        <button class="remove-btn" onclick="removeFromCart(${index})">Rimuovi</button>
       </div>
-
     `;
-
   });
 
-  cartTotal.innerText =
-    `Totale finale: €${finalTotal}`;
-
+  cartTotal.innerText = `Totale finale: €${finalTotal}`;
 }
 
-function orderTelegram(index) {
+function showOrderFields(){
+  const method = document.getElementById("orderMethod").value;
+  const box = document.getElementById("dynamicFields");
 
-  const product =
-    window.productsData[index];
+  if(method === "Incontro di Persona"){
+    box.innerHTML = `
+      <input id="customerName" placeholder="Nome">
+      <input id="customerContact" placeholder="Telegram o Signal">
+      <input id="customerCity" placeholder="Città">
+      <input id="customerZone" placeholder="Zona">
+      <input id="customerDate" placeholder="Data preferita">
+      <input id="customerTime" placeholder="Orario preferito">
+    `;
+  }
 
-  const variant =
-    getVariant(index);
+  else if(method === "Delivery"){
+    box.innerHTML = `
+      <input id="customerName" placeholder="Nome">
+      <input id="customerPhone" placeholder="Telefono">
+      <input id="customerCity" placeholder="Città">
+      <input id="customerAddress" placeholder="Indirizzo / punto consegna">
+      <input id="customerDate" placeholder="Data preferita">
+      <input id="customerTime" placeholder="Orario preferito">
+    `;
+  }
 
-  const qty =
-    parseInt(
-      document.getElementById(`qty-${index}`).innerText
-    );
+  else if(method === "Spedizione"){
+    box.innerHTML = `
+      <input id="customerName" placeholder="Nome">
+      <input id="customerEmail" placeholder="Email">
+      <input id="customerPhone" placeholder="Telefono">
+      <input id="customerAddress" placeholder="Indirizzo">
+      <input id="customerCity" placeholder="Città">
+      <input id="customerZip" placeholder="CAP">
 
-  const total =
-    variant.price * qty;
+      <select id="shippingCourier">
+        <option value="">Seleziona corriere</option>
+        <option value="UPS">UPS</option>
+        <option value="InPost">InPost</option>
+        <option value="Bartolini">Bartolini</option>
+        <option value="Poste Italiane">Poste Italiane</option>
+        <option value="Altro">Altro</option>
+      </select>
+    `;
+  }
 
-  const text =
-`Ciao BPFAM, vorrei info su:
-
-Prodotto: ${product.name}
-Formato: ${variant.size}
-Quantità: ${qty}
-Totale: €${total}`;
-
-  navigator.clipboard.writeText(text);
-
-  alert(
-`Ordine copiato.
-
-Ora incollalo nella chat Telegram BPFAM.`
-  );
-
-  window.location.href =
-    "https://t.me/BPFAMPRIVATE_CLUB";
-
+  else{
+    box.innerHTML = "";
+  }
 }
 
-function orderSignal(index) {
+function buildOrderMessage(){
+  if(cart.length === 0){
+    alert("Il carrello è vuoto.");
+    return null;
+  }
 
-  const product =
-    window.productsData[index];
+  const orderId = Math.floor(100000 + Math.random() * 900000);
+  const method = document.getElementById("orderMethod").value;
+  const payment = document.getElementById("paymentMethod").value;
+  const notes = document.getElementById("orderNotes").value;
 
-  const variant =
-    getVariant(index);
+  if(!method || !payment){
+    alert("Seleziona metodo ordine e metodo pagamento.");
+    return null;
+  }
 
-  const qty =
-    parseInt(
-      document.getElementById(`qty-${index}`).innerText
-    );
-
-  const total =
-    variant.price * qty;
-
-  const text =
-`Ciao BPFAM, vorrei info su:
-
-Prodotto: ${product.name}
-Formato: ${variant.size}
-Quantità: ${qty}
-Totale: €${total}`;
-
-  navigator.clipboard.writeText(text);
-
-  alert(
-`Ordine copiato.
-
-Ora incollalo nella chat Signal.`
-  );
-
-  window.location.href =
-    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
-
-}
-
-function checkoutTelegram() {
-
-  let message =
-`Ciao BPFAM, vorrei info su:\n\n`;
+  let message = `ORDINE BPFAM #${orderId}\n\nPRODOTTI:\n`;
 
   let finalTotal = 0;
 
   cart.forEach(item => {
-
     finalTotal += item.total;
-
-    message +=
-`${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
-
+    message += `- ${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
   });
 
-  message +=
-`\nTotale finale: €${finalTotal}`;
+  message += `\nTOTALE: €${finalTotal}\n`;
+  message += `METODO ORDINE: ${method}\n`;
+  message += `PAGAMENTO: ${payment}\n\n`;
 
-  navigator.clipboard.writeText(message);
+  const fields = document.querySelectorAll("#dynamicFields input, #dynamicFields select");
 
-  alert(
-`Carrello copiato.
+  fields.forEach(field => {
+    if(field.value){
+      message += `${field.placeholder || "Corriere"}: ${field.value}\n`;
+    }
+  });
 
-Ora incollalo nella chat Telegram BPFAM.`
-  );
+  if(notes){
+    message += `Note: ${notes}\n`;
+  }
 
-  window.location.href =
-    "https://t.me/BPFAMPRIVATE_CLUB";
-
+  return message;
 }
 
-function checkoutSignal() {
-
-  let message =
-`Ciao BPFAM, vorrei info su:\n\n`;
-
-  let finalTotal = 0;
-
-  cart.forEach(item => {
-
-    finalTotal += item.total;
-
-    message +=
-`${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
-
-  });
-
-  message +=
-`\nTotale finale: €${finalTotal}`;
+function copyOrder(){
+  const message = buildOrderMessage();
+  if(!message) return;
 
   navigator.clipboard.writeText(message);
+  alert("Ordine copiato.");
+}
 
-  alert(
-`Carrello copiato.
+function checkoutTelegram(){
+  const message = buildOrderMessage();
+  if(!message) return;
 
-Ora incollalo nella chat Signal.`
-  );
+  navigator.clipboard.writeText(message);
+  alert("Ordine copiato. Incollalo nella chat Telegram BPFAM.");
+
+  window.location.href = "https://t.me/BPFAMPRIVATE_CLUB";
+}
+
+function checkoutSignal(){
+  const message = buildOrderMessage();
+  if(!message) return;
+
+  navigator.clipboard.writeText(message);
+  alert("Ordine copiato. Incollalo nella chat Signal.");
 
   window.location.href =
     "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
-
 }
 
 loadProducts();
