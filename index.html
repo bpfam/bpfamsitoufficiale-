@@ -1,138 +1,118 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BPFAM</title>
-
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-  <header class="site-header">
+  <div id="ageGate" class="age-gate">
+    <div class="age-card">
+      <img class="gate-logo" src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg" alt="BPFAM Logo">
+      <h1>BPFAM</h1>
+      <p>Accesso riservato a maggiorenni. Prodotti legali / CBD conforme.</p>
 
-    <img
-      class="main-logo"
-      src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg"
-      alt="BPFAM Logo">
+      <label class="check-line">
+        <input type="checkbox" id="ageCheck">
+        Confermo di avere almeno 18 anni
+      </label>
 
-    <h1>BPFAM</h1>
+      <label class="check-line">
+        <input type="checkbox" id="termsCheck">
+        Accetto termini, privacy e condizioni d’uso
+      </label>
 
-    <p>OFFICIAL NETWORK</p>
-
-  </header>
-
-  <nav>
-
-    <a href="#">HOME</a>
-
-    <a href="#vetrina">VETRINA</a>
-
-    <a href="#">VIP ACCESS</a>
-
-    <a href="#contacts">CONTACTS</a>
-
-  </nav>
-
-  <section class="hero">
-
-    <h2>
-      Private Access • Premium Network
-    </h2>
-
-    <p>
-      Move in silence. Respect the process.
-    </p>
-
-    <a href="https://t.me/BPFAMPRIVATE_CLUB"
-      target="_blank">
-
-      TELEGRAM
-
-    </a>
-
-    <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ"
-      target="_blank">
-
-      SIGNAL
-
-    </a>
-
-  </section>
-
-  <section id="vetrina"
-    class="vetrina">
-
-    <h2>VETRINA</h2>
-
-    <div id="categories"
-      class="categories-box"></div>
-
-    <div id="products"
-      class="products-grid"></div>
-
-    <div class="cart-box">
-
-      <h2>CARRELLO</h2>
-
-      <div id="cart-items"></div>
-
-      <h3 id="cart-total">
-
-        Totale finale: €0
-
-      </h3>
-
-      <button onclick="checkoutTelegram()">
-
-        CHECKOUT TELEGRAM
-
-      </button>
-
-      <button onclick="checkoutSignal()">
-
-        CHECKOUT SIGNAL
-
-      </button>
-
+      <button onclick="enterSite()">ENTRA NEL SITO</button>
     </div>
+  </div>
 
-  </section>
+  <main id="siteContent" class="hidden">
 
-  <section id="contacts"
-    class="contacts">
+    <header class="site-header">
+      <img class="main-logo" src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg" alt="BPFAM Logo">
+      <h1>BPFAM</h1>
+      <p>OFFICIAL NETWORK</p>
+    </header>
 
-    <h2>OFFICIAL CONTACTS</h2>
+    <nav class="navbar">
+      <a href="#">HOME</a>
+      <a href="#vetrina">VETRINA</a>
+      <a href="#checkout">CHECKOUT</a>
+      <a href="#contacts">CONTATTI</a>
+    </nav>
 
-    <div class="contact-buttons">
+    <section class="hero">
+      <h2>Private Access • Premium Network</h2>
+      <p>CBD conforme • Accessori • Community ufficiale</p>
 
-      <a href="https://t.me/BPFAMPRIVATE_CLUB"
-        target="_blank">
+      <div class="hero-buttons">
+        <a href="https://t.me/BPFAMPRIVATE_CLUB" target="_blank">TELEGRAM</a>
+        <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ" target="_blank">SIGNAL</a>
+      </div>
+    </section>
 
-        TELEGRAM
+    <section id="vetrina" class="vetrina">
+      <h2>VETRINA</h2>
 
-      </a>
+      <div id="categories" class="categories-box"></div>
+      <div id="products" class="products-grid"></div>
+    </section>
 
-      <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ"
-        target="_blank">
+    <section id="checkout" class="checkout-section">
+      <h2>CARRELLO & CHECKOUT</h2>
 
-        SIGNAL
+      <div class="cart-box">
+        <h3>Carrello</h3>
+        <div id="cart-items"></div>
+        <h3 id="cart-total">Totale finale: €0</h3>
+      </div>
 
-      </a>
+      <div class="checkout-card">
+        <h3>Metodo ordine</h3>
 
-    </div>
+        <select id="orderMethod" onchange="showOrderFields()">
+          <option value="">Seleziona metodo</option>
+          <option value="Incontro di Persona">Incontro di Persona</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Spedizione">Spedizione</option>
+        </select>
 
-  </section>
+        <h3>Metodo pagamento</h3>
 
-  <script src="script.js?v=305"></script>
+        <select id="paymentMethod">
+          <option value="">Seleziona pagamento</option>
+          <option value="Cash">Cash</option>
+          <option value="BTC">BTC</option>
+          <option value="USDT">USDT</option>
+        </select>
+
+        <div id="dynamicFields"></div>
+
+        <textarea id="orderNotes" placeholder="Note aggiuntive"></textarea>
+
+        <div class="checkout-buttons">
+          <button onclick="copyOrder()">COPIA DETTAGLI ORDINE</button>
+          <button onclick="checkoutTelegram()">INVIA SU TELEGRAM</button>
+          <button onclick="checkoutSignal()">INVIA SU SIGNAL</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+      <h2>CONTATTI UFFICIALI</h2>
+
+      <div class="contact-buttons">
+        <a href="https://t.me/BPFAMPRIVATE_CLUB" target="_blank">TELEGRAM</a>
+        <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ" target="_blank">SIGNAL</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js?v=500"></script>
 
 </body>
-
 </html>
