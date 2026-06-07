@@ -299,4 +299,21 @@ button,
 }
 
 .checkout-card textarea{
+.page-section{
+  display:block;
+}
+
+.back-btn{
+  margin:20px;
+  padding:12px 20px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.hidden{
+  display:none !important;
+}
+
  
