@@ -21,7 +21,7 @@ body{
 }
 
 .hidden{
-  display:none;
+  display:none !important;
 }
 
 .age-gate{
@@ -113,6 +113,7 @@ button,
   font-weight:900;
   font-size:14px;
   letter-spacing:1px;
+  cursor:pointer;
 }
 
 .navbar a:hover{
@@ -140,8 +141,25 @@ button,
   font-size:18px;
 }
 
+.hero-quote{
+  font-size:22px !important;
+  font-weight:900;
+  line-height:1.7;
+  color:#fff !important;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin:30px 0;
+  text-align:center;
+}
+
+.hero-quote-en{
+  color:#ff8c00;
+  font-size:18px;
+  letter-spacing:3px;
+  text-shadow:0 0 12px rgba(255,140,0,.5);
+}
+
 .hero-buttons,
-.contact-buttons,
 .checkout-buttons{
   display:flex;
   justify-content:center;
@@ -290,6 +308,7 @@ button,
   border-bottom:1px solid #222;
   padding:14px 0;
 }
+
 .remove-btn{
   background:#ff3333;
   border-color:#ff3333;
@@ -315,6 +334,62 @@ button,
   font-weight:bold;
 }
 
-.hidden{
-  display:none !important;
+.contacts{
+  text-align:center;
+  padding:80px 20px;
+  border-top:1px solid var(--border);
+  background:#000;
+}
+
+.contact-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:550px;
+  margin:40px auto 0;
+}
+
+.contact-buttons a{
+  width:100%;
+  text-align:center;
+}
+
+@media(max-width:600px){
+  .site-header h1{
+    font-size:44px;
+    letter-spacing:5px;
+  }
+
+  .gate-logo,
+  .main-logo{
+    width:120px;
+    height:120px;
+  }
+
+  .hero{
+    padding:55px 18px;
+    margin:15px;
+  }
+
+  .hero h2{
+    font-size:30px;
+  }
+
+  .hero-quote{
+    font-size:18px !important;
+  }
+
+  .hero-quote-en{
+    font-size:15px;
+  }
+
+  .vetrina h2,
+  .checkout-section h2,
+  .contacts h2{
+    font-size:32px;
+  }
+
+  .navbar{
+    gap:14px;
+  }
 }
