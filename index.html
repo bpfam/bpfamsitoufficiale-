@@ -38,104 +38,133 @@
     </header>
 
     <nav class="navbar">
-      <a href="#">HOME</a>
-      <a href="#vetrina">VETRINA</a>
-      <a href="#checkout">CHECKOUT</a>
-      <a href="#contacts">CONTATTI</a>
+      <a onclick="showPage('homePage')">HOME</a>
+      <a onclick="showPage('vetrinaPage')">VETRINA</a>
+      <a onclick="showPage('checkoutPage')">CHECKOUT</a>
+      <a onclick="showPage('reviewsPage')">RECENSIONI</a>
+      <a onclick="showPage('contactsPage')">CONTATTI</a>
     </nav>
 
-    <section class="hero">
-      <h2>Private Access • Premium Network</h2>
-      <p>
-NON CHIEDERE IL PREZZO.
-GUARDA IL VALORE.
+    <section id="homePage" class="page-section">
+      <div class="hero">
+        <h2>Private Access • Premium Network</h2>
 
-DON'T ASK THE PRICE.
-LOOK AT THE VALUE. </p>
+        <p class="hero-quote">
+          NON CHIEDERE IL PREZZO.<br>
+          GUARDA IL VALORE.
 
-    <section id="vetrina" class="vetrina">
-      <h2>VETRINA</h2>
+          <br><br>
 
-      <div id="categories" class="categories-box"></div>
-      <div id="products" class="products-grid"></div>
+          <span class="hero-quote-en">
+            DON'T ASK THE PRICE.<br>
+            LOOK AT THE VALUE.
+          </span>
+        </p>
+      </div>
     </section>
 
-    <section id="checkout" class="checkout-section">
-      <h2>CARRELLO & CHECKOUT</h2>
+    <section id="vetrinaPage" class="page-section hidden">
+      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-      <div class="cart-box">
-        <h3>Carrello</h3>
-        <div id="cart-items"></div>
-        <h3 id="cart-total">Totale finale: €0</h3>
-      </div>
+      <section id="vetrina" class="vetrina">
+        <h2>VETRINA</h2>
+        <div id="categories" class="categories-box"></div>
+        <div id="products" class="products-grid"></div>
+      </section>
+    </section>
 
-      <div class="checkout-card">
-        <h3>Metodo ordine</h3>
+    <section id="checkoutPage" class="page-section hidden">
+      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-        <select id="orderMethod" onchange="showOrderFields()">
-          <option value="">Seleziona metodo</option>
-          <option value="Incontro di Persona">Incontro di Persona</option>
-          <option value="Delivery">Delivery</option>
-          <option value="Spedizione">Spedizione</option>
-        </select>
+      <section id="checkout" class="checkout-section">
+        <h2>CARRELLO & CHECKOUT</h2>
 
-        <h3>Metodo pagamento</h3>
-
-        <select id="paymentMethod">
-          <option value="">Seleziona pagamento</option>
-          <option value="Cash">Cash</option>
-          <option value="BTC">BTC</option>
-          <option value="USDT">USDT</option>
-        </select>
-
-        <div id="dynamicFields"></div>
-
-        <textarea id="orderNotes" placeholder="Note aggiuntive"></textarea>
-
-        <div class="checkout-buttons">
-          <button onclick="copyOrder()">COPIA DETTAGLI ORDINE</button>
-          <button onclick="checkoutTelegram()">INVIA SU TELEGRAM</button>
-          <button onclick="checkoutSignal()">INVIA SU SIGNAL</button>
+        <div class="cart-box">
+          <h3>Carrello</h3>
+          <div id="cart-items"></div>
+          <h3 id="cart-total">Totale finale: €0</h3>
         </div>
-      </div>
+
+        <div class="checkout-card">
+          <h3>Metodo ordine</h3>
+
+          <select id="orderMethod" onchange="showOrderFields()">
+            <option value="">Seleziona metodo</option>
+            <option value="Incontro di Persona">Incontro di Persona</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Spedizione">Spedizione</option>
+          </select>
+
+          <h3>Metodo pagamento</h3>
+
+          <select id="paymentMethod">
+            <option value="">Seleziona pagamento</option>
+            <option value="Cash">Cash</option>
+            <option value="BTC">BTC</option>
+            <option value="USDT">USDT</option>
+          </select>
+
+          <div id="dynamicFields"></div>
+
+          <textarea id="orderNotes" placeholder="Note aggiuntive"></textarea>
+
+          <div class="checkout-buttons">
+            <button onclick="copyOrder()">COPIA DETTAGLI ORDINE</button>
+            <button onclick="checkoutTelegram()">INVIA SU TELEGRAM</button>
+            <button onclick="checkoutSignal()">INVIA SU SIGNAL</button>
+          </div>
+        </div>
+      </section>
     </section>
 
-    <section id="contacts" class="contacts">
+    <section id="reviewsPage" class="page-section hidden">
+      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-  <h2>CONTATTI UFFICIALI</h2>
+      <section class="contacts">
+        <h2>RECENSIONI</h2>
+        <p>Area recensioni in aggiornamento.</p>
+      </section>
+    </section>
 
-  <div class="contact-buttons">
+    <section id="contactsPage" class="page-section hidden">
+      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-    <a href="https://t.me/BPFAMPRIVATE_CLUB" target="_blank">
-      📢 TELEGRAM OFFICIALE
-    </a>
+      <section id="contacts" class="contacts">
+        <h2>CONTATTI UFFICIALI</h2>
 
-    <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ" target="_blank">
-      📲 SIGNAL
-    </a>
+        <div class="contact-buttons">
 
-    <a href="https://t.me/streeetrree" target="_blank">
-      ℹ️ DETTAGLIO
-    </a>
+          <a href="https://t.me/BPFAMPRIVATE_CLUB" target="_blank">
+            📢 TELEGRAM OFFICIALE
+          </a>
 
-    <a href="https://www.instagram.com/bpfamofficial?igsh=MWZoN2lzb2p3NG8zbA%3D%3D&utm_source=qr" target="_blank">
-      📸 INSTAGRAM OFFICIAL
-    </a>
+          <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ" target="_blank">
+            📲 SIGNAL
+          </a>
 
-    <a href="https://www.instagram.com/bpfamofficial420backup?igsh=eXM5bXhzam5iYWQz" target="_blank">
-      📸 INSTAGRAM BACKUP
-    </a>
+          <a href="https://t.me/streeetrree" target="_blank">
+            ℹ️ DETTAGLIO
+          </a>
 
-    <a href="https://www.instagram.com/bpfam_network?igsh=MWRtYjV3bWdlMWE3MA==" target="_blank">
-      🌐 INSTAGRAM NETWORK
-    </a>
+          <a href="https://www.instagram.com/bpfamofficial?igsh=MWZoN2lzb2p3NG8zbA%3D%3D&utm_source=qr" target="_blank">
+            📸 INSTAGRAM OFFICIAL
+          </a>
 
-  </div>
+          <a href="https://www.instagram.com/bpfamofficial420backup?igsh=eXM5bXhzam5iYWQz" target="_blank">
+            📸 INSTAGRAM BACKUP
+          </a>
 
-</section>
+          <a href="https://www.instagram.com/bpfam_network?igsh=MWRtYjV3bWdlMWE3MA==" target="_blank">
+            🌐 INSTAGRAM NETWORK
+          </a>
+
+        </div>
+      </section>
+    </section>
+
   </main>
 
-  <script src="script.js?v=700"></script>
+  <script src="script.js?v=800"></script>
 
 </body>
 </html>
