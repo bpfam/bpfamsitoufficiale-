@@ -290,7 +290,6 @@ button,
   border-bottom:1px solid #222;
   padding:14px 0;
 }
-
 .remove-btn{
   background:#ff3333;
   border-color:#ff3333;
@@ -299,6 +298,10 @@ button,
 }
 
 .checkout-card textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
 .page-section{
   display:block;
 }
@@ -315,5 +318,3 @@ button,
 .hidden{
   display:none !important;
 }
-
- 
