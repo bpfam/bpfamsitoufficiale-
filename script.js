@@ -1,6 +1,21 @@
 let cart = [];
 let currentCategory = "ALL";
 
+function showPage(pageId){
+  const pages = document.querySelectorAll(".page-section");
+
+  pages.forEach(page => {
+    page.classList.add("hidden");
+  });
+
+  const targetPage = document.getElementById(pageId);
+
+  if(targetPage){
+    targetPage.classList.remove("hidden");
+    window.scrollTo(0, 0);
+  }
+}
+
 function enterSite(){
   const age = document.getElementById("ageCheck").checked;
   const terms = document.getElementById("termsCheck").checked;
@@ -13,12 +28,14 @@ function enterSite(){
   localStorage.setItem("bpfam_access", "yes");
   document.getElementById("ageGate").style.display = "none";
   document.getElementById("siteContent").classList.remove("hidden");
+  showPage("homePage");
 }
 
 if(localStorage.getItem("bpfam_access") === "yes"){
   window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("ageGate").style.display = "none";
     document.getElementById("siteContent").classList.remove("hidden");
+    showPage("homePage");
   });
 }
 
