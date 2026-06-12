@@ -304,5 +304,31 @@ function checkoutSignal(){
   window.location.href =
     "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
 }
+async function loadNews(){
+  try{
+    const response = await fetch("data/news.json");
+    const news = await response.json();
 
+    const container = document.getElementById("newsContainer");
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    news.forEach(item => {
+      container.innerHTML += `
+        <div class="product-card">
+          <img src="${item.image}" alt="${item.title}">
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <p>${item.date}</p>
+        </div>
+      `;
+    });
+
+  }catch(error){
+    console.log(error);
+  }
+}
 loadProducts();
+loadNews();
