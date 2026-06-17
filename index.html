@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BPFAM</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1000">
 </head>
 
 <body>
@@ -27,7 +27,20 @@
 
       <button onclick="enterSite()">ENTRA NEL SITO</button>
     </div>
-    
+  </div>
+
+  <main id="siteContent" class="hidden">
+
+    <header class="site-header">
+      <img class="main-logo" src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg" alt="BPFAM Logo">
+      <h1>BPFAM</h1>
+      <p>OFFICIAL NETWORK</p>
+    </header>
+
+    <section id="homePage" class="page-section">
+
+      <div class="home-smoke-bg"></div>
+
       <div class="app-grid">
 
         <div class="app-card" onclick="showPage('vetrinaPage')">
@@ -159,31 +172,31 @@
 
   </main>
 
-<div class="bottom-nav">
+  <div class="bottom-nav">
 
-  <button onclick="showPage('homePage')">
-    🏠
-    <span>Home</span>
-  </button>
+    <button onclick="showPage('homePage')">
+      🏠
+      <span>Home</span>
+    </button>
 
-  <button onclick="showPage('vetrinaPage')">
-    🛒
-    <span>Vetrina</span>
-  </button>
+    <button onclick="showPage('vetrinaPage')">
+      🛒
+      <span>Vetrina</span>
+    </button>
 
-  <button onclick="showPage('checkoutPage')">
-    📦
-    <span>Checkout</span>
-  </button>
+    <button onclick="showPage('checkoutPage')">
+      📦
+      <span>Checkout</span>
+    </button>
 
-  <button onclick="showPage('contactsPage')">
-    📲
-    <span>Contatti</span>
-  </button>
+    <button onclick="showPage('contactsPage')">
+      📲
+      <span>Contatti</span>
+    </button>
 
-</div>
+  </div>
 
-<script src="script.js?v=800"></script>
+  <script src="script.js?v=1000"></script>
 
 </body>
 </html>
