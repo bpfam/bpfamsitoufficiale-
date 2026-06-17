@@ -383,43 +383,49 @@ button,
 
 .smoke{
   position:absolute;
-  width:520px;
-  height:520px;
+  width:750px;
+  height:750px;
   border-radius:50%;
+
   background:
-    radial-gradient(circle, rgba(255,255,255,.24) 0%, rgba(255,255,255,.10) 35%, transparent 70%);
-  filter:blur(70px);
-  opacity:.75;
+  radial-gradient(circle,
+  rgba(255,255,255,.85) 0%,
+  rgba(255,255,255,.55) 20%,
+  rgba(255,255,255,.25) 45%,
+  transparent 75%);
+
+  filter:blur(50px);
+  opacity:1;
   z-index:1;
-  animation:smokeMove 9s infinite alternate ease-in-out;
   pointer-events:none;
+
+  animation:smokeMove 8s infinite alternate ease-in-out;
 }
 
 .smoke-one{
-  left:-180px;
-  top:-40px;
+  left:-300px;
+  top:-150px;
 }
 
 .smoke-two{
-  right:-190px;
-  top:90px;
+  right:-300px;
+  top:-50px;
   animation-delay:2s;
 }
 
 .smoke-three{
-  left:15%;
-  bottom:-180px;
+  left:5%;
+  bottom:-300px;
   animation-delay:4s;
 }
 
 @keyframes smokeMove{
-  from{
+  0%{
     transform:translateY(0) translateX(0) scale(1);
-    opacity:.45;
   }
-  to{
-    transform:translateY(-80px) translateX(45px) scale(1.25);
-    opacity:.9;
+
+  100%{
+    transform:translateY(-120px) translateX(80px) scale(1.4);
   }
 }
 
