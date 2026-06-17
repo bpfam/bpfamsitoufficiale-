@@ -18,6 +18,7 @@ body{
   background:#000;
   color:var(--text);
   font-family:Arial,sans-serif;
+  padding-bottom:95px;
 }
 
 .hidden{
@@ -92,32 +93,6 @@ button,
   color:var(--orange2);
   letter-spacing:3px;
   font-weight:bold;
-}
-
-.navbar{
-  position:sticky;
-  top:0;
-  z-index:10;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  padding:18px 10px;
-  border-bottom:1px solid var(--border);
-  background:#000;
-  flex-wrap:wrap;
-}
-
-.navbar a{
-  color:white;
-  text-decoration:none;
-  font-weight:900;
-  font-size:14px;
-  letter-spacing:1px;
-  cursor:pointer;
-}
-
-.navbar a:hover{
-  color:var(--orange2);
 }
 
 .hero{
@@ -354,45 +329,6 @@ button,
   text-align:center;
 }
 
-@media(max-width:600px){
-  .site-header h1{
-    font-size:44px;
-    letter-spacing:5px;
-  }
-
-  .gate-logo,
-  .main-logo{
-    width:120px;
-    height:120px;
-  }
-
-  .hero{
-    padding:55px 18px;
-    margin:15px;
-  }
-
-  .hero h2{
-    font-size:30px;
-  }
-
-  .hero-quote{
-    font-size:18px !important;
-  }
-
-  .hero-quote-en{
-    font-size:15px;
-  }
-
-  .vetrina h2,
-  .checkout-section h2,
-  .contacts h2{
-    font-size:32px;
-  }
-
-  .navbar{
-    gap:14px;
-  }
-}
 .app-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -432,57 +368,134 @@ button,
   color:#aaa;
 }
 
-@media(max-width:700px){
-  .app-grid{
-    grid-template-columns:1fr;
-  }
-}
+/* FUMO ANIMATO */
 .smoke-hero{
   position:relative;
   overflow:hidden;
+  background:#000;
 }
 
 .smoke-hero h2,
 .smoke-hero .hero-quote{
   position:relative;
-  z-index:2;
+  z-index:3;
 }
 
 .smoke{
   position:absolute;
-  width:420px;
-  height:420px;
-  background:radial-gradient(circle, rgba(255,255,255,.16), transparent 65%);
-  filter:blur(35px);
-  opacity:.35;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle, rgba(255,255,255,.24) 0%, rgba(255,255,255,.10) 35%, transparent 70%);
+  filter:blur(70px);
+  opacity:.75;
   z-index:1;
-  animation:smokeMove 12s infinite alternate ease-in-out;
+  animation:smokeMove 9s infinite alternate ease-in-out;
+  pointer-events:none;
 }
 
 .smoke-one{
-  left:-160px;
-  top:20px;
+  left:-180px;
+  top:-40px;
 }
 
 .smoke-two{
-  right:-170px;
-  top:120px;
-  animation-delay:3s;
+  right:-190px;
+  top:90px;
+  animation-delay:2s;
 }
 
 .smoke-three{
-  left:30%;
-  bottom:-200px;
-  animation-delay:6s;
+  left:15%;
+  bottom:-180px;
+  animation-delay:4s;
 }
 
 @keyframes smokeMove{
   from{
-    transform:translateY(0) scale(1);
-    opacity:.2;
+    transform:translateY(0) translateX(0) scale(1);
+    opacity:.45;
   }
   to{
-    transform:translateY(-60px) scale(1.25);
-    opacity:.45;
+    transform:translateY(-80px) translateX(45px) scale(1.25);
+    opacity:.9;
+  }
+}
+
+/* BARRA INFERIORE STILE APP */
+.bottom-nav{
+  position:fixed;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:520px;
+  background:#090909;
+  border:1px solid rgba(255,106,0,.45);
+  border-radius:22px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  padding:8px;
+  z-index:9999;
+  box-shadow:0 0 25px rgba(255,106,0,.22);
+}
+
+.bottom-nav button{
+  background:transparent;
+  border:none;
+  color:white;
+  box-shadow:none;
+  padding:8px 4px;
+  font-size:17px;
+}
+
+.bottom-nav span{
+  display:block;
+  font-size:10px;
+  color:#ccc;
+  margin-top:3px;
+}
+
+@media(max-width:700px){
+  .app-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .site-header h1{
+    font-size:44px;
+    letter-spacing:5px;
+  }
+
+  .gate-logo,
+  .main-logo{
+    width:120px;
+    height:120px;
+  }
+
+  .hero{
+    padding:55px 18px;
+    margin:15px;
+  }
+
+  .hero h2{
+    font-size:30px;
+  }
+
+  .hero-quote{
+    font-size:18px !important;
+  }
+
+  .hero-quote-en{
+    font-size:15px;
+  }
+
+  .vetrina h2,
+  .checkout-section h2,
+  .contacts h2{
+    font-size:32px;
   }
 }
