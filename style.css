@@ -437,3 +437,52 @@ button,
     grid-template-columns:1fr;
   }
 }
+.smoke-hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.smoke-hero h2,
+.smoke-hero .hero-quote{
+  position:relative;
+  z-index:2;
+}
+
+.smoke{
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle, rgba(255,255,255,.16), transparent 65%);
+  filter:blur(35px);
+  opacity:.35;
+  z-index:1;
+  animation:smokeMove 12s infinite alternate ease-in-out;
+}
+
+.smoke-one{
+  left:-160px;
+  top:20px;
+}
+
+.smoke-two{
+  right:-170px;
+  top:120px;
+  animation-delay:3s;
+}
+
+.smoke-three{
+  left:30%;
+  bottom:-200px;
+  animation-delay:6s;
+}
+
+@keyframes smokeMove{
+  from{
+    transform:translateY(0) scale(1);
+    opacity:.2;
+  }
+  to{
+    transform:translateY(-60px) scale(1.25);
+    opacity:.45;
+  }
+}
