@@ -393,3 +393,47 @@ button,
     gap:14px;
   }
 }
+.app-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+
+.app-card{
+  background:#0b0b0b;
+  border:1px solid rgba(255,106,0,.35);
+  border-radius:24px;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.app-card:hover{
+  transform:translateY(-4px);
+  border-color:#ff6a00;
+  box-shadow:0 0 20px rgba(255,106,0,.25);
+}
+
+.app-icon{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.app-card h3{
+  margin:0;
+  color:white;
+}
+
+.app-card p{
+  color:#aaa;
+}
+
+@media(max-width:700px){
+  .app-grid{
+    grid-template-columns:1fr;
+  }
+}
