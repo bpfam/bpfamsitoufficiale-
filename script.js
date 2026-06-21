@@ -1,4 +1,4 @@
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("bpfam_cart")) || [];
 let currentCategory = "ALL";
 
 function showPage(pageId){
@@ -177,7 +177,7 @@ function renderCart(){
       </div>
     `;
   });
-
+localStorage.setItem("bpfam_cart", JSON.stringify(cart));
   cartTotal.innerText = `Totale finale: €${finalTotal}`;
 }
 
