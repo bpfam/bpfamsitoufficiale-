@@ -377,19 +377,21 @@ button,
 
 .home-smoke-bg{
   position:absolute;
-  inset:-35%;
+  inset:-50%;
   z-index:0;
   pointer-events:none;
 
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,.55), transparent 28%),
-    radial-gradient(circle at 80% 20%, rgba(255,106,0,.38), transparent 32%),
-    radial-gradient(circle at 50% 80%, rgba(255,255,255,.35), transparent 35%),
-    radial-gradient(circle at 10% 90%, rgba(255,106,0,.28), transparent 30%);
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.90), transparent 25%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,.70), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.80), transparent 35%),
+    radial-gradient(circle at 10% 90%, rgba(255,255,255,.60), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.75), transparent 35%);
 
-  filter:blur(60px);
-  opacity:1;
-  animation:homeSmokeMove 8s infinite alternate ease-in-out;
+  filter:blur(90px);
+  opacity:.9;
+
+  animation:homeSmokeMove 10s infinite alternate ease-in-out;
 }
 
 #homePage .app-grid{
