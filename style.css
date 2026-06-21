@@ -190,43 +190,61 @@ button,
 .product-card,
 .cart-box,
 .checkout-card{
-  background:#090909;
-  border:1px solid rgba(255,106,0,.22);
-  border-radius:26px;
-  padding:22px;
-  box-shadow:0 0 18px rgba(255,106,0,.06);
+  background:linear-gradient(
+    180deg,
+    rgba(20,20,20,.95),
+    rgba(8,8,8,.95)
+  );
+  border:1px solid rgba(255,106,0,.25);
+  border-radius:28px;
+  padding:20px;
+  box-shadow:
+    0 0 25px rgba(255,106,0,.08),
+    inset 0 0 20px rgba(255,255,255,.02);
 }
 
 .product-card{
   overflow:hidden;
+  transition:.3s;
 }
 
 .product-card:hover{
-  border-color:rgba(255,106,0,.65);
-  box-shadow:0 0 24px rgba(255,106,0,.18);
+  transform:translateY(-6px);
+  border-color:rgba(255,106,0,.8);
+  box-shadow:
+    0 0 35px rgba(255,106,0,.22),
+    0 10px 30px rgba(0,0,0,.5);
 }
 
 .product-card img{
   width:100%;
-  height:290px;
+  height:320px;
   object-fit:cover;
   border-radius:20px;
   margin-bottom:18px;
+  transition:.3s;
+}
+
+.product-card:hover img{
+  transform:scale(1.04);
 }
 
 .product-card h3{
-  font-size:28px;
-  margin:12px 0;
+  font-size:24px;
+  margin:10px 0;
+  color:#fff;
+  text-align:center;
+  min-height:58px;
 }
 
-.product-card label{
-  color:var(--orange2);
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:1px;
-  text-transform:uppercase;
+.product-card p{
+  text-align:center;
 }
 
+.product-card button{
+  width:100%;
+  margin-top:10px;
+}
 .product-card select,
 .checkout-card select,
 .checkout-card input,
