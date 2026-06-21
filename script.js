@@ -330,5 +330,8 @@ async function loadNews(){
     console.log(error);
   }
 }
+window.addEventListener("DOMContentLoaded", () => {
+  renderCart();
+});
 loadProducts();
 loadNews();
