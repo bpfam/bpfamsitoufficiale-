@@ -84,30 +84,48 @@ function renderProducts(products){
   filteredProducts.forEach(product => {
     const realIndex = window.productsData.indexOf(product);
     const firstVariant = product.variants[0];
+    const lastVariant = product.variants[product.variants.length - 1];
 
     container.innerHTML += `
-      <div class="product-card">
-        <img src="${product.image}" alt="${product.name}">
+      <div class="product-card premium-product">
 
-        <h3>${product.name}</h3>
-
-        <label>Scegli formato</label>
-        <select id="variant-${realIndex}" onchange="updateTotal(${realIndex})">
-          ${product.variants.map((variant, i) => `
-            <option value="${i}">${variant.size} - €${variant.price}</option>
-          `).join("")}
-        </select>
-
-        <p id="price-${realIndex}">Prezzo: €${firstVariant.price}</p>
-        <p id="total-${realIndex}">Totale: €${firstVariant.price}</p>
-
-        <div class="qty-box">
-          <button onclick="changeQty(${realIndex}, -1)">-</button>
-          <span id="qty-${realIndex}">1</span>
-          <button onclick="changeQty(${realIndex}, 1)">+</button>
+        <div class="product-image-wrap">
+          <span class="category-badge">${product.category}</span>
+          <img src="${product.image}" alt="${product.name}">
         </div>
 
-        <button onclick="addToCart(${realIndex})">ADD TO CART</button>
+        <div class="product-info">
+          <h3>${product.name}</h3>
+
+          <div class="price-row">
+            <span>Da €${firstVariant.price}</span>
+            <small>fino a ${lastVariant.size}</small>
+          </div>
+
+          <label>Formato disponibile</label>
+
+          <select id="variant-${realIndex}" onchange="updateTotal(${realIndex})">
+            ${product.variants.map((variant, i) => `
+              <option value="${i}">${variant.size} - €${variant.price}</option>
+            `).join("")}
+          </select>
+
+          <div class="mini-total">
+            <p id="price-${realIndex}">Prezzo: €${firstVariant.price}</p>
+            <p id="total-${realIndex}">Totale: €${firstVariant.price}</p>
+          </div>
+
+          <div class="qty-box">
+            <button onclick="changeQty(${realIndex}, -1)">-</button>
+            <span id="qty-${realIndex}">1</span>
+            <button onclick="changeQty(${realIndex}, 1)">+</button>
+          </div>
+
+          <button class="add-cart-btn" onclick="addToCart(${realIndex})">
+            AGGIUNGI AL CARRELLO
+          </button>
+        </div>
+
       </div>
     `;
   });
@@ -177,7 +195,8 @@ function renderCart(){
       </div>
     `;
   });
-localStorage.setItem("bpfam_cart", JSON.stringify(cart));
+
+  localStorage.setItem("bpfam_cart", JSON.stringify(cart));
   cartTotal.innerText = `Totale finale: €${finalTotal}`;
 }
 
@@ -304,6 +323,7 @@ function checkoutSignal(){
   window.location.href =
     "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
 }
+
 async function loadNews(){
   try{
     const response = await fetch("data/news.json");
@@ -330,8 +350,10 @@ async function loadNews(){
     console.log(error);
   }
 }
+
 window.addEventListener("DOMContentLoaded", () => {
   renderCart();
 });
+
 loadProducts();
 loadNews();
