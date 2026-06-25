@@ -172,6 +172,7 @@
       { "size": "Base", "price": 300 },
       { "size": "Premium", "price": 750 },
       { "size": "Premium Pro", "price": 1000 }
+      
     ]
   }
 ]
