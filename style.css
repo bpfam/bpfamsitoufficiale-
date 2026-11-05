@@ -1521,5 +1521,34 @@ button{
     }
 }
 
+/* BPFAM - VIDEO INTRO RIDIMENSIONATO */
+
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+#introVideo {
+    display: block;
+    width: 75%;
+    max-width: 320px;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 18px;
+    box-shadow: 0 0 35px rgba(212,175,55,0.25);
+}
+
+.skip-intro {
+    position: absolute;
+    bottom: calc(40px + env(safe-area-inset-bottom));
+}
+
 
 
