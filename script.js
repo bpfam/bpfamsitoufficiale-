@@ -1,3 +1,4 @@
+
 let cart = JSON.parse(localStorage.getItem("bpfam_cart")) || [];
 let currentCategory = "ALL";
 
@@ -157,6 +158,8 @@ function changeQty(index, amount){
 }
 
 function addToCart(index){
+  alert("✅ Il pulsante funziona!");
+
   const product = window.productsData[index];
   const variant = getVariant(index);
   const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
