@@ -321,7 +321,7 @@ function renderCart() {
 </button>
 
 <a
-  href="video.html"
+  href="href="https://bpfam.github.io/Video-bpfam/"
   class="video-gallery-btn"
   target="_blank"
   rel="noopener noreferrer"
