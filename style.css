@@ -1296,3 +1296,149 @@ button{
     cursor: pointer;
 }
 
+/* ===== BPFAM - CORREZIONE VETRINA ===== */
+
+/* Categorie */
+.categories-box {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 10px 0 15px;
+    margin-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.categories-box button {
+    flex: 0 0 auto;
+    background: #111;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 25px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Griglia con due prodotti per riga */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+/* Schede */
+.products-grid .product-card {
+    min-width: 0;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid #b89532;
+    border-radius: 16px;
+    background: linear-gradient(155deg, #181818, #080808);
+}
+
+/* Contenitore immagini */
+.product-image-wrap {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* Immagini */
+.products-grid .product-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Informazioni */
+.products-grid .product-info {
+    min-width: 0;
+    padding-top: 10px;
+}
+
+.products-grid .product-info h3 {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.products-grid .price-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.products-grid .category-badge {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 1;
+    background: #d4af37;
+    color: #000;
+    border-radius: 8px;
+    padding: 4px 6px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* Impedisce agli elementi di allargare la scheda */
+.products-grid select {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 8px 0;
+    padding: 9px 5px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #d4af37;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.products-grid .mini-total {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.products-grid .qty-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.products-grid .qty-box button {
+    width: 30px;
+    height: 30px;
+    background: #111;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    color: #d4af37;
+}
+
+.products-grid .add-cart-btn {
+    width: 100%;
+    padding: 10px 5px;
+    border: 0;
+    border-radius: 10px;
+    background: #d4af37;
+    color: #000;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Evita che il menu copra gli ultimi contenuti */
+#vetrinaPage {
+    padding-bottom: 35px;
+}
+
+
