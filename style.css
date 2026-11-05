@@ -1550,5 +1550,30 @@ button{
     bottom: calc(40px + env(safe-area-inset-bottom));
 }
 
+/* BPFAM - PULSANTE GALLERIA VIDEO */
+
+.video-gallery-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 6px;
+    background: #111;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    border-radius: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.video-gallery-btn:active {
+    background: #d4af37;
+    color: #000;
+}
+
+
 
 
