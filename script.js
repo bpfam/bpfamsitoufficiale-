@@ -2,7 +2,11 @@
 let cart = JSON.parse(localStorage.getItem("bpfam_cart")) || [];
 let currentCategory = "ALL";
 
-function showPage(pageId){
+/* =====================================
+   NAVIGAZIONE
+===================================== */
+
+function showPage(pageId) {
   const pages = document.querySelectorAll(".page-section");
 
   pages.forEach(page => {
@@ -11,36 +15,118 @@ function showPage(pageId){
 
   const targetPage = document.getElementById(pageId);
 
-  if(targetPage){
+  if (targetPage) {
     targetPage.classList.remove("hidden");
     window.scrollTo(0, 0);
   }
 }
 
-function enterSite(){
-  const age = document.getElementById("ageCheck").checked;
-  const terms = document.getElementById("termsCheck").checked;
+/* =====================================
+   ACCESSO MAGGIORENNI
+===================================== */
 
-  if(!age || !terms){
+function enterSite() {
+  const age = document.getElementById("ageCheck")?.checked;
+  const terms = document.getElementById("termsCheck")?.checked;
+
+  if (!age || !terms) {
     alert("Devi confermare età e termini per accedere.");
     return;
   }
 
   localStorage.setItem("bpfam_access", "yes");
-  document.getElementById("ageGate").style.display = "none";
-  document.getElementById("siteContent").classList.remove("hidden");
+
+  const ageGate = document.getElementById("ageGate");
+
+  if (ageGate) {
+    ageGate.style.display = "none";
+  }
+
+  playIntro();
+}
+
+/* ACCESSO GIÀ CONFERMATO */
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("bpfam_access") === "yes") {
+    const ageGate = document.getElementById("ageGate");
+    const site = document.getElementById("siteContent");
+
+    if (ageGate) {
+      ageGate.style.display = "none";
+    }
+
+    if (site) {
+      site.classList.remove("hidden");
+    }
+
+    showPage("homePage");
+  }
+});
+
+/* =====================================
+   VIDEO INTRO BPFAM
+===================================== */
+
+let introFinished = false;
+
+function playIntro() {
+  const overlay = document.getElementById("introOverlay");
+  const video = document.getElementById("introVideo");
+
+  introFinished = false;
+
+  if (!overlay || !video) {
+    finishIntro();
+    return;
+  }
+
+  overlay.classList.remove("hidden");
+
+  video.muted = true;
+  video.currentTime = 0;
+  video.load();
+
+  const playback = video.play();
+
+  if (playback && typeof playback.catch === "function") {
+    playback.catch(error => {
+      console.warn("Video intro non avviato:", error);
+    });
+  }
+}
+
+/* APERTURA AUTOMATICA HOME */
+
+function finishIntro() {
+  if (introFinished) return;
+
+  introFinished = true;
+
+  const overlay = document.getElementById("introOverlay");
+  const video = document.getElementById("introVideo");
+  const site = document.getElementById("siteContent");
+
+  if (video) {
+    video.pause();
+  }
+
+  if (overlay) {
+    overlay.classList.add("hidden");
+  }
+
+  if (site) {
+    site.classList.remove("hidden");
+  }
+
   showPage("homePage");
 }
 
-if(localStorage.getItem("bpfam_access") === "yes"){
-  window.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("ageGate").style.display = "none";
-    document.getElementById("siteContent").classList.remove("hidden");
-    showPage("homePage");
-  });
-}
+/* =====================================
+   CARICAMENTO PRODOTTI
+===================================== */
 
-async function loadProducts(){
+async function loadProducts() {
   const response = await fetch("data/products.json");
   const products = await response.json();
 
@@ -50,7 +136,7 @@ async function loadProducts(){
   renderProducts(products);
 }
 
-function renderCategories(products){
+function renderCategories(products) {
   const categoriesBox = document.getElementById("categories");
 
   const categories = [
@@ -67,25 +153,28 @@ function renderCategories(products){
   });
 }
 
-function filterCategory(category){
+function filterCategory(category) {
   currentCategory = category;
   renderProducts(window.productsData);
 }
 
-function renderProducts(products){
+function renderProducts(products) {
   const container = document.getElementById("products");
   container.innerHTML = "";
 
   let filteredProducts = products;
 
-  if(currentCategory !== "ALL"){
-    filteredProducts = products.filter(product => product.category === currentCategory);
+  if (currentCategory !== "ALL") {
+    filteredProducts = products.filter(
+      product => product.category === currentCategory
+    );
   }
 
   filteredProducts.forEach(product => {
     const realIndex = window.productsData.indexOf(product);
     const firstVariant = product.variants[0];
-    const lastVariant = product.variants[product.variants.length - 1];
+    const lastVariant =
+      product.variants[product.variants.length - 1];
 
     container.innerHTML += `
       <div class="product-card premium-product">
@@ -105,15 +194,25 @@ function renderProducts(products){
 
           <label>Formato disponibile</label>
 
-          <select id="variant-${realIndex}" onchange="updateTotal(${realIndex})">
+          <select
+            id="variant-${realIndex}"
+            onchange="updateTotal(${realIndex})"
+          >
             ${product.variants.map((variant, i) => `
-              <option value="${i}">${variant.size} - €${variant.price}</option>
+              <option value="${i}">
+                ${variant.size} - €${variant.price}
+              </option>
             `).join("")}
           </select>
 
           <div class="mini-total">
-            <p id="price-${realIndex}">Prezzo: €${firstVariant.price}</p>
-            <p id="total-${realIndex}">Totale: €${firstVariant.price}</p>
+            <p id="price-${realIndex}">
+              Prezzo: €${firstVariant.price}
+            </p>
+
+            <p id="total-${realIndex}">
+              Totale: €${firstVariant.price}
+            </p>
           </div>
 
           <div class="qty-box">
@@ -122,7 +221,10 @@ function renderProducts(products){
             <button onclick="changeQty(${realIndex}, 1)">+</button>
           </div>
 
-          <button class="add-cart-btn" onclick="addToCart(${realIndex})">
+          <button
+            class="add-cart-btn"
+            onclick="addToCart(${realIndex})"
+          >
             AGGIUNGI AL CARRELLO
           </button>
         </div>
@@ -132,37 +234,49 @@ function renderProducts(products){
   });
 }
 
-function getVariant(index){
-  const variantIndex = document.getElementById(`variant-${index}`).value;
+function getVariant(index) {
+  const variantIndex =
+    document.getElementById(`variant-${index}`).value;
+
   return window.productsData[index].variants[variantIndex];
 }
 
-function updateTotal(index){
+function updateTotal(index) {
   const variant = getVariant(index);
-  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const qty = parseInt(
+    document.getElementById(`qty-${index}`).innerText
+  );
+
   const total = variant.price * qty;
 
-  document.getElementById(`price-${index}`).innerText = `Prezzo: €${variant.price}`;
-  document.getElementById(`total-${index}`).innerText = `Totale: €${total}`;
+  document.getElementById(`price-${index}`).innerText =
+    `Prezzo: €${variant.price}`;
+
+  document.getElementById(`total-${index}`).innerText =
+    `Totale: €${total}`;
 }
 
-function changeQty(index, amount){
+function changeQty(index, amount) {
   const qtyEl = document.getElementById(`qty-${index}`);
   let qty = parseInt(qtyEl.innerText);
 
   qty += amount;
-  if(qty < 1) qty = 1;
+
+  if (qty < 1) qty = 1;
 
   qtyEl.innerText = qty;
   updateTotal(index);
 }
 
-function addToCart(index){
+function addToCart(index) {
   alert("✅ Aggiunto al carello!");
 
   const product = window.productsData[index];
   const variant = getVariant(index);
-  const qty = parseInt(document.getElementById(`qty-${index}`).innerText);
+  const qty = parseInt(
+    document.getElementById(`qty-${index}`).innerText
+  );
+
   const total = variant.price * qty;
 
   cart.push({
@@ -175,12 +289,12 @@ function addToCart(index){
   renderCart();
 }
 
-function removeFromCart(index){
+function removeFromCart(index) {
   cart.splice(index, 1);
   renderCart();
 }
 
-function renderCart(){
+function renderCart() {
   const cartItems = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
 
@@ -193,8 +307,17 @@ function renderCart(){
 
     cartItems.innerHTML += `
       <div class="cart-item">
-        <span>${item.name} • ${item.size} • x${item.qty} = €${item.total}</span>
-        <button class="remove-btn" onclick="removeFromCart(${index})">Rimuovi</button>
+        <span>
+          ${item.name} • ${item.size} •
+          x${item.qty} = €${item.total}
+        </span>
+
+        <button
+          class="remove-btn"
+          onclick="removeFromCart(${index})"
+        >
+          Rimuovi
+        </button>
       </div>
     `;
   });
@@ -203,11 +326,15 @@ function renderCart(){
   cartTotal.innerText = `Totale finale: €${finalTotal}`;
 }
 
-function showOrderFields(){
+/* =====================================
+   CAMPI DINAMICI
+===================================== */
+
+function showOrderFields() {
   const method = document.getElementById("orderMethod").value;
   const box = document.getElementById("dynamicFields");
 
-  if(method === "Incontro di Persona"){
+  if (method === "Incontro di Persona") {
     box.innerHTML = `
       <input id="customerName" placeholder="Nome">
       <input id="customerContact" placeholder="Telegram o Signal">
@@ -218,7 +345,7 @@ function showOrderFields(){
     `;
   }
 
-  else if(method === "Delivery"){
+  else if (method === "Delivery") {
     box.innerHTML = `
       <input id="customerName" placeholder="Nome">
       <input id="customerPhone" placeholder="Telefono">
@@ -229,7 +356,7 @@ function showOrderFields(){
     `;
   }
 
-  else if(method === "Spedizione"){
+  else if (method === "Spedizione") {
     box.innerHTML = `
       <input id="customerName" placeholder="Nome">
       <input id="customerEmail" placeholder="Email">
@@ -249,23 +376,34 @@ function showOrderFields(){
     `;
   }
 
-  else{
+  else {
     box.innerHTML = "";
   }
 }
 
-function buildOrderMessage(){
-  if(cart.length === 0){
+/* =====================================
+   RIEPILOGO
+===================================== */
+
+function buildOrderMessage() {
+  if (cart.length === 0) {
     alert("Il carrello è vuoto.");
     return null;
   }
 
-  const orderId = Math.floor(100000 + Math.random() * 900000);
-  const method = document.getElementById("orderMethod").value;
-  const payment = document.getElementById("paymentMethod").value;
-  const notes = document.getElementById("orderNotes").value;
+  const orderId =
+    Math.floor(100000 + Math.random() * 900000);
 
-  if(!method || !payment){
+  const method =
+    document.getElementById("orderMethod").value;
+
+  const payment =
+    document.getElementById("paymentMethod").value;
+
+  const notes =
+    document.getElementById("orderNotes").value;
+
+  if (!method || !payment) {
     alert("Seleziona metodo ordine e metodo pagamento.");
     return null;
   }
@@ -276,65 +414,82 @@ function buildOrderMessage(){
 
   cart.forEach(item => {
     finalTotal += item.total;
-    message += `- ${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
+
+    message +=
+      `- ${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
   });
 
   message += `\nTOTALE: €${finalTotal}\n`;
   message += `METODO ORDINE: ${method}\n`;
   message += `PAGAMENTO: ${payment}\n\n`;
 
-  const fields = document.querySelectorAll("#dynamicFields input, #dynamicFields select");
+  const fields = document.querySelectorAll(
+    "#dynamicFields input, #dynamicFields select"
+  );
 
   fields.forEach(field => {
-    if(field.value){
-      message += `${field.placeholder || "Corriere"}: ${field.value}\n`;
+    if (field.value) {
+      message +=
+        `${field.placeholder || "Corriere"}: ${field.value}\n`;
     }
   });
 
-  if(notes){
+  if (notes) {
     message += `Note: ${notes}\n`;
   }
 
   return message;
 }
 
-function copyOrder(){
+function copyOrder() {
   const message = buildOrderMessage();
-  if(!message) return;
+
+  if (!message) return;
 
   navigator.clipboard.writeText(message);
   alert("Ordine copiato.");
 }
 
-function checkoutTelegram(){
+function checkoutTelegram() {
   const message = buildOrderMessage();
-  if(!message) return;
+
+  if (!message) return;
 
   navigator.clipboard.writeText(message);
-  alert("Ordine copiato. Incollalo nella chat Telegram BPFAM.");
+
+  alert(
+    "Ordine copiato. Incollalo nella chat Telegram BPFAM."
+  );
 
   window.location.href = "https://t.me/BPFAMPRIVATE_CLUB";
 }
 
-function checkoutSignal(){
+function checkoutSignal() {
   const message = buildOrderMessage();
-  if(!message) return;
+
+  if (!message) return;
 
   navigator.clipboard.writeText(message);
+
   alert("Ordine copiato. Incollalo nella chat Signal.");
 
   window.location.href =
     "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
 }
 
-async function loadNews(){
-  try{
+/* =====================================
+   NEWS
+===================================== */
+
+async function loadNews() {
+  try {
     const response = await fetch("data/news.json");
     const news = await response.json();
 
-    const container = document.getElementById("newsContainer");
+    const container =
+      document.getElementById("newsContainer");
 
-    if(!container) return;
+    if (!container) return;
 
     container.innerHTML = "";
 
@@ -349,10 +504,14 @@ async function loadNews(){
       `;
     });
 
-  }catch(error){
+  } catch (error) {
     console.log(error);
   }
 }
+
+/* =====================================
+   AVVIO
+===================================== */
 
 window.addEventListener("DOMContentLoaded", () => {
   renderCart();
