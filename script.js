@@ -312,12 +312,23 @@ function renderCart() {
           x${item.qty} = €${item.total}
         </span>
 
-        <button
-          class="remove-btn"
-          onclick="removeFromCart(${index})"
-        >
-          Rimuovi
-        </button>
+   
+<button
+  class="add-cart-btn"
+  onclick="addToCart(${realIndex})"
+>
+  AGGIUNGI AL CARRELLO
+</button>
+
+<a
+  href="video.html"
+  class="video-gallery-btn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  🎬 CLICCA QUI PER I VIDEO
+</a>
+
       </div>
     `;
   });
