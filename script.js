@@ -314,20 +314,12 @@ function renderCart() {
 
    
 <button
-  class="add-cart-btn"
-  onclick="addToCart(${realIndex})"
+  class="remove-btn"
+  onclick="removeFromCart(${index})"
 >
-  AGGIUNGI AL CARRELLO
+  Rimuovi
 </button>
 
-<a
-  href="href="https://bpfam.github.io/Video-bpfam/"
-  class="video-gallery-btn"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🎬 CLICCA QUI PER I VIDEO
-</a>
 
       </div>
     `;
