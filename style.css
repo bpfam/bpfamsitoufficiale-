@@ -1441,4 +1441,85 @@ button{
     padding-bottom: 35px;
 }
 
+/* BPFAM - GRAFICA CARRELLO */
+
+.cart-box,
+.checkout-card {
+    background: linear-gradient(145deg, #191919, #090909);
+    border: 1px solid #b89532;
+    border-radius: 18px;
+    padding: 18px;
+    margin: 18px 0;
+}
+
+.cart-box h3,
+.checkout-card h3 {
+    color: #d4af37;
+    margin: 12px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #333;
+    line-height: 1.5;
+}
+
+#cart-total {
+    margin-top: 18px;
+    color: #d4af37;
+}
+
+.checkout-card select,
+.checkout-card input,
+.checkout-card textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #b89532;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 10px 0 18px;
+    font-size: 15px;
+}
+
+.checkout-card textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.checkout-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.checkout-buttons button {
+    width: 100%;
+    padding: 15px 12px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (min-width: 700px) {
+    .checkout-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
 
