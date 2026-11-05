@@ -1,19 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#000000">
+
   <title>BPFAM</title>
-  <link rel="stylesheet" href="style.css?v=1005">
+
+  <link rel="stylesheet" href="style.css?v=1006">
 </head>
 
 <body>
 
+  <!-- SCHERMATA MAGGIORENNI -->
+
   <div id="ageGate" class="age-gate">
+
     <div class="age-card">
-      <img class="gate-logo" src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg" alt="BPFAM Logo">
+
+      <img
+        class="gate-logo"
+        src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg"
+        alt="BPFAM Logo"
+      >
+
       <h1>BPFAM</h1>
-      <p>Accesso riservato ai maggiorenni. Si richiedono serietà e rispetto.</p>
+
+      <p>
+        Accesso riservato ai maggiorenni.
+        Si richiedono serietà e rispetto.
+      </p>
 
       <label class="check-line">
         <input type="checkbox" id="ageCheck">
@@ -25,17 +46,71 @@
         Accetto termini, privacy e condizioni d’uso
       </label>
 
-      <button onclick="enterSite()">ENTRA NEL SITO</button>
+      <button type="button" onclick="enterSite()">
+        ENTRA NEL SITO
+      </button>
+
     </div>
+
   </div>
+
+
+  <!-- VIDEO INTRODUTTIVO BPFAM -->
+
+  <div id="introOverlay" class="intro-overlay hidden">
+
+    <video
+      id="introVideo"
+      muted
+      playsinline
+      webkit-playsinline
+      preload="auto"
+      onended="finishIntro()"
+      onerror="finishIntro()"
+    >
+
+      <source
+        src="media/intro-bpfam.mp4%20.MP4"
+        type="video/mp4"
+      >
+
+      Il browser non supporta questo video.
+
+    </video>
+
+    <button
+      type="button"
+      class="skip-intro"
+      onclick="finishIntro()"
+    >
+      SALTA INTRO →
+    </button>
+
+  </div>
+
+
+  <!-- CONTENUTO PRINCIPALE -->
 
   <main id="siteContent" class="hidden">
 
+    <!-- HEADER -->
+
     <header class="site-header">
-      <img class="main-logo" src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg" alt="BPFAM Logo">
+
+      <img
+        class="main-logo"
+        src="https://i.postimg.cc/25G2Q3rw/IMG-1449.jpg"
+        alt="BPFAM Logo"
+      >
+
       <h1>BPFAM</h1>
+
       <p>OFFICIAL NETWORK</p>
+
     </header>
+
+
+    <!-- HOME -->
 
     <section id="homePage" class="page-section">
 
@@ -43,25 +118,37 @@
 
       <div class="app-grid">
 
-        <div class="app-card" onclick="showPage('vetrinaPage')">
+        <div
+          class="app-card"
+          onclick="showPage('vetrinaPage')"
+        >
           <div class="app-icon">📸</div>
           <h3>VETRINA</h3>
           <p>Catalogo completo</p>
         </div>
 
-        <div class="app-card" onclick="showPage('checkoutPage')">
+        <div
+          class="app-card"
+          onclick="showPage('checkoutPage')"
+        >
           <div class="app-icon">🛒</div>
           <h3>CHECKOUT</h3>
           <p>Ordini e carrello</p>
         </div>
 
-        <div class="app-card" onclick="showPage('reviewsPage')">
+        <div
+          class="app-card"
+          onclick="showPage('reviewsPage')"
+        >
           <div class="app-icon">⭐</div>
           <h3>RECENSIONI</h3>
           <p>Feedback e novità</p>
         </div>
 
-        <div class="app-card" onclick="showPage('contactsPage')">
+        <div
+          class="app-card"
+          onclick="showPage('contactsPage')"
+        >
           <div class="app-icon">📲</div>
           <h3>CONTATTI</h3>
           <p>Canali ufficiali</p>
@@ -71,106 +158,260 @@
 
     </section>
 
-    <section id="vetrinaPage" class="page-section hidden">
-      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
+
+    <!-- VETRINA -->
+
+    <section
+      id="vetrinaPage"
+      class="page-section hidden"
+    >
+
+      <button
+        class="back-btn"
+        onclick="showPage('homePage')"
+      >
+        ← TORNA HOME
+      </button>
 
       <section id="vetrina" class="vetrina">
+
         <h2>VETRINA</h2>
-        <div id="categories" class="categories-box"></div>
-        <div id="products" class="products-grid"></div>
+
+        <div
+          id="categories"
+          class="categories-box"
+        ></div>
+
+        <div
+          id="products"
+          class="products-grid"
+        ></div>
+
       </section>
+
     </section>
 
-    <section id="checkoutPage" class="page-section hidden">
-      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-      <section id="checkout" class="checkout-section">
+    <!-- CARRELLO E CHECKOUT -->
+
+    <section
+      id="checkoutPage"
+      class="page-section hidden"
+    >
+
+      <button
+        class="back-btn"
+        onclick="showPage('homePage')"
+      >
+        ← TORNA HOME
+      </button>
+
+      <section
+        id="checkout"
+        class="checkout-section"
+      >
+
         <h2>CARRELLO & CHECKOUT</h2>
 
         <div class="cart-box">
+
           <h3>Carrello</h3>
+
           <div id="cart-items"></div>
-          <h3 id="cart-total">Totale finale: €0</h3>
+
+          <h3 id="cart-total">
+            Totale finale: €0
+          </h3>
+
         </div>
 
         <div class="checkout-card">
+
           <h3>Metodo ordine</h3>
 
-          <select id="orderMethod" onchange="showOrderFields()">
-            <option value="">Seleziona metodo</option>
-            <option value="Incontro di Persona">Incontro di Persona</option>
-            <option value="Delivery">Delivery</option>
-            <option value="Spedizione">Spedizione</option>
+          <select
+            id="orderMethod"
+            onchange="showOrderFields()"
+          >
+
+            <option value="">
+              Seleziona metodo
+            </option>
+
+            <option value="Incontro di Persona">
+              Incontro di Persona
+            </option>
+
+            <option value="Delivery">
+              Delivery
+            </option>
+
+            <option value="Spedizione">
+              Spedizione
+            </option>
+
           </select>
 
           <h3>Metodo pagamento</h3>
 
           <select id="paymentMethod">
-            <option value="">Seleziona pagamento</option>
-            <option value="Cash">Cash</option>
-            <option value="BTC">BTC</option>
-            <option value="USDT">USDT</option>
+
+            <option value="">
+              Seleziona pagamento
+            </option>
+
+            <option value="Cash">
+              Cash
+            </option>
+
+            <option value="BTC">
+              BTC
+            </option>
+
+            <option value="USDT">
+              USDT
+            </option>
+
           </select>
 
           <div id="dynamicFields"></div>
 
-          <textarea id="orderNotes" placeholder="Note aggiuntive"></textarea>
+          <textarea
+            id="orderNotes"
+            placeholder="Note aggiuntive"
+          ></textarea>
 
           <div class="checkout-buttons">
-            <button onclick="copyOrder()">COPIA DETTAGLI ORDINE</button>
-            <button onclick="checkoutTelegram()">INVIA SU TELEGRAM</button>
-            <button onclick="checkoutSignal()">INVIA SU SIGNAL</button>
+
+            <button onclick="copyOrder()">
+              COPIA DETTAGLI ORDINE
+            </button>
+
+            <button onclick="checkoutTelegram()">
+              INVIA SU TELEGRAM
+            </button>
+
+            <button onclick="checkoutSignal()">
+              INVIA SU SIGNAL
+            </button>
+
           </div>
+
         </div>
+
       </section>
+
     </section>
 
-    <section id="reviewsPage" class="page-section hidden">
-      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
+
+    <!-- RECENSIONI -->
+
+    <section
+      id="reviewsPage"
+      class="page-section hidden"
+    >
+
+      <button
+        class="back-btn"
+        onclick="showPage('homePage')"
+      >
+        ← TORNA HOME
+      </button>
 
       <section class="contacts">
+
         <h2>RECENSIONI</h2>
-        <p>Area recensioni in aggiornamento.</p>
+
+        <p>
+          Area recensioni in aggiornamento.
+        </p>
+
       </section>
+
     </section>
 
-    <section id="contactsPage" class="page-section hidden">
-      <button class="back-btn" onclick="showPage('homePage')">← TORNA HOME</button>
 
-      <section id="contacts" class="contacts">
+    <!-- CONTATTI -->
+
+    <section
+      id="contactsPage"
+      class="page-section hidden"
+    >
+
+      <button
+        class="back-btn"
+        onclick="showPage('homePage')"
+      >
+        ← TORNA HOME
+      </button>
+
+      <section
+        id="contacts"
+        class="contacts"
+      >
+
         <h2>CONTATTI UFFICIALI</h2>
 
         <div class="contact-buttons">
 
-          <a href="https://t.me/BPFAMPRIVATE_CLUB" target="_blank">
+          <a
+            href="https://t.me/BPFAMPRIVATE_CLUB"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📢 TELEGRAM OFFICIALE
           </a>
 
-          <a href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ" target="_blank">
+          <a
+            href="https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📲 SIGNAL
           </a>
 
-          <a href="https://t.me/streeetrree" target="_blank">
+          <a
+            href="https://t.me/streeetrree"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📍 DETTAGLIO
           </a>
 
-          <a href="https://www.instagram.com/bpfamofficial?igsh=MWZoN2lzb2p3NG8zbA%3D%3D&utm_source=qr" target="_blank">
+          <a
+            href="https://www.instagram.com/bpfamofficial?igsh=MWZoN2lzb2p3NG8zbA%3D%3D&amp;utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📸 INSTAGRAM OFFICIAL
           </a>
 
-          <a href="https://www.instagram.com/bpfamofficial420backup?igsh=eXM5bXhzam5iYWQz" target="_blank">
+          <a
+            href="https://www.instagram.com/bpfamofficial420backup?igsh=eXM5bXhzam5iYWQz"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📸 INSTAGRAM BACKUP
           </a>
 
-          <a href="https://www.instagram.com/bpfam_network?igsh=MWRtYjV3bWdlMWE3MA==" target="_blank">
+          <a
+            href="https://www.instagram.com/bpfam_network?igsh=MWRtYjV3bWdlMWE3MA=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             🌐 INSTAGRAM NETWORK
           </a>
 
         </div>
+
       </section>
+
     </section>
 
   </main>
+
+
+  <!-- MENU INFERIORE -->
 
   <div class="bottom-nav">
 
@@ -196,7 +437,10 @@
 
   </div>
 
-  <script src="script.js?v=1000"></script>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js?v=1004"></script>
 
 </body>
 </html>
