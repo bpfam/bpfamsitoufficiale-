@@ -158,7 +158,7 @@ function changeQty(index, amount){
 }
 
 function addToCart(index){
-  alert("✅ Il pulsante funziona!");
+  alert("✅ Aggiunto al carello!");
 
   const product = window.productsData[index];
   const variant = getVariant(index);
