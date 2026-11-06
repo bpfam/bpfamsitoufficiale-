@@ -1876,3 +1876,101 @@ button{
   text-shadow: 0 0 12px rgba(212,175,55,.55);
 }
 
+/* =====================================
+   DESEO BP FAMILY
+   HOME LUXURY - RIFINITURA GRAFICA
+===================================== */
+
+/* PULSANTI PIÙ COMPATTI E LUMINOSI */
+
+#homePage .app-grid {
+  gap: 11px;
+  margin-top: 12px;
+}
+
+#homePage .app-card {
+  min-height: 108px;
+  padding: 13px 8px;
+
+  background: linear-gradient(
+    145deg,
+    #30291e 0%,
+    #24211c 45%,
+    #171717 100%
+  );
+
+  border: 1px solid #c6a349;
+  border-radius: 18px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,220,130,.08),
+    0 5px 18px rgba(0,0,0,.35);
+}
+
+#homePage .app-card .app-icon {
+  font-size: 26px;
+  margin-bottom: 7px;
+}
+
+#homePage .app-card h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#homePage .app-card p {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* INFO CENTRATO */
+
+#homePage .app-grid > .app-card:last-child {
+  grid-column: 1 / -1;
+  width: calc(50% - 6px);
+  justify-self: center;
+}
+
+/* MAPPA PIÙ GRANDE */
+
+#homePage::after {
+  top: 15%;
+  left: -20%;
+  width: 140%;
+  height: 100%;
+
+  background-image: url("assets/sfondo-mappa.png");
+  background-position: center 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  opacity: .78;
+}
+
+/* SFUMATURA DORATA INTORNO AL LOGO */
+
+.deseo-logo-wrap::before {
+  inset: -40px;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212,175,55,.34) 0%,
+    rgba(190,145,45,.19) 36%,
+    rgba(135,100,30,.08) 62%,
+    transparent 85%
+  );
+
+  filter: blur(26px);
+}
+
+.deseo-logo-wrap .deseo-logo {
+  box-shadow:
+    0 0 22px rgba(212,175,55,.24),
+    0 0 65px rgba(212,175,55,.16);
+}
+
+/* FOOTER SOPRA LA MAPPA */
+
+#homePage .deseo-home-footer {
+  z-index: 2;
+}
+
