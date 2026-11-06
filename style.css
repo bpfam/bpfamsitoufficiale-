@@ -1748,6 +1748,26 @@ button{
   margin-top: 12px;
 }
 
+/* MAPPA DEL MONDO DORATA - HOME */
+
+#homePage::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  left: 0;
+  width: 100%;
+  height: 65%;
+
+  background-image: url("assets/sfondo-mappa.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -1;
+}
+
 
 
 
