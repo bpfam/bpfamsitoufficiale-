@@ -12,7 +12,7 @@
 
   <title>BPFAM</title>
 
-  <link rel="stylesheet" href="style.css?v=1025">
+  <link rel="stylesheet" href="style.css?v=1026">
 
   <!-- INSTALLAZIONE APP -->
 
@@ -43,6 +43,173 @@
     name="apple-mobile-web-app-status-bar-style"
     content="black"
   >
+
+  <!-- NUOVE MODIFICHE GRAFICHE -->
+
+  <style>
+
+    /* LOGO CON SFUMATURE ORO */
+
+    .deseo-logo-wrap {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto 28px;
+      max-width: 100%;
+    }
+
+    .deseo-logo-wrap::before {
+      content: "";
+      position: absolute;
+      width: min(85vw, 360px);
+      height: min(85vw, 360px);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 215, 100, 0.38) 0%,
+        rgba(212, 175, 55, 0.24) 30%,
+        rgba(212, 175, 55, 0.10) 52%,
+        transparent 75%
+      );
+      filter: blur(25px);
+      z-index: -1;
+      pointer-events: none;
+      animation: deseoGlow 3.5s ease-in-out infinite;
+    }
+
+    .deseo-logo {
+      position: relative;
+      z-index: 1;
+      max-width: 100%;
+      height: auto;
+      filter:
+        drop-shadow(0 0 12px rgba(255,215,100,.60))
+        drop-shadow(0 0 30px rgba(212,175,55,.42))
+        drop-shadow(0 0 55px rgba(212,175,55,.22));
+      animation: deseoLogoPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes deseoGlow {
+      0%, 100% {
+        opacity: .65;
+        transform: scale(.92);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    @keyframes deseoLogoPulse {
+      0%, 100% {
+        filter:
+          drop-shadow(0 0 12px rgba(255,215,100,.45))
+          drop-shadow(0 0 30px rgba(212,175,55,.30));
+      }
+      50% {
+        filter:
+          drop-shadow(0 0 20px rgba(255,215,100,.85))
+          drop-shadow(0 0 50px rgba(212,175,55,.55));
+      }
+    }
+
+    /* CARRELLO IN ALTO A DESTRA */
+
+    .floating-cart {
+      position: fixed;
+      top: calc(14px + env(safe-area-inset-top, 0px));
+      right: 14px;
+      z-index: 9000;
+
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: rgba(12,12,12,.95);
+      border: 1.5px solid #d4af37;
+      border-radius: 18px;
+
+      color: #d4af37;
+      cursor: pointer;
+
+      box-shadow:
+        0 0 15px rgba(212,175,55,.30),
+        0 0 28px rgba(212,175,55,.12);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .floating-cart:active {
+      transform: scale(.95);
+    }
+
+    .floating-cart-icon {
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .floating-cart-badge {
+      position: absolute;
+      top: -9px;
+      right: -9px;
+
+      min-width: 25px;
+      height: 25px;
+      padding: 0 5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #d4af37;
+      color: #000;
+
+      border: 2px solid #000;
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 900;
+
+      box-shadow: 0 0 15px rgba(212,175,55,.55);
+    }
+
+    .floating-cart-badge.bump {
+      animation: cartBump .42s ease;
+    }
+
+    @keyframes cartBump {
+      0% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.45);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* NASCONDI IL CARRELLO NELLE SCHERMATE INIZIALI */
+
+    .floating-cart.hidden {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .deseo-logo,
+      .deseo-logo-wrap::before,
+      .floating-cart-badge.bump {
+        animation: none;
+      }
+    }
+
+  </style>
 
 </head>
 
@@ -125,31 +292,35 @@
   <main id="siteContent" class="hidden">
 
     <!-- HEADER -->
-<header class="site-header deseo-header">
 
-  <p class="deseo-eyebrow">
-    OFFICIAL NETWORK
-  </p>
+    <header class="site-header deseo-header">
 
-  <div class="deseo-logo-wrap">
-    <img
-      class="main-logo deseo-logo"
-      src="assets/logo.jpg.PNG"
-      alt="DESEO BP FAMILY Logo"
-    >
-  </div>
+      <p class="deseo-eyebrow">
+        OFFICIAL NETWORK
+      </p>
 
-  <p class="deseo-slogan">
-    QUALITY • STYLE • RESPECT
-  </p>
+      <div class="deseo-logo-wrap">
 
-  <div class="deseo-divider">
-    <span class="deseo-line"></span>
-    <span class="deseo-crown">♛</span>
-    <span class="deseo-line"></span>
-  </div>
+        <img
+          class="main-logo deseo-logo"
+          src="assets/logo.jpg.PNG"
+          alt="DESEO BP FAMILY Logo"
+        >
 
-</header>
+      </div>
+
+      <p class="deseo-slogan">
+        QUALITY • STYLE • RESPECT
+      </p>
+
+      <div class="deseo-divider">
+        <span class="deseo-line"></span>
+        <span class="deseo-crown">♛</span>
+        <span class="deseo-line"></span>
+      </div>
+
+    </header>
+
 
     <!-- HOME -->
 
@@ -256,8 +427,6 @@
       </button>
 
       <h2>ℹ️ INFORMAZIONI</h2>
-
-      <!-- CONTENUTI CARICATI DALLA CARTELLA INFO -->
 
       <div
         class="info-content"
@@ -521,6 +690,24 @@
   </main>
 
 
+  <!-- CARRELLO FISSO IN ALTO A DESTRA -->
+
+  <button
+    id="floatingCart"
+    type="button"
+    class="floating-cart hidden"
+    onclick="showPage('checkoutPage')"
+    aria-label="Apri carrello"
+  >
+    <span class="floating-cart-icon">🛒</span>
+    <span
+      id="cartCount"
+      class="floating-cart-badge"
+      aria-live="polite"
+    >0</span>
+  </button>
+
+
   <!-- MENU INFERIORE -->
 
   <div class="bottom-nav">
@@ -629,6 +816,56 @@
         }
       }
     );
+  </script>
+
+
+  <!-- CONTATORE CARRELLO -->
+
+  <script>
+    function updateFloatingCartCount(quantity) {
+      const badge = document.getElementById("cartCount");
+
+      if (!badge) return;
+
+      const count = Math.max(0, Number(quantity) || 0);
+
+      badge.textContent = count;
+
+      badge.classList.remove("bump");
+      void badge.offsetWidth;
+      badge.classList.add("bump");
+    }
+
+    function showFloatingCart() {
+      const floatingCart =
+        document.getElementById("floatingCart");
+
+      const site =
+        document.getElementById("siteContent");
+
+      if (!floatingCart || !site) return;
+
+      const siteVisible =
+        !site.classList.contains("hidden");
+
+      floatingCart.classList.toggle(
+        "hidden",
+        !siteVisible
+      );
+    }
+
+    const cartVisibilityObserver =
+      new MutationObserver(showFloatingCart);
+
+    cartVisibilityObserver.observe(
+      document.getElementById("siteContent"),
+      {
+        attributes: true,
+        attributeFilter: ["class"]
+      }
+    );
+
+    showFloatingCart();
   </script>
 
 
