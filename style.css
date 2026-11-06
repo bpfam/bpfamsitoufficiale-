@@ -2164,3 +2164,136 @@ button{
     }
 }
 
+/* ========================================
+   DESEO BP FAMILY
+   RIPRISTINO HOME COMPATTA
+======================================== */
+
+/* HEADER PIÙ COMPATTO */
+
+#siteContent {
+    padding-top: 10px;
+}
+
+.deseo-header {
+    padding: 18px 12px 12px !important;
+}
+
+.deseo-header .deseo-logo-wrap {
+    width: 100%;
+    min-height: 0 !important;
+    margin: 8px auto 16px !important;
+    padding: 0 !important;
+}
+
+/* LOGO DIMENSIONI ORIGINALI */
+
+.deseo-header .deseo-logo-wrap .deseo-logo {
+    width: 155px !important;
+    max-width: 155px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+}
+
+/* LUCE DORATA PIÙ CONTENUTA */
+
+.deseo-header .deseo-logo-wrap::before {
+    inset: auto !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 240px !important;
+    height: 240px !important;
+    filter: blur(22px) !important;
+    transform: translate(-50%, -50%) !important;
+    animation: none !important;
+}
+
+.deseo-header .deseo-logo-wrap::after {
+    width: 210px !important;
+    height: 210px !important;
+    filter: blur(18px) !important;
+    animation: none !important;
+}
+
+/* SCRITTE E CORONA PIÙ VICINE */
+
+.deseo-header .deseo-eyebrow {
+    margin-bottom: 10px;
+}
+
+.deseo-header .deseo-slogan {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.deseo-header .deseo-divider {
+    margin: 12px auto 14px;
+}
+
+/* PULSANTI HOME COMPATTI */
+
+#homePage .app-grid {
+    gap: 11px;
+    margin-top: 8px;
+}
+
+#homePage .app-card {
+    min-height: 98px;
+    padding: 12px 8px;
+
+    background: linear-gradient(
+        145deg,
+        #30291e 0%,
+        #24211c 45%,
+        #171717 100%
+    );
+
+    border: 1px solid #c6a349;
+    border-radius: 18px;
+}
+
+#homePage .app-card .app-icon {
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+#homePage .app-card h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+#homePage .app-card p {
+    font-size: 11px;
+}
+
+/* INFO SEMPRE CENTRATO */
+
+#homePage .app-grid > .app-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 6px);
+    justify-self: center;
+}
+
+/* FOOTER PIÙ VICINO */
+
+#homePage .deseo-home-footer {
+    margin: 25px auto 40px;
+    padding: 15px 12px;
+}
+
+/* MAPPA INVARIATA */
+
+#homePage::after {
+    top: 0;
+    left: -20%;
+    width: 140%;
+    height: 100%;
+    background-position: center 45%;
+    background-size: 140% auto;
+    opacity: .65;
+}
+
+
