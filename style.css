@@ -1592,6 +1592,26 @@ button{
   line-height: 1.4;
 }
 
+.add-cart-btn,
+.video-gallery-btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.video-gallery-btn {
+  margin-top: 10px;
+  padding: 12px 8px;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  color: #d4af37;
+  background: #111;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 
 
 
