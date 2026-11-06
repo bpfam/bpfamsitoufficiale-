@@ -656,3 +656,40 @@ window.addEventListener("DOMContentLoaded", () => {
   loadProducts();
   loadNews();
 });
+
+/* =====================================
+   BPFAM - NOTIFICA CARRELLO
+   AGGIORNAMENTO AUTOMATICO CONTATORE
+===================================== */
+
+function updateCartBadge() {
+  const badge = document.getElementById("cartCount");
+
+  if (!badge) return;
+
+  const quantity = cart.reduce((sum, item) => {
+    return sum + (Number(item.qty) || 0);
+  }, 0);
+
+  const previous = Number(badge.textContent) || 0;
+
+  badge.textContent = quantity;
+
+  if (quantity !== previous) {
+    badge.classList.remove("bump");
+    void badge.offsetWidth;
+    badge.classList.add("bump");
+  }
+}
+
+// Collega il contatore al rendering già esistente
+const originalRenderCart = renderCart;
+
+renderCart = function() {
+  originalRenderCart();
+  updateCartBadge();
+};
+
+// Mostra il numero degli articoli già salvati
+updateCartBadge();
+
