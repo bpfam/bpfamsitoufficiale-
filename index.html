@@ -207,7 +207,7 @@
 
         <div
           class="app-card"
-          onclick="showPage('infoPage')"
+          onclick="showPage('infoPage'); caricaInfo();"
         >
           <div class="app-icon">ℹ️</div>
           <h3>INFO</h3>
@@ -253,57 +253,13 @@
 
       <h2>ℹ️ INFORMAZIONI</h2>
 
-      <div class="info-content">
+      <!-- CONTENUTI CARICATI DALLA CARTELLA INFO -->
 
-        <!-- PRESENTAZIONE -->
-
-        <h3>♛ DESEO BP FAMILY</h3>
-
-        <p>
-          Benvenuto nella pagina ufficiale
-          delle informazioni DESEO BP FAMILY.
-        </p>
-
-
-        <!-- REGOLAMENTO -->
-
-        <h3>📋 REGOLAMENTO</h3>
-
-        <p>
-          Qui potrai scrivere tutte le
-          regole e condizioni di utilizzo.
-        </p>
-
-
-        <!-- SPEDIZIONI -->
-
-        <h3>📦 SPEDIZIONI</h3>
-
-        <p>
-          Qui potrai inserire informazioni
-          su spedizioni, modalità e tempi.
-        </p>
-
-
-        <!-- ASSISTENZA -->
-
-        <h3>📲 ASSISTENZA</h3>
-
-        <p>
-          Qui potrai spiegare come
-          contattare l'assistenza.
-        </p>
-
-
-        <!-- COMUNICAZIONI -->
-
-        <h3>📢 COMUNICAZIONI IMPORTANTI</h3>
-
-        <p>
-          Qui potrai aggiungere comunicazioni,
-          avvisi e aggiornamenti.
-        </p>
-
+      <div
+        class="info-content"
+        id="infoContent"
+      >
+        <p>Caricamento informazioni...</p>
       </div>
 
     </section>
@@ -591,6 +547,86 @@
   <!-- JAVASCRIPT -->
 
   <script src="script.js?v=1011"></script>
+
+
+  <!-- CARICAMENTO AUTOMATICO INFO -->
+
+  <script>
+    async function caricaInfo() {
+      const contenitore =
+        document.getElementById("infoContent");
+
+      if (!contenitore) return;
+
+      contenitore.textContent =
+        "Caricamento informazioni...";
+
+      try {
+        const risposta = await fetch(
+          "./info/contenuti.json",
+          { cache: "no-store" }
+        );
+
+        if (!risposta.ok) {
+          throw new Error(
+            "File informazioni non disponibile"
+          );
+        }
+
+        const dati = await risposta.json();
+
+        if (!Array.isArray(dati.sezioni)) {
+          throw new Error(
+            "Formato informazioni non valido"
+          );
+        }
+
+        contenitore.replaceChildren();
+
+        for (const sezione of dati.sezioni) {
+
+          const titolo =
+            document.createElement("h3");
+
+          titolo.textContent =
+            sezione.titolo || "";
+
+          const testo =
+            document.createElement("p");
+
+          testo.textContent =
+            sezione.testo || "";
+
+          contenitore.appendChild(titolo);
+          contenitore.appendChild(testo);
+        }
+
+      } catch (errore) {
+        contenitore.textContent =
+          "Impossibile caricare le informazioni. Riprova più tardi.";
+
+        console.error(
+          "Errore caricamento INFO:",
+          errore
+        );
+      }
+    }
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          !document.hidden &&
+          !document
+            .getElementById("infoPage")
+            .classList.contains("hidden")
+        ) {
+          caricaInfo();
+        }
+      }
+    );
+  </script>
+
 
   <!-- AGGIORNAMENTI APP -->
 
