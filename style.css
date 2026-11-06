@@ -1974,3 +1974,17 @@ button{
   z-index: 2;
 }
 
+/* MAPPA PIÙ ALTA E VISIBILE */
+
+#homePage::after {
+  top: 0;
+  left: -20%;
+  width: 140%;
+  height: 100%;
+
+  background-position: center 45%;
+  background-size: 140% auto;
+
+  opacity: 0.65;
+}
+
