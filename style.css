@@ -1717,6 +1717,37 @@ button{
   font-size: 30px;
 }
 
+/* FOOTER DESEO BP FAMILY */
+
+.deseo-home-footer {
+  position: relative;
+  margin: 55px auto 95px;
+  padding: 25px 12px;
+  text-align: center;
+}
+
+.deseo-home-footer .footer-crown {
+  color: #d4af37;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(212,175,55,.5);
+}
+
+.deseo-home-footer .footer-brand {
+  color: #d4af37;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  line-height: 1.5;
+}
+
+.deseo-home-footer .footer-tagline {
+  color: #d4af37;
+  font-size: 12px;
+  letter-spacing: 5px;
+  margin-top: 12px;
+}
+
 
 
 
