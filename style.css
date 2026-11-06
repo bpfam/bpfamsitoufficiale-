@@ -2295,5 +2295,10 @@ button{
     background-size: 140% auto;
     opacity: .65;
 }
+/* NASCONDE LE DESCRIZIONI SOTTO I PULSANTI HOME */
+
+#homePage .app-card p {
+    display: none !important;
+}
 
 
