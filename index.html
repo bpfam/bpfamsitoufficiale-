@@ -12,9 +12,9 @@
 
   <meta name="theme-color" content="#000000">
 
-  <title>BPFAM</title>
+  <title>DESEO BP FAMILY</title>
 
-  <link rel="stylesheet" href="style.css?v=1029">
+  <link rel="stylesheet" href="style.css?v=1030">
 
   <!-- INSTALLAZIONE APP -->
 
@@ -46,61 +46,339 @@
     content="black"
   >
 
-  <!-- GRAFICA LOGO E CARRELLO -->
+  <!-- HOME RIPRISTINATA -->
 
   <style>
 
-    /* LOGO CON LUCE DORATA */
+    /* CONTENITORE COMPATTO */
 
-    .deseo-logo-wrap {
-      position: relative;
-      isolation: isolate;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 100%;
+    #siteContent {
+      width: 100% !important;
+      max-width: 450px !important;
+      margin: 0 auto !important;
+      padding: 12px 18px 90px !important;
     }
 
-    .deseo-logo-wrap::before {
-      content: "";
-      position: absolute;
+    /* HEADER */
 
-      top: 50%;
-      left: 50%;
+    #siteContent .deseo-header {
+      position: relative;
+      padding: 12px 0 10px !important;
+      margin: 0 !important;
+      text-align: center;
+      background: #000;
+    }
 
-      width: 230px;
-      height: 230px;
+    #siteContent .deseo-eyebrow {
+      color: #d4af37;
+      font-size: 10px !important;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin: 0 0 12px !important;
+    }
+
+    /* LOGO COME NELLA HOME ORIGINALE */
+
+    #siteContent .deseo-header .deseo-logo-wrap {
+      position: relative !important;
+      isolation: isolate;
+
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+
+      width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+
+      padding: 0 !important;
+      margin: 12px auto 18px !important;
+    }
+
+    #siteContent .deseo-header .deseo-logo-wrap img.deseo-logo {
+      position: relative;
+      z-index: 1;
+
+      display: block !important;
+      width: 68% !important;
+      max-width: 190px !important;
+      height: auto !important;
+
+      margin: 0 auto !important;
+
+      object-fit: contain !important;
+      border-radius: 24px;
+
+      border: 1px solid rgba(212,175,55,.55);
+
+      box-shadow:
+        0 0 22px rgba(212,175,55,.25),
+        0 0 65px rgba(212,175,55,.15);
+
+      filter: none !important;
+      animation: none !important;
+    }
+
+    /* SFUMATURA DORATA LEGGERA */
+
+    #siteContent .deseo-header .deseo-logo-wrap::before {
+      content: "" !important;
+
+      position: absolute !important;
+      inset: auto !important;
+
+      top: 50% !important;
+      left: 50% !important;
+
+      width: 235px !important;
+      height: 235px !important;
 
       border-radius: 50%;
 
       background: radial-gradient(
         circle,
-        rgba(255,215,100,.35) 0%,
-        rgba(212,175,55,.22) 35%,
-        rgba(212,175,55,.08) 60%,
-        transparent 80%
-      );
+        rgba(212,175,55,.30) 0%,
+        rgba(140,100,20,.13) 45%,
+        transparent 75%
+      ) !important;
 
-      filter: blur(22px);
+      filter: blur(20px) !important;
 
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) !important;
+
+      animation: none !important;
 
       pointer-events: none;
       z-index: -1;
     }
 
-    .deseo-logo {
-      position: relative;
-      z-index: 1;
-
-      filter:
-        drop-shadow(0 0 12px rgba(255,215,100,.38))
-        drop-shadow(0 0 26px rgba(212,175,55,.22));
+    #siteContent .deseo-header .deseo-logo-wrap::after {
+      content: none !important;
+      display: none !important;
     }
 
-    /* CARRELLO FISSO */
+    /* SLOGAN */
 
-    .floating-cart {
+    #siteContent .deseo-slogan {
+      color: #d4af37;
+
+      font-size: 11px !important;
+      font-weight: 700;
+
+      letter-spacing: 3px !important;
+      line-height: 1.8;
+
+      margin: 8px auto 18px !important;
+      text-align: center;
+    }
+
+    /* CORONA CON LINEE DORATE */
+
+    #siteContent .deseo-divider {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+
+      gap: 12px !important;
+      margin: 0 auto 20px !important;
+    }
+
+    #siteContent .deseo-line {
+      width: 65px;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #d4af37,
+        transparent
+      );
+    }
+
+    #siteContent .deseo-crown {
+      color: #d4af37;
+      font-size: 19px !important;
+      line-height: 1;
+      margin: 0 !important;
+
+      text-shadow:
+        0 0 12px rgba(212,175,55,.55);
+    }
+
+    /* HOME */
+
+    #homePage {
+      position: relative !important;
+      isolation: isolate;
+      overflow: hidden;
+      background-image: none;
+    }
+
+    /* MAPPA MONDIALE COME PRIMA */
+
+    #homePage::after {
+      content: "" !important;
+      display: block !important;
+
+      position: absolute !important;
+
+      top: 40% !important;
+      left: 0 !important;
+
+      width: 100% !important;
+      height: 65% !important;
+
+      background-image:
+        url("assets/sfondo-mappa.png") !important;
+
+      background-size: contain !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+
+      opacity: .45 !important;
+
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+
+    #homePage .home-smoke-bg {
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* GRIGLIA DEI CINQUE PULSANTI */
+
+    #homePage .app-grid {
+      position: relative;
+      z-index: 2;
+
+      display: grid !important;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+      gap: 12px !important;
+
+      width: 100%;
+      margin: 10px auto 28px !important;
+      padding: 0 5px;
+    }
+
+    /* PULSANTI LEGGERMENTE PIÙ CHIARI */
+
+    #homePage .app-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+
+      min-height: 105px !important;
+      padding: 14px 8px !important;
+
+      background: linear-gradient(
+        145deg,
+        #30291e 0%,
+        #24211c 45%,
+        #171717 100%
+      ) !important;
+
+      border: 1px solid #c6a349 !important;
+      border-radius: 20px !important;
+
+      color: #fff;
+      text-align: center;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,220,130,.08),
+        0 5px 18px rgba(0,0,0,.35);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    #homePage .app-card:active {
+      transform: scale(.97);
+
+      box-shadow:
+        0 0 20px rgba(212,175,55,.20);
+    }
+
+    #homePage .app-card .app-icon {
+      font-size: 27px !important;
+      margin-bottom: 8px !important;
+    }
+
+    #homePage .app-card h3 {
+      color: #d4af37;
+
+      font-size: 14px !important;
+      font-weight: 700;
+
+      margin-bottom: 5px !important;
+    }
+
+    #homePage .app-card p {
+      color: #bbb;
+
+      font-size: 11px !important;
+      line-height: 1.4;
+    }
+
+    /* INFO CENTRATO */
+
+    #homePage .app-grid > .app-card:last-child {
+      grid-column: 1 / -1 !important;
+
+      width: calc(50% - 6px) !important;
+      justify-self: center !important;
+    }
+
+    /* FOOTER COME NELLA VECCHIA HOME */
+
+    #homePage .deseo-home-footer {
+      position: relative;
+      z-index: 2;
+
+      margin: 25px auto 35px !important;
+      padding: 25px 12px !important;
+
+      text-align: center;
+    }
+
+    #homePage .footer-crown {
+      color: #d4af37;
+      font-size: 26px !important;
+
+      margin-bottom: 10px !important;
+
+      text-shadow:
+        0 0 15px rgba(212,175,55,.5);
+    }
+
+    #homePage .footer-brand {
+      color: #d4af37;
+
+      font-size: 12px !important;
+      font-weight: 700;
+
+      letter-spacing: 4px !important;
+    }
+
+    #homePage .footer-tagline {
+      color: #b89532;
+
+      font-size: 10px !important;
+      letter-spacing: 3px !important;
+
+      margin-top: 9px !important;
+    }
+
+    /* CARRELLO IN ALTO A DESTRA */
+
+    #floatingCart {
       position: fixed;
 
       top: calc(14px + env(safe-area-inset-top, 0px));
@@ -116,11 +394,10 @@
       align-items: center;
 
       background: rgba(12,12,12,.96);
+      color: #d4af37;
 
       border: 1.5px solid #d4af37;
       border-radius: 16px;
-
-      color: #d4af37;
 
       box-shadow:
         0 0 15px rgba(212,175,55,.25);
@@ -128,18 +405,25 @@
       cursor: pointer;
     }
 
+    #floatingCart.hidden {
+      display: none !important;
+    }
+
     .floating-cart-icon {
       font-size: 24px;
       line-height: 1;
     }
 
-    .floating-cart-badge {
+    /* NOTIFICA ROSSA */
+
+    #floatingCart #cartCount {
       position: absolute;
 
       top: -8px;
       right: -8px;
 
       min-width: 24px;
+      width: auto;
       height: 24px;
 
       padding: 0 5px;
@@ -161,11 +445,9 @@
         0 0 12px rgba(255,59,48,.45);
     }
 
-    .floating-cart.hidden {
-      display: none !important;
-    }
+    /* ANIMAZIONE NOTIFICA */
 
-    .floating-cart-badge.bump {
+    #floatingCart #cartCount.bump {
       animation: cartBump .4s ease;
     }
 
@@ -183,209 +465,29 @@
       }
     }
 
-    /* =====================================
-       RIPRISTINO HOME COMPATTA
-       QUESTE REGOLE PREVALGONO SUL CSS
-    ===================================== */
-
-    #siteContent {
-      max-width: 450px !important;
-      padding: 8px 16px 90px !important;
-    }
-
-    /* HEADER RIDOTTO */
-
-    #siteContent .deseo-header {
-      padding: 12px 10px 10px !important;
-    }
-
-    #siteContent .deseo-eyebrow {
-      margin-bottom: 8px !important;
-      font-size: 10px !important;
-    }
-
-    /* LOGO PICCOLO COME PRIMA */
-
-    #siteContent .deseo-header .deseo-logo-wrap {
-      display: flex !important;
-
-      width: 100% !important;
-      height: auto !important;
-      min-height: 0 !important;
-
-      margin: 8px auto 14px !important;
-      padding: 0 !important;
-    }
-
-    #siteContent .deseo-header .deseo-logo-wrap img.deseo-logo {
-      display: block !important;
-
-      width: 155px !important;
-      max-width: 155px !important;
-      height: auto !important;
-
-      margin: 0 auto !important;
-
-      object-fit: contain !important;
-
-      animation: none !important;
-    }
-
-    /* SFUMATURA DORATA CONTENUTA */
-
-    #siteContent .deseo-header .deseo-logo-wrap::before {
-      content: "" !important;
-
-      position: absolute !important;
-
-      inset: auto !important;
-      top: 50% !important;
-      left: 50% !important;
-
-      width: 225px !important;
-      height: 225px !important;
-
-      background: radial-gradient(
-        circle,
-        rgba(255,220,110,.35) 0%,
-        rgba(212,175,55,.22) 35%,
-        rgba(150,105,30,.08) 60%,
-        transparent 80%
-      ) !important;
-
-      filter: blur(22px) !important;
-
-      transform: translate(-50%, -50%) !important;
-      animation: none !important;
-    }
-
-    #siteContent .deseo-header .deseo-logo-wrap::after {
-      content: none !important;
-      display: none !important;
-    }
-
-    /* SLOGAN E CORONA */
-
-    #siteContent .deseo-slogan {
-      margin-top: 7px !important;
-
-      font-size: 10px !important;
-      letter-spacing: 2px !important;
-    }
-
-    #siteContent .deseo-divider {
-      margin: 12px auto 14px !important;
-    }
-
-    #siteContent .deseo-crown {
-      font-size: 18px !important;
-    }
-
-    /* PULSANTI HOME COMPATTI */
-
-    #homePage .app-grid {
-      display: grid !important;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr)) !important;
-
-      gap: 11px !important;
-
-      margin-top: 8px !important;
-    }
-
-    #homePage .app-card {
-      min-height: 98px !important;
-
-      padding: 12px 8px !important;
-
-      background: linear-gradient(
-        145deg,
-        #30291e 0%,
-        #24211c 45%,
-        #171717 100%
-      ) !important;
-
-      border: 1px solid #c6a349 !important;
-      border-radius: 18px !important;
-    }
-
-    #homePage .app-card .app-icon {
-      font-size: 25px !important;
-      margin-bottom: 6px !important;
-    }
-
-    #homePage .app-card h3 {
-      font-size: 14px !important;
-      margin-bottom: 4px !important;
-    }
-
-    #homePage .app-card p {
-      font-size: 11px !important;
-      line-height: 1.4 !important;
-    }
-
-    /* INFO CENTRATO */
-
-    #homePage .app-grid > .app-card:last-child {
-      grid-column: 1 / -1 !important;
-
-      width: calc(50% - 6px) !important;
-
-      justify-self: center !important;
-    }
-
-    /* MAPPA MONDIALE */
-
-    #homePage::after {
-      top: 0 !important;
-      left: -20% !important;
-
-      width: 140% !important;
-      height: 100% !important;
-
-      background-image:
-        url("assets/sfondo-mappa.png") !important;
-
-      background-position:
-        center 45% !important;
-
-      background-size:
-        140% auto !important;
-
-      background-repeat:
-        no-repeat !important;
-
-      opacity: .65 !important;
-    }
-
-    /* FOOTER COMPATTO */
-
-    #homePage .deseo-home-footer {
-      margin: 25px auto 40px !important;
-      padding: 15px 12px !important;
-    }
-
     /* SCHERMI PICCOLI */
 
     @media (max-width: 360px) {
-
       #homePage .app-card {
-        min-height: 92px !important;
+        min-height: 94px !important;
       }
 
       #homePage .app-card h3 {
         font-size: 13px !important;
       }
 
-      #siteContent .deseo-header .deseo-logo-wrap img.deseo-logo {
-        width: 145px !important;
-        max-width: 145px !important;
+      #siteContent .deseo-slogan {
+        font-size: 9px !important;
+        letter-spacing: 2px !important;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .floating-cart-badge.bump {
+      #homePage .app-card {
+        transition: none;
+      }
+
+      #floatingCart #cartCount.bump {
         animation: none;
       }
     }
@@ -497,9 +599,7 @@
       <div class="deseo-divider">
 
         <span class="deseo-line"></span>
-
         <span class="deseo-crown">♛</span>
-
         <span class="deseo-line"></span>
 
       </div>
@@ -785,9 +885,9 @@
         ← TORNA HOME
       </button>
 
-      <section class="contacts">
+      <h2>RECENSIONI</h2>
 
-        <h2>RECENSIONI</h2>
+      <section class="contacts">
 
         <p>
           Area recensioni in aggiornamento.
@@ -879,7 +979,7 @@
   </main>
 
 
-  <!-- CARRELLO FISSO -->
+  <!-- CARRELLO FISSO IN ALTO A DESTRA -->
 
   <button
     id="floatingCart"
@@ -889,9 +989,7 @@
     aria-label="Apri carrello"
   >
 
-    <span class="floating-cart-icon">
-      🛒
-    </span>
+    <span class="floating-cart-icon">🛒</span>
 
     <span
       id="cartCount"
@@ -931,15 +1029,13 @@
 
   <!-- JAVASCRIPT -->
 
-  <script src="script.js?v=1012"></script>
+  <script src="script.js?v=1013"></script>
 
 
-  <!-- CARICAMENTO INFO -->
+  <!-- CARICAMENTO AUTOMATICO INFO -->
 
   <script>
-
     async function caricaInfo() {
-
       const contenitore =
         document.getElementById("infoContent");
 
@@ -949,7 +1045,6 @@
         "Caricamento informazioni...";
 
       try {
-
         const risposta = await fetch(
           "./info/contenuti.json",
           { cache: "no-store" }
@@ -973,19 +1068,23 @@
 
         for (const sezione of dati.sezioni) {
 
-          const titolo = document.createElement("h3");
-          titolo.textContent = sezione.titolo || "";
+          const titolo =
+            document.createElement("h3");
 
-          const testo = document.createElement("p");
-          testo.textContent = sezione.testo || "";
+          titolo.textContent =
+            sezione.titolo || "";
+
+          const testo =
+            document.createElement("p");
+
+          testo.textContent =
+            sezione.testo || "";
 
           contenitore.appendChild(titolo);
           contenitore.appendChild(testo);
-
         }
 
       } catch (errore) {
-
         contenitore.textContent =
           "Impossibile caricare le informazioni. Riprova più tardi.";
 
@@ -993,14 +1092,12 @@
           "Errore caricamento INFO:",
           errore
         );
-
       }
     }
 
     document.addEventListener(
       "visibilitychange",
       () => {
-
         const infoPage =
           document.getElementById("infoPage");
 
@@ -1011,39 +1108,15 @@
         ) {
           caricaInfo();
         }
-
       }
     );
-
   </script>
 
 
-  <!-- NOTIFICA CARRELLO -->
+  <!-- VISIBILITÀ CARRELLO -->
 
   <script>
-
-    function updateFloatingCartCount(quantity) {
-
-      const badge =
-        document.getElementById("cartCount");
-
-      if (!badge) return;
-
-      const count =
-        Math.max(0, Number(quantity) || 0);
-
-      badge.textContent = count;
-
-      badge.classList.remove("bump");
-
-      void badge.offsetWidth;
-
-      badge.classList.add("bump");
-
-    }
-
     function showFloatingCart() {
-
       const floatingCart =
         document.getElementById("floatingCart");
 
@@ -1052,14 +1125,13 @@
 
       if (!floatingCart || !site) return;
 
-      const visible =
+      const siteVisible =
         !site.classList.contains("hidden");
 
       floatingCart.classList.toggle(
         "hidden",
-        !visible
+        !siteVisible
       );
-
     }
 
     const cartVisibilityObserver =
@@ -1074,20 +1146,15 @@
     );
 
     showFloatingCart();
-
   </script>
 
 
   <!-- AGGIORNAMENTI APP -->
 
   <script>
-
     if ("serviceWorker" in navigator) {
-
       window.addEventListener("load", async () => {
-
         try {
-
           const registration =
             await navigator.serviceWorker.register(
               "./service-worker.js",
@@ -1101,18 +1168,13 @@
           );
 
         } catch (error) {
-
           console.error(
             "Errore Service Worker:",
             error
           );
-
         }
-
       });
-
     }
-
   </script>
 
 </body>
