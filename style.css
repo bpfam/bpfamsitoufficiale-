@@ -1793,6 +1793,28 @@ button{
   z-index: -1;
 }
 
+/* ===== MAPPA DESEO BP FAMILY ===== */
+
+#homePage {
+  position: relative;
+  background-image:
+    linear-gradient(
+      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.25)
+    ),
+    url("assets/sfondo-mappa.png");
+
+  background-repeat: no-repeat;
+  background-position: center 65%;
+  background-size: 100% auto;
+}
+
+/* Disattiva il vecchio sfondo della mappa */
+
+#homePage::after {
+  display: none !important;
+}
+
 
 
 
