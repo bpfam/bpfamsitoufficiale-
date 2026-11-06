@@ -1838,3 +1838,41 @@ button{
   justify-self: center;
 }
 
+/* CORREZIONE HEADER DESEO BP FAMILY */
+
+.deseo-header {
+  padding-top: 55px;
+}
+
+/* CORONA PICCOLA CON LINEE DORATE */
+
+.deseo-header .deseo-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px auto 22px;
+}
+
+.deseo-header .deseo-line {
+  display: block;
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #d4af37,
+    transparent
+  );
+  opacity: 0.9;
+}
+
+.deseo-header .deseo-crown {
+  display: block;
+  font-size: 19px;
+  line-height: 1;
+  margin: 0;
+  color: #d4af37;
+  text-shadow: 0 0 12px rgba(212,175,55,.55);
+}
+
