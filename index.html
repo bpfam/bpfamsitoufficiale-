@@ -126,25 +126,26 @@
 
     <!-- HEADER -->
 
-<header class="site-header deseo-header">
+    <header class="site-header deseo-header">
 
-  <p class="deseo-eyebrow">
-    OFFICIAL NETWORK
-  </p>
+      <p class="deseo-eyebrow">
+        OFFICIAL NETWORK
+      </p>
 
-  <img
-    class="main-logo deseo-logo"
-    src="assets/logo.jpg.PNG"
-    alt="DESEO BP FAMILY Logo"
-  >
+      <img
+        class="main-logo deseo-logo"
+        src="assets/logo.jpg.PNG"
+        alt="DESEO BP FAMILY Logo"
+      >
 
-  <p class="deseo-slogan">
-    QUALITY • STYLE • RESPECT
-  </p>
+      <p class="deseo-slogan">
+        QUALITY • STYLE • RESPECT
+      </p>
 
-  <div class="deseo-crown">♛</div>
+      <div class="deseo-crown">♛</div>
 
-</header>
+    </header>
+
 
     <!-- HOME -->
 
@@ -201,16 +202,20 @@
           <p>Canali ufficiali</p>
         </div>
 
-<!-- PULSANTE INFO -->
 
-<div
-  class="app-card"
-  onclick="showPage('infoPage')"
->
-  <div class="app-icon">ℹ️</div>
-  <h3>INFO</h3>
-  <p>Informazioni e regolamento</p>
-</div>
+        <!-- INFO -->
+
+        <div
+          class="app-card"
+          onclick="showPage('infoPage')"
+        >
+          <div class="app-icon">ℹ️</div>
+          <h3>INFO</h3>
+          <p>Informazioni e regolamento</p>
+        </div>
+
+      </div>
+
 
       <!-- FOOTER DESEO BP FAMILY -->
 
@@ -227,6 +232,79 @@
         </div>
 
       </footer>
+
+    </section>
+
+
+    <!-- PAGINA INFO -->
+
+    <section
+      id="infoPage"
+      class="page-section hidden"
+    >
+
+      <button
+        type="button"
+        class="back-btn"
+        onclick="showPage('homePage')"
+      >
+        ← TORNA HOME
+      </button>
+
+      <h2>ℹ️ INFORMAZIONI</h2>
+
+      <div class="info-content">
+
+        <!-- PRESENTAZIONE -->
+
+        <h3>♛ DESEO BP FAMILY</h3>
+
+        <p>
+          Benvenuto nella pagina ufficiale
+          delle informazioni DESEO BP FAMILY.
+        </p>
+
+
+        <!-- REGOLAMENTO -->
+
+        <h3>📋 REGOLAMENTO</h3>
+
+        <p>
+          Qui potrai scrivere tutte le
+          regole e condizioni di utilizzo.
+        </p>
+
+
+        <!-- SPEDIZIONI -->
+
+        <h3>📦 SPEDIZIONI</h3>
+
+        <p>
+          Qui potrai inserire informazioni
+          su spedizioni, modalità e tempi.
+        </p>
+
+
+        <!-- ASSISTENZA -->
+
+        <h3>📲 ASSISTENZA</h3>
+
+        <p>
+          Qui potrai spiegare come
+          contattare l'assistenza.
+        </p>
+
+
+        <!-- COMUNICAZIONI -->
+
+        <h3>📢 COMUNICAZIONI IMPORTANTI</h3>
+
+        <p>
+          Qui potrai aggiungere comunicazioni,
+          avvisi e aggiornamenti.
+        </p>
+
+      </div>
 
     </section>
 
@@ -512,35 +590,35 @@
 
   <!-- JAVASCRIPT -->
 
-<script src="script.js?v=1011"></script>
+  <script src="script.js?v=1011"></script>
 
-<!-- AGGIORNAMENTI APP -->
+  <!-- AGGIORNAMENTI APP -->
 
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", async () => {
-      try {
-        const registration =
-          await navigator.serviceWorker.register(
-            "./service-worker.js",
-            { updateViaCache: "none" }
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", async () => {
+        try {
+          const registration =
+            await navigator.serviceWorker.register(
+              "./service-worker.js",
+              { updateViaCache: "none" }
+            );
+
+          await registration.update();
+
+          console.log(
+            "DESEO BP FAMILY: aggiornamenti attivi"
           );
 
-        await registration.update();
-
-        console.log(
-          "DESEO BP FAMILY: aggiornamenti attivi"
-        );
-
-      } catch (error) {
-        console.error(
-          "Errore Service Worker:",
-          error
-        );
-      }
-    });
-  }
-</script>
+        } catch (error) {
+          console.error(
+            "Errore Service Worker:",
+            error
+          );
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
