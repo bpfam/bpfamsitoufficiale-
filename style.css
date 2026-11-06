@@ -1748,74 +1748,59 @@ button{
   margin-top: 12px;
 }
 
-/* MAPPA DEL MONDO DORATA - HOME */
-
-#homePage::after {
-  content: "";
-  position: absolute;
-  top: 35%;
-  left: 0;
-  width: 100%;
-  height: 65%;
-
-  background-image: url("assets/sfondo-mappa.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  opacity: 0.45;
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* MAPPA MONDIALE DORATA - HOME */
+/* =====================================
+   DESEO BP FAMILY
+   MAPPA MONDIALE DORATA
+   VERSIONE CORRETTA
+===================================== */
 
 #homePage {
   position: relative;
   isolation: isolate;
+  background-image: none;
+  overflow: hidden;
 }
+
+/* MAPPA DI SFONDO */
 
 #homePage::after {
   content: "";
+  display: block !important;
   position: absolute;
-  top: 35%;
+
+  top: 25%;
   left: 0;
   width: 100%;
-  height: 65%;
+  height: 70%;
 
   background-image: url("assets/sfondo-mappa.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 
-  opacity: 0.45;
+  opacity: 0.65;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
-/* ===== MAPPA DESEO BP FAMILY ===== */
+/* PULSANTI SOPRA LA MAPPA */
 
-#homePage {
+#homePage .app-grid {
   position: relative;
-  background-image:
-    linear-gradient(
-      rgba(0,0,0,0.25),
-      rgba(0,0,0,0.25)
-    ),
-    url("assets/sfondo-mappa.png");
-
-  background-repeat: no-repeat;
-  background-position: center 65%;
-  background-size: 100% auto;
+  z-index: 2;
 }
 
-/* Disattiva il vecchio sfondo della mappa */
+/* FOOTER SOPRA LA MAPPA */
 
-#homePage::after {
-  display: none !important;
+#homePage .deseo-home-footer {
+  position: relative;
+  z-index: 2;
 }
 
+/* SFONDO DECORATIVO NON COPRENTE */
 
-
-
+#homePage .home-smoke-bg {
+  pointer-events: none;
+  z-index: 0;
+}
 
