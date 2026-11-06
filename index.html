@@ -5,14 +5,16 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
   <meta name="theme-color" content="#000000">
 
   <title>BPFAM</title>
 
-  <link rel="stylesheet" href="style.css?v=1028">
+  <link rel="stylesheet" href="style.css?v=1029">
 
   <!-- INSTALLAZIONE APP -->
 
@@ -44,11 +46,11 @@
     content="black"
   >
 
-  <!-- NUOVE MODIFICHE GRAFICHE -->
+  <!-- GRAFICA LOGO E CARRELLO -->
 
   <style>
 
-    /* LOGO CON SFUMATURE ORO */
+    /* LOGO CON LUCE DORATA */
 
     .deseo-logo-wrap {
       position: relative;
@@ -56,119 +58,98 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 20px auto 28px;
       max-width: 100%;
     }
 
     .deseo-logo-wrap::before {
       content: "";
       position: absolute;
-      width: min(85vw, 360px);
-      height: min(85vw, 360px);
+
+      top: 50%;
+      left: 50%;
+
+      width: 230px;
+      height: 230px;
+
       border-radius: 50%;
+
       background: radial-gradient(
         circle,
-        rgba(255, 215, 100, 0.38) 0%,
-        rgba(212, 175, 55, 0.24) 30%,
-        rgba(212, 175, 55, 0.10) 52%,
-        transparent 75%
+        rgba(255,215,100,.35) 0%,
+        rgba(212,175,55,.22) 35%,
+        rgba(212,175,55,.08) 60%,
+        transparent 80%
       );
-      filter: blur(25px);
-      z-index: -1;
+
+      filter: blur(22px);
+
+      transform: translate(-50%, -50%);
+
       pointer-events: none;
-      animation: deseoGlow 3.5s ease-in-out infinite;
+      z-index: -1;
     }
 
     .deseo-logo {
       position: relative;
       z-index: 1;
-      max-width: 100%;
-      height: auto;
+
       filter:
-        drop-shadow(0 0 12px rgba(255,215,100,.60))
-        drop-shadow(0 0 30px rgba(212,175,55,.42))
-        drop-shadow(0 0 55px rgba(212,175,55,.22));
-      animation: deseoLogoPulse 4s ease-in-out infinite;
+        drop-shadow(0 0 12px rgba(255,215,100,.38))
+        drop-shadow(0 0 26px rgba(212,175,55,.22));
     }
 
-    @keyframes deseoGlow {
-      0%, 100% {
-        opacity: .65;
-        transform: scale(.92);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.15);
-      }
-    }
-
-    @keyframes deseoLogoPulse {
-      0%, 100% {
-        filter:
-          drop-shadow(0 0 12px rgba(255,215,100,.45))
-          drop-shadow(0 0 30px rgba(212,175,55,.30));
-      }
-      50% {
-        filter:
-          drop-shadow(0 0 20px rgba(255,215,100,.85))
-          drop-shadow(0 0 50px rgba(212,175,55,.55));
-      }
-    }
-
-    /* CARRELLO IN ALTO A DESTRA */
+    /* CARRELLO FISSO */
 
     .floating-cart {
       position: fixed;
+
       top: calc(14px + env(safe-area-inset-top, 0px));
       right: 14px;
+
       z-index: 9000;
 
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
 
       display: flex;
       justify-content: center;
       align-items: center;
 
-      background: rgba(12,12,12,.95);
+      background: rgba(12,12,12,.96);
+
       border: 1.5px solid #d4af37;
-      border-radius: 18px;
+      border-radius: 16px;
 
       color: #d4af37;
-      cursor: pointer;
 
       box-shadow:
-        0 0 15px rgba(212,175,55,.30),
-        0 0 28px rgba(212,175,55,.12);
+        0 0 15px rgba(212,175,55,.25);
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .floating-cart:active {
-      transform: scale(.95);
+      cursor: pointer;
     }
 
     .floating-cart-icon {
-      font-size: 27px;
+      font-size: 24px;
       line-height: 1;
     }
 
     .floating-cart-badge {
       position: absolute;
-      top: -9px;
-      right: -9px;
 
-      min-width: 25px;
-      height: 25px;
+      top: -8px;
+      right: -8px;
+
+      min-width: 24px;
+      height: 24px;
+
       padding: 0 5px;
 
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
-      background: #d4af37;
-      color: #000;
+      background: #ff3b30;
+      color: #fff;
 
       border: 2px solid #000;
       border-radius: 999px;
@@ -176,34 +157,234 @@
       font-size: 12px;
       font-weight: 900;
 
-      box-shadow: 0 0 15px rgba(212,175,55,.55);
+      box-shadow:
+        0 0 12px rgba(255,59,48,.45);
+    }
+
+    .floating-cart.hidden {
+      display: none !important;
     }
 
     .floating-cart-badge.bump {
-      animation: cartBump .42s ease;
+      animation: cartBump .4s ease;
     }
 
     @keyframes cartBump {
       0% {
         transform: scale(1);
       }
+
       45% {
-        transform: scale(1.45);
+        transform: scale(1.4);
       }
+
       100% {
         transform: scale(1);
       }
     }
 
-    /* NASCONDI IL CARRELLO NELLE SCHERMATE INIZIALI */
+    /* =====================================
+       RIPRISTINO HOME COMPATTA
+       QUESTE REGOLE PREVALGONO SUL CSS
+    ===================================== */
 
-    .floating-cart.hidden {
-      display: none;
+    #siteContent {
+      max-width: 450px !important;
+      padding: 8px 16px 90px !important;
+    }
+
+    /* HEADER RIDOTTO */
+
+    #siteContent .deseo-header {
+      padding: 12px 10px 10px !important;
+    }
+
+    #siteContent .deseo-eyebrow {
+      margin-bottom: 8px !important;
+      font-size: 10px !important;
+    }
+
+    /* LOGO PICCOLO COME PRIMA */
+
+    #siteContent .deseo-header .deseo-logo-wrap {
+      display: flex !important;
+
+      width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+
+      margin: 8px auto 14px !important;
+      padding: 0 !important;
+    }
+
+    #siteContent .deseo-header .deseo-logo-wrap img.deseo-logo {
+      display: block !important;
+
+      width: 155px !important;
+      max-width: 155px !important;
+      height: auto !important;
+
+      margin: 0 auto !important;
+
+      object-fit: contain !important;
+
+      animation: none !important;
+    }
+
+    /* SFUMATURA DORATA CONTENUTA */
+
+    #siteContent .deseo-header .deseo-logo-wrap::before {
+      content: "" !important;
+
+      position: absolute !important;
+
+      inset: auto !important;
+      top: 50% !important;
+      left: 50% !important;
+
+      width: 225px !important;
+      height: 225px !important;
+
+      background: radial-gradient(
+        circle,
+        rgba(255,220,110,.35) 0%,
+        rgba(212,175,55,.22) 35%,
+        rgba(150,105,30,.08) 60%,
+        transparent 80%
+      ) !important;
+
+      filter: blur(22px) !important;
+
+      transform: translate(-50%, -50%) !important;
+      animation: none !important;
+    }
+
+    #siteContent .deseo-header .deseo-logo-wrap::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    /* SLOGAN E CORONA */
+
+    #siteContent .deseo-slogan {
+      margin-top: 7px !important;
+
+      font-size: 10px !important;
+      letter-spacing: 2px !important;
+    }
+
+    #siteContent .deseo-divider {
+      margin: 12px auto 14px !important;
+    }
+
+    #siteContent .deseo-crown {
+      font-size: 18px !important;
+    }
+
+    /* PULSANTI HOME COMPATTI */
+
+    #homePage .app-grid {
+      display: grid !important;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+      gap: 11px !important;
+
+      margin-top: 8px !important;
+    }
+
+    #homePage .app-card {
+      min-height: 98px !important;
+
+      padding: 12px 8px !important;
+
+      background: linear-gradient(
+        145deg,
+        #30291e 0%,
+        #24211c 45%,
+        #171717 100%
+      ) !important;
+
+      border: 1px solid #c6a349 !important;
+      border-radius: 18px !important;
+    }
+
+    #homePage .app-card .app-icon {
+      font-size: 25px !important;
+      margin-bottom: 6px !important;
+    }
+
+    #homePage .app-card h3 {
+      font-size: 14px !important;
+      margin-bottom: 4px !important;
+    }
+
+    #homePage .app-card p {
+      font-size: 11px !important;
+      line-height: 1.4 !important;
+    }
+
+    /* INFO CENTRATO */
+
+    #homePage .app-grid > .app-card:last-child {
+      grid-column: 1 / -1 !important;
+
+      width: calc(50% - 6px) !important;
+
+      justify-self: center !important;
+    }
+
+    /* MAPPA MONDIALE */
+
+    #homePage::after {
+      top: 0 !important;
+      left: -20% !important;
+
+      width: 140% !important;
+      height: 100% !important;
+
+      background-image:
+        url("assets/sfondo-mappa.png") !important;
+
+      background-position:
+        center 45% !important;
+
+      background-size:
+        140% auto !important;
+
+      background-repeat:
+        no-repeat !important;
+
+      opacity: .65 !important;
+    }
+
+    /* FOOTER COMPATTO */
+
+    #homePage .deseo-home-footer {
+      margin: 25px auto 40px !important;
+      padding: 15px 12px !important;
+    }
+
+    /* SCHERMI PICCOLI */
+
+    @media (max-width: 360px) {
+
+      #homePage .app-card {
+        min-height: 92px !important;
+      }
+
+      #homePage .app-card h3 {
+        font-size: 13px !important;
+      }
+
+      #siteContent .deseo-header .deseo-logo-wrap img.deseo-logo {
+        width: 145px !important;
+        max-width: 145px !important;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .deseo-logo,
-      .deseo-logo-wrap::before,
       .floating-cart-badge.bump {
         animation: none;
       }
@@ -253,7 +434,7 @@
   </div>
 
 
-  <!-- VIDEO INTRODUTTIVO BPFAM -->
+  <!-- VIDEO INTRODUTTIVO -->
 
   <div id="introOverlay" class="intro-overlay hidden">
 
@@ -314,9 +495,13 @@
       </p>
 
       <div class="deseo-divider">
+
         <span class="deseo-line"></span>
+
         <span class="deseo-crown">♛</span>
+
         <span class="deseo-line"></span>
+
       </div>
 
     </header>
@@ -392,7 +577,7 @@
       </div>
 
 
-      <!-- FOOTER DESEO BP FAMILY -->
+      <!-- FOOTER -->
 
       <footer class="deseo-home-footer">
 
@@ -446,6 +631,7 @@
     >
 
       <button
+        type="button"
         class="back-btn"
         onclick="showPage('homePage')"
       >
@@ -479,6 +665,7 @@
     >
 
       <button
+        type="button"
         class="back-btn"
         onclick="showPage('homePage')"
       >
@@ -591,6 +778,7 @@
     >
 
       <button
+        type="button"
         class="back-btn"
         onclick="showPage('homePage')"
       >
@@ -618,6 +806,7 @@
     >
 
       <button
+        type="button"
         class="back-btn"
         onclick="showPage('homePage')"
       >
@@ -690,7 +879,7 @@
   </main>
 
 
-  <!-- CARRELLO FISSO IN ALTO A DESTRA -->
+  <!-- CARRELLO FISSO -->
 
   <button
     id="floatingCart"
@@ -699,12 +888,17 @@
     onclick="showPage('checkoutPage')"
     aria-label="Apri carrello"
   >
-    <span class="floating-cart-icon">🛒</span>
+
+    <span class="floating-cart-icon">
+      🛒
+    </span>
+
     <span
       id="cartCount"
       class="floating-cart-badge"
       aria-live="polite"
     >0</span>
+
   </button>
 
 
@@ -737,13 +931,15 @@
 
   <!-- JAVASCRIPT -->
 
-  <script src="script.js?v=1011"></script>
+  <script src="script.js?v=1012"></script>
 
 
-  <!-- CARICAMENTO AUTOMATICO INFO -->
+  <!-- CARICAMENTO INFO -->
 
   <script>
+
     async function caricaInfo() {
+
       const contenitore =
         document.getElementById("infoContent");
 
@@ -753,6 +949,7 @@
         "Caricamento informazioni...";
 
       try {
+
         const risposta = await fetch(
           "./info/contenuti.json",
           { cache: "no-store" }
@@ -776,23 +973,19 @@
 
         for (const sezione of dati.sezioni) {
 
-          const titolo =
-            document.createElement("h3");
+          const titolo = document.createElement("h3");
+          titolo.textContent = sezione.titolo || "";
 
-          titolo.textContent =
-            sezione.titolo || "";
-
-          const testo =
-            document.createElement("p");
-
-          testo.textContent =
-            sezione.testo || "";
+          const testo = document.createElement("p");
+          testo.textContent = sezione.testo || "";
 
           contenitore.appendChild(titolo);
           contenitore.appendChild(testo);
+
         }
 
       } catch (errore) {
+
         contenitore.textContent =
           "Impossibile caricare le informazioni. Riprova più tardi.";
 
@@ -800,43 +993,57 @@
           "Errore caricamento INFO:",
           errore
         );
+
       }
     }
 
     document.addEventListener(
       "visibilitychange",
       () => {
+
+        const infoPage =
+          document.getElementById("infoPage");
+
         if (
           !document.hidden &&
-          !document
-            .getElementById("infoPage")
-            .classList.contains("hidden")
+          infoPage &&
+          !infoPage.classList.contains("hidden")
         ) {
           caricaInfo();
         }
+
       }
     );
+
   </script>
 
 
-  <!-- CONTATORE CARRELLO -->
+  <!-- NOTIFICA CARRELLO -->
 
   <script>
+
     function updateFloatingCartCount(quantity) {
-      const badge = document.getElementById("cartCount");
+
+      const badge =
+        document.getElementById("cartCount");
 
       if (!badge) return;
 
-      const count = Math.max(0, Number(quantity) || 0);
+      const count =
+        Math.max(0, Number(quantity) || 0);
 
       badge.textContent = count;
 
       badge.classList.remove("bump");
+
       void badge.offsetWidth;
+
       badge.classList.add("bump");
+
     }
 
     function showFloatingCart() {
+
       const floatingCart =
         document.getElementById("floatingCart");
 
@@ -845,13 +1052,14 @@
 
       if (!floatingCart || !site) return;
 
-      const siteVisible =
+      const visible =
         !site.classList.contains("hidden");
 
       floatingCart.classList.toggle(
         "hidden",
-        !siteVisible
+        !visible
       );
+
     }
 
     const cartVisibilityObserver =
@@ -866,15 +1074,20 @@
     );
 
     showFloatingCart();
+
   </script>
 
 
   <!-- AGGIORNAMENTI APP -->
 
   <script>
+
     if ("serviceWorker" in navigator) {
+
       window.addEventListener("load", async () => {
+
         try {
+
           const registration =
             await navigator.serviceWorker.register(
               "./service-worker.js",
@@ -888,13 +1101,18 @@
           );
 
         } catch (error) {
+
           console.error(
             "Errore Service Worker:",
             error
           );
+
         }
+
       });
+
     }
+
   </script>
 
 </body>
