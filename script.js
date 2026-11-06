@@ -127,17 +127,35 @@ function finishIntro() {
 ===================================== */
 
 async function loadProducts() {
-  const response = await fetch("data/products.json");
-  const products = await response.json();
+  try {
+    const response = await fetch("data/products.json");
 
-  window.productsData = products;
+    if (!response.ok) {
+      throw new Error("Impossibile caricare products.json");
+    }
 
-  renderCategories(products);
-  renderProducts(products);
+    const products = await response.json();
+
+    window.productsData = products;
+
+    renderCategories(products);
+    renderProducts(products);
+  } catch (error) {
+    console.error("Errore prodotti:", error);
+
+    const container = document.getElementById("products");
+
+    if (container) {
+      container.innerHTML =
+        "<p>Impossibile caricare gli articoli.</p>";
+    }
+  }
 }
 
 function renderCategories(products) {
   const categoriesBox = document.getElementById("categories");
+
+  if (!categoriesBox) return;
 
   const categories = [
     "ALL",
@@ -147,19 +165,37 @@ function renderCategories(products) {
   categoriesBox.innerHTML = "";
 
   categories.forEach(category => {
-    categoriesBox.innerHTML += `
-      <button onclick="filterCategory('${category}')">${category}</button>
-    `;
+    const button = document.createElement("button");
+
+    button.textContent =
+      category === "ALL" ? "TUTTI" : category;
+
+    button.addEventListener("click", () => {
+      filterCategory(category);
+    });
+
+    categoriesBox.appendChild(button);
   });
 }
 
 function filterCategory(category) {
   currentCategory = category;
-  renderProducts(window.productsData);
+  renderProducts(window.productsData || []);
+}
+
+/* =====================================
+   VETRINA CON PULSANTE VIDEO
+===================================== */
+
+function variantLabel(variant) {
+  return variant.label ?? variant.size ?? "Formato unico";
 }
 
 function renderProducts(products) {
   const container = document.getElementById("products");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   let filteredProducts = products;
@@ -172,6 +208,11 @@ function renderProducts(products) {
 
   filteredProducts.forEach(product => {
     const realIndex = window.productsData.indexOf(product);
+
+    if (!product.variants || product.variants.length === 0) {
+      return;
+    }
+
     const firstVariant = product.variants[0];
     const lastVariant =
       product.variants[product.variants.length - 1];
@@ -180,16 +221,26 @@ function renderProducts(products) {
       <div class="product-card premium-product">
 
         <div class="product-image-wrap">
-          <span class="category-badge">${product.category}</span>
-          <img src="${product.image}" alt="${product.name}">
+          <span class="category-badge">
+            ${product.category || "Categoria"}
+          </span>
+
+          <img
+            src="${product.image || ""}"
+            alt="${product.name || "Articolo"}"
+            loading="lazy"
+          >
         </div>
 
         <div class="product-info">
+
           <h3>${product.name}</h3>
 
           <div class="price-row">
             <span>Da €${firstVariant.price}</span>
-            <small>fino a ${lastVariant.size}</small>
+            <small>
+              fino a ${variantLabel(lastVariant)}
+            </small>
           </div>
 
           <label>Formato disponibile</label>
@@ -200,7 +251,7 @@ function renderProducts(products) {
           >
             ${product.variants.map((variant, i) => `
               <option value="${i}">
-                ${variant.size} - €${variant.price}
+                ${variantLabel(variant)} - €${variant.price}
               </option>
             `).join("")}
           </select>
@@ -216,77 +267,127 @@ function renderProducts(products) {
           </div>
 
           <div class="qty-box">
-            <button onclick="changeQty(${realIndex}, -1)">-</button>
+
+            <button
+              type="button"
+              onclick="changeQty(${realIndex}, -1)"
+            >
+              -
+            </button>
+
             <span id="qty-${realIndex}">1</span>
-            <button onclick="changeQty(${realIndex}, 1)">+</button>
+
+            <button
+              type="button"
+              onclick="changeQty(${realIndex}, 1)"
+            >
+              +
+            </button>
+
           </div>
 
           <button
+            type="button"
             class="add-cart-btn"
             onclick="addToCart(${realIndex})"
           >
             AGGIUNGI AL CARRELLO
           </button>
+
+          <a
+            href="https://bpfam.github.io/PACKZ-ITA1/"
+            class="video-gallery-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🎬 CLICCA QUI PER I VIDEO
+          </a>
+
         </div>
 
       </div>
     `;
   });
+
+  if (filteredProducts.length === 0) {
+    container.innerHTML =
+      "<p>Nessun articolo disponibile.</p>";
+  }
 }
 
+/* =====================================
+   VARIANTI E PREZZI
+===================================== */
+
 function getVariant(index) {
-  const variantIndex =
-    document.getElementById(`variant-${index}`).value;
+  const variantSelect =
+    document.getElementById(`variant-${index}`);
+
+  if (!variantSelect) return null;
+
+  const variantIndex = Number(variantSelect.value);
 
   return window.productsData[index].variants[variantIndex];
 }
 
 function updateTotal(index) {
   const variant = getVariant(index);
-  const qty = parseInt(
-    document.getElementById(`qty-${index}`).innerText
-  );
 
-  const total = variant.price * qty;
+  if (!variant) return;
 
-  document.getElementById(`price-${index}`).innerText =
-    `Prezzo: €${variant.price}`;
+  const qtyEl = document.getElementById(`qty-${index}`);
+  const priceEl = document.getElementById(`price-${index}`);
+  const totalEl = document.getElementById(`total-${index}`);
 
-  document.getElementById(`total-${index}`).innerText =
-    `Totale: €${total}`;
+  if (!qtyEl || !priceEl || !totalEl) return;
+
+  const qty = parseInt(qtyEl.innerText, 10);
+  const total = Number(variant.price) * qty;
+
+  priceEl.innerText = `Prezzo: €${variant.price}`;
+  totalEl.innerText = `Totale: €${total}`;
 }
 
 function changeQty(index, amount) {
   const qtyEl = document.getElementById(`qty-${index}`);
-  let qty = parseInt(qtyEl.innerText);
+
+  if (!qtyEl) return;
+
+  let qty = parseInt(qtyEl.innerText, 10);
 
   qty += amount;
 
   if (qty < 1) qty = 1;
 
   qtyEl.innerText = qty;
+
   updateTotal(index);
 }
 
-function addToCart(index) {
-  alert("✅ Aggiunto al carello!");
+/* =====================================
+   CARRELLO
+===================================== */
 
+function addToCart(index) {
   const product = window.productsData[index];
   const variant = getVariant(index);
-  const qty = parseInt(
-    document.getElementById(`qty-${index}`).innerText
-  );
+  const qtyEl = document.getElementById(`qty-${index}`);
 
-  const total = variant.price * qty;
+  if (!product || !variant || !qtyEl) return;
+
+  const qty = parseInt(qtyEl.innerText, 10);
+  const total = Number(variant.price) * qty;
 
   cart.push({
     name: product.name,
-    size: variant.size,
+    size: variantLabel(variant),
     qty,
     total
   });
 
   renderCart();
+
+  alert("✅ Aggiunto al carrello!");
 }
 
 function removeFromCart(index) {
@@ -298,35 +399,42 @@ function renderCart() {
   const cartItems = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
 
+  if (!cartItems || !cartTotal) return;
+
   cartItems.innerHTML = "";
 
   let finalTotal = 0;
 
   cart.forEach((item, index) => {
-    finalTotal += item.total;
+    finalTotal += Number(item.total);
 
     cartItems.innerHTML += `
       <div class="cart-item">
+
         <span>
           ${item.name} • ${item.size} •
           x${item.qty} = €${item.total}
         </span>
 
-   
-<button
-  class="remove-btn"
-  onclick="removeFromCart(${index})"
->
-  Rimuovi
-</button>
-
+        <button
+          type="button"
+          class="remove-btn"
+          onclick="removeFromCart(${index})"
+        >
+          Rimuovi
+        </button>
 
       </div>
     `;
   });
 
-  localStorage.setItem("bpfam_cart", JSON.stringify(cart));
-  cartTotal.innerText = `Totale finale: €${finalTotal}`;
+  localStorage.setItem(
+    "bpfam_cart",
+    JSON.stringify(cart)
+  );
+
+  cartTotal.innerText =
+    `Totale finale: €${finalTotal}`;
 }
 
 /* =====================================
@@ -334,8 +442,10 @@ function renderCart() {
 ===================================== */
 
 function showOrderFields() {
-  const method = document.getElementById("orderMethod").value;
+  const method = document.getElementById("orderMethod")?.value;
   const box = document.getElementById("dynamicFields");
+
+  if (!box) return;
 
   if (method === "Incontro di Persona") {
     box.innerHTML = `
@@ -385,7 +495,7 @@ function showOrderFields() {
 }
 
 /* =====================================
-   RIEPILOGO
+   RIEPILOGO ORDINE
 ===================================== */
 
 function buildOrderMessage() {
@@ -398,13 +508,13 @@ function buildOrderMessage() {
     Math.floor(100000 + Math.random() * 900000);
 
   const method =
-    document.getElementById("orderMethod").value;
+    document.getElementById("orderMethod")?.value;
 
   const payment =
-    document.getElementById("paymentMethod").value;
+    document.getElementById("paymentMethod")?.value;
 
   const notes =
-    document.getElementById("orderNotes").value;
+    document.getElementById("orderNotes")?.value || "";
 
   if (!method || !payment) {
     alert("Seleziona metodo ordine e metodo pagamento.");
@@ -416,7 +526,7 @@ function buildOrderMessage() {
   let finalTotal = 0;
 
   cart.forEach(item => {
-    finalTotal += item.total;
+    finalTotal += Number(item.total);
 
     message +=
       `- ${item.name} • ${item.size} • x${item.qty} = €${item.total}\n`;
@@ -449,8 +559,13 @@ function copyOrder() {
 
   if (!message) return;
 
-  navigator.clipboard.writeText(message);
-  alert("Ordine copiato.");
+  navigator.clipboard.writeText(message)
+    .then(() => {
+      alert("Ordine copiato.");
+    })
+    .catch(() => {
+      alert("Impossibile copiare automaticamente l'ordine.");
+    });
 }
 
 function checkoutTelegram() {
@@ -458,13 +573,18 @@ function checkoutTelegram() {
 
   if (!message) return;
 
-  navigator.clipboard.writeText(message);
+  navigator.clipboard.writeText(message)
+    .then(() => {
+      alert(
+        "Ordine copiato. Incollalo nella chat Telegram BPFAM."
+      );
 
-  alert(
-    "Ordine copiato. Incollalo nella chat Telegram BPFAM."
-  );
-
-  window.location.href = "https://t.me/BPFAMPRIVATE_CLUB";
+      window.location.href =
+        "https://t.me/BPFAMPRIVATE_CLUB";
+    })
+    .catch(() => {
+      alert("Impossibile copiare l'ordine.");
+    });
 }
 
 function checkoutSignal() {
@@ -472,12 +592,18 @@ function checkoutSignal() {
 
   if (!message) return;
 
-  navigator.clipboard.writeText(message);
+  navigator.clipboard.writeText(message)
+    .then(() => {
+      alert(
+        "Ordine copiato. Incollalo nella chat Signal."
+      );
 
-  alert("Ordine copiato. Incollalo nella chat Signal.");
-
-  window.location.href =
-    "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
+      window.location.href =
+        "https://signal.me/#eu/oVw4zH1o2XV7hvoOVNnpQYfUIsUIVJZ-yVfherXcauUzT_aecLxDzL2g7fJsIsxZ";
+    })
+    .catch(() => {
+      alert("Impossibile copiare l'ordine.");
+    });
 }
 
 /* =====================================
@@ -487,6 +613,11 @@ function checkoutSignal() {
 async function loadNews() {
   try {
     const response = await fetch("data/news.json");
+
+    if (!response.ok) {
+      throw new Error("File news non disponibile");
+    }
+
     const news = await response.json();
 
     const container =
@@ -508,7 +639,7 @@ async function loadNews() {
     });
 
   } catch (error) {
-    console.log(error);
+    console.log("News:", error);
   }
 }
 
@@ -518,7 +649,6 @@ async function loadNews() {
 
 window.addEventListener("DOMContentLoaded", () => {
   renderCart();
+  loadProducts();
+  loadNews();
 });
-
-loadProducts();
-loadNews();
