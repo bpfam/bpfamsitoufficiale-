@@ -1,0 +1,25 @@
+
+{
+  "sezioni": [
+    {
+      "titolo": "♛ DESEO BP FAMILY",
+      "testo": "Benvenuto nella nostra pagina informativa."
+    },
+    {
+      "titolo": "📋 REGOLAMENTO",
+      "testo": "Accesso riservato ai maggiorenni.\nSerietà e rispetto obbligatori."
+    },
+    {
+      "titolo": "📦 SPEDIZIONI",
+      "testo": "Qui scriveremo le informazioni sulle spedizioni."
+    },
+    {
+      "titolo": "📲 ASSISTENZA",
+      "testo": "Qui scriveremo le informazioni sull'assistenza."
+    },
+    {
+      "titolo": "📢 COMUNICAZIONI",
+      "testo": "Qui inseriremo gli avvisi importanti."
+    }
+  ]
+}
