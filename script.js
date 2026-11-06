@@ -236,6 +236,10 @@ function renderProducts(products) {
 
           <h3>${product.name}</h3>
 
+          <span class="product-status">
+            ${product.status || "Stato non indicato"}
+          </span>
+
           <div class="price-row">
             <span>Da €${firstVariant.price}</span>
             <small>
