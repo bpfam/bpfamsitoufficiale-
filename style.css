@@ -1804,3 +1804,37 @@ button{
   z-index: 0;
 }
 
+/* ===== PAGINA INFO DESEO BP FAMILY ===== */
+
+#infoPage .info-content {
+  background: linear-gradient(145deg, #191919, #090909);
+  border: 1px solid #b89532;
+  border-radius: 18px;
+  padding: 22px 18px;
+  margin: 20px 0 50px;
+}
+
+#infoPage .info-content h3 {
+  color: #d4af37;
+  font-size: 16px;
+  margin: 25px 0 10px;
+}
+
+#infoPage .info-content h3:first-child {
+  margin-top: 0;
+}
+
+#infoPage .info-content p {
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  white-space: pre-line;
+}
+
+#homePage .app-grid > .app-card:last-child {
+  grid-column: 1 / -1;
+  width: calc(50% - 7px);
+  justify-self: center;
+}
+
