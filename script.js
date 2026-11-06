@@ -295,7 +295,7 @@ function renderProducts(products) {
           </button>
 
           <a
-            href="https://bpfam.github.io/PACKZ-ITA1/"
+            href="https://bpfam.github.io/Video-bpfam/"
             class="video-gallery-btn"
             target="_blank"
             rel="noopener noreferrer"
