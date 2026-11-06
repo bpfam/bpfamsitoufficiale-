@@ -1988,3 +1988,179 @@ button{
   opacity: 0.65;
 }
 
+/* ========================================
+   DESEO BP FAMILY
+   RIFINITURE FINALI HOME
+   ======================================== */
+
+/* LOGO: SFUMATURE ORO PIÙ INTENSE */
+
+.deseo-header .deseo-logo-wrap {
+    position: relative;
+    isolation: isolate;
+}
+
+.deseo-header .deseo-logo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -45px;
+    z-index: -1;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255,220,110,.48) 0%,
+        rgba(212,175,55,.34) 28%,
+        rgba(170,115,30,.18) 52%,
+        transparent 82%
+    );
+
+    filter: blur(30px);
+    pointer-events: none;
+    animation: bpfamGoldenGlow 4s ease-in-out infinite;
+}
+
+.deseo-header .deseo-logo-wrap .deseo-logo {
+    position: relative;
+    z-index: 1;
+
+    box-shadow:
+        0 0 22px rgba(255,215,100,.40),
+        0 0 55px rgba(212,175,55,.28),
+        0 0 90px rgba(212,175,55,.15);
+
+    filter:
+        drop-shadow(0 0 14px rgba(255,215,100,.45));
+}
+
+@keyframes bpfamGoldenGlow {
+    0%, 100% {
+        opacity: .65;
+        transform: scale(.94);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+/* CARRELLO FISSO IN ALTO A DESTRA */
+
+#floatingCart {
+    position: fixed;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    right: 14px;
+    z-index: 9000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    background: rgba(12,12,12,.96);
+    color: #d4af37;
+
+    border: 1.5px solid #d4af37;
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.30),
+        0 0 35px rgba(212,175,55,.12);
+}
+
+#floatingCart.hidden {
+    display: none !important;
+}
+
+.floating-cart-icon {
+    font-size: 27px;
+    line-height: 1;
+}
+
+/* NOTIFICA ROSSA */
+
+#floatingCart #cartCount {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 26px;
+    width: auto;
+    height: 26px;
+    padding: 0 5px;
+
+    background: #ff3b30;
+    color: #fff;
+
+    border: 2px solid #000;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 12px rgba(255,59,48,.55);
+}
+
+/* ANIMAZIONE NOTIFICA */
+
+#floatingCart #cartCount.bump {
+    animation: bpfamCartBump .4s ease;
+}
+
+@keyframes bpfamCartBump {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.45);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* MANTENIAMO I PULSANTI PIÙ CHIARI */
+
+#homePage .app-card {
+    background: linear-gradient(
+        145deg,
+        #30291e 0%,
+        #24211c 45%,
+        #171717 100%
+    );
+
+    border: 1px solid #c6a349;
+    border-radius: 18px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,220,130,.08),
+        0 5px 18px rgba(0,0,0,.35);
+}
+
+/* INFO CENTRATO */
+
+#homePage .app-grid > .app-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 6px);
+    justify-self: center;
+}
+
+/* ACCESSIBILITÀ */
+
+@media (prefers-reduced-motion: reduce) {
+    .deseo-header .deseo-logo-wrap::before,
+    #floatingCart #cartCount.bump {
+        animation: none;
+    }
+}
+
