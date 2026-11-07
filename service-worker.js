@@ -1,21 +1,43 @@
-
+l
 /* =====================================
    DESEO BP FAMILY
-   SERVICE WORKER
-   AGGIORNAMENTI APP
+   SERVICE WORKER v2
+   ANDROID + IPHONE
 ===================================== */
 
 "use strict";
 
-const CACHE_NAME = "deseo-bpfamily-v1";
+const CACHE_NAME = "deseo-bpfamily-v2";
 
-/* INSTALLAZIONE */
+const APP_FILES = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./script.js",
+  "./manifest.json"
+];
+
+/* =====================================
+   INSTALLAZIONE
+===================================== */
 
 self.addEventListener("install", event => {
-  self.skipWaiting();
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+
+      await Promise.allSettled(
+        APP_FILES.map(file => cache.add(file))
+      );
+
+      await self.skipWaiting();
+    })()
+  );
 });
 
-/* ATTIVAZIONE */
+/* =====================================
+   ATTIVAZIONE
+===================================== */
 
 self.addEventListener("activate", event => {
   event.waitUntil(
@@ -36,17 +58,63 @@ self.addEventListener("activate", event => {
   );
 });
 
-/* CONTENUTI SEMPRE DALLA RETE */
+/* =====================================
+   RETE PRIMA, CACHE DI EMERGENZA
+===================================== */
 
 self.addEventListener("fetch", event => {
+  const request = event.request;
+
   if (
-    event.request.method !== "GET" ||
-    !event.request.url.startsWith(self.location.origin)
+    request.method !== "GET" ||
+    !request.url.startsWith(self.location.origin)
   ) {
     return;
   }
 
+  // Non memorizzare le richieste di video
+  if (request.headers.has("range")) {
+    return;
+  }
+
   event.respondWith(
-    fetch(event.request)
+    (async () => {
+      try {
+        const response = await fetch(request);
+
+        if (
+          response.ok &&
+          response.type === "basic"
+        ) {
+          const cache = await caches.open(CACHE_NAME);
+
+          event.waitUntil(
+            cache.put(request, response.clone())
+              .catch(error => {
+                console.warn("Cache:", error);
+              })
+          );
+        }
+
+        return response;
+
+      } catch (error) {
+        const cached = await caches.match(request);
+
+        if (cached) {
+          return cached;
+        }
+
+        if (request.mode === "navigate") {
+          const home = await caches.match("./index.html");
+
+          if (home) {
+            return home;
+          }
+        }
+
+        return Response.error();
+      }
+    })()
   );
 });
