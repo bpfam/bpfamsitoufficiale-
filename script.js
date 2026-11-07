@@ -23,6 +23,7 @@ function showPage(pageId) {
 
 /* =====================================
    ACCESSO MAGGIORENNI
+   UNA VOLTA PER SESSIONE
 ===================================== */
 
 function enterSite() {
@@ -34,7 +35,8 @@ function enterSite() {
     return;
   }
 
-  localStorage.setItem("bpfam_access", "yes");
+  // Conferma valida per la sessione corrente
+  sessionStorage.setItem("bpfam_access", "yes");
 
   const ageGate = document.getElementById("ageGate");
 
@@ -45,13 +47,17 @@ function enterSite() {
   playIntro();
 }
 
-/* ACCESSO GIÀ CONFERMATO */
+/* CONTROLLO ACCESSO ALL'APERTURA */
 
 window.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("bpfam_access") === "yes") {
-    const ageGate = document.getElementById("ageGate");
-    const site = document.getElementById("siteContent");
+  const ageGate = document.getElementById("ageGate");
+  const site = document.getElementById("siteContent");
+  const intro = document.getElementById("introOverlay");
 
+  const accessConfirmed =
+    sessionStorage.getItem("bpfam_access") === "yes";
+
+  if (accessConfirmed) {
     if (ageGate) {
       ageGate.style.display = "none";
     }
@@ -61,6 +67,18 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     showPage("homePage");
+  } else {
+    if (ageGate) {
+      ageGate.style.display = "flex";
+    }
+
+    if (site) {
+      site.classList.add("hidden");
+    }
+
+    if (intro) {
+      intro.classList.add("hidden");
+    }
   }
 });
 
@@ -692,4 +710,3 @@ renderCart = function() {
 
 // Mostra il numero degli articoli già salvati
 updateCartBadge();
-
