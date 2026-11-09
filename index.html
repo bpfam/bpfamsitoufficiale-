@@ -12,7 +12,7 @@
   <meta name="theme-color" content="#000000">
   <title>DESEO BP FAMILY</title>
 
-  <link rel="stylesheet" href="style.css?v=1033">
+  <link rel="stylesheet" href="style.css?v=1032">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -65,6 +65,8 @@
       opacity: .35;
       pointer-events: none;
     }
+
+    /* CONTENUTI SOPRA I FULMINI */
 
     #siteContent .deseo-header > * {
       position: relative;
@@ -126,6 +128,7 @@
 
     #siteContent .deseo-header .deseo-logo-wrap::before {
       content: "" !important;
+
       position: absolute !important;
       inset: auto !important;
 
@@ -134,6 +137,7 @@
 
       width: 235px !important;
       height: 235px !important;
+
       border-radius: 50%;
 
       background: radial-gradient(
@@ -145,8 +149,8 @@
 
       filter: blur(20px) !important;
       transform: translate(-50%, -50%) !important;
-      animation: none !important;
 
+      animation: none !important;
       pointer-events: none;
       z-index: -1;
     }
@@ -157,7 +161,7 @@
     }
 
     /* =====================================
-       SLOGAN E CORONA
+       SLOGAN
     ===================================== */
 
     #siteContent .deseo-slogan {
@@ -169,6 +173,8 @@
       margin: 8px auto 18px !important;
       text-align: center;
     }
+
+    /* CORONA DECORATIVA */
 
     #siteContent .deseo-divider {
       display: flex !important;
@@ -195,11 +201,14 @@
       font-size: 19px !important;
       line-height: 1;
       margin: 0 !important;
-      text-shadow: 0 0 12px rgba(212,175,55,.55);
+
+      text-shadow:
+        0 0 12px rgba(212,175,55,.55);
     }
 
     /* =====================================
-       HOME FULMINI + MAPPA MONDIALE
+       HOME
+       FULMINI + MAPPA MONDIALE
     ===================================== */
 
     #homePage {
@@ -209,7 +218,7 @@
       background: #000 !important;
     }
 
-    /* FULMINI DORATI */
+    /* STRATO FULMINI */
 
     #homePage::before {
       content: "" !important;
@@ -231,7 +240,7 @@
       z-index: 0 !important;
     }
 
-    /* MAPPA MONDIALE */
+    /* MAPPA MONDIALE ORIGINALE */
 
     #homePage::after {
       content: "" !important;
@@ -270,6 +279,7 @@
       z-index: 2;
 
       display: grid !important;
+
       grid-template-columns:
         repeat(2, minmax(0, 1fr)) !important;
 
@@ -344,7 +354,7 @@
     }
 
     /* =====================================
-       CINQUE PULSANTI FOTOREALISTICI 3D
+       PULSANTI FOTOREALISTICI 3D
     ===================================== */
 
     #homePage .app-card.image-card {
@@ -372,11 +382,15 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* DISATTIVA EFFETTI VECCHI */
+
     #homePage .app-card.image-card::before,
     #homePage .app-card.image-card::after {
       content: none !important;
       display: none !important;
     }
+
+    /* IMMAGINI DEI CINQUE PULSANTI */
 
     #homePage .app-card.image-card .button-3d-img {
       display: block !important;
@@ -389,6 +403,7 @@
 
       border: 0 !important;
       border-radius: 0 !important;
+
       box-shadow: none !important;
       filter: none !important;
 
@@ -396,6 +411,8 @@
       user-select: none;
       -webkit-user-drag: none;
     }
+
+    /* EFFETTO AL TOCCO */
 
     #homePage .app-card.image-card:active {
       transform: scale(.96) !important;
@@ -420,7 +437,9 @@
       color: #d4af37;
       font-size: 26px !important;
       margin-bottom: 10px !important;
-      text-shadow: 0 0 15px rgba(212,175,55,.5);
+
+      text-shadow:
+        0 0 15px rgba(212,175,55,.5);
     }
 
     #homePage .footer-brand {
@@ -461,7 +480,9 @@
       border: 1.5px solid #d4af37;
       border-radius: 16px;
 
-      box-shadow: 0 0 15px rgba(212,175,55,.25);
+      box-shadow:
+        0 0 15px rgba(212,175,55,.25);
+
       cursor: pointer;
     }
 
@@ -473,6 +494,8 @@
       font-size: 24px;
       line-height: 1;
     }
+
+    /* NOTIFICA ROSSA */
 
     #floatingCart #cartCount {
       position: absolute;
@@ -499,7 +522,8 @@
       font-size: 12px;
       font-weight: 900;
 
-      box-shadow: 0 0 12px rgba(255,59,48,.45);
+      box-shadow:
+        0 0 12px rgba(255,59,48,.45);
     }
 
     #floatingCart #cartCount.bump {
@@ -517,6 +541,7 @@
     ===================================== */
 
     @media (max-width: 360px) {
+
       #homePage .app-card {
         min-height: 94px !important;
       }
@@ -536,6 +561,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       #homePage .app-card {
         transition: none !important;
       }
@@ -545,14 +571,71 @@
       }
     }
 
+    /* =====================================
+       NUOVA GALLERIA VIMEO
+       INTERNA ALL'APP
+    ===================================== */
+
+    #videoPage {
+      width: 100%;
+      padding-bottom: 100px;
+    }
+
+    #videoPage h2 {
+      color: #d4af37;
+      text-align: center;
+      font-size: 21px;
+      margin: 18px 0 20px;
+    }
+
+    #videoPage .back-btn {
+      display: block;
+      width: 100%;
+      padding: 15px 12px;
+      margin: 10px 0 18px;
+
+      background: #111;
+      color: #d4af37;
+
+      border: 1px solid #d4af37;
+      border-radius: 14px;
+
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #videoPage .vimeo-gallery-container {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      min-height: 450px;
+
+      overflow: hidden;
+      background: #000;
+
+      border: 1px solid #b89532;
+      border-radius: 16px;
+
+      box-shadow:
+        0 0 22px rgba(212,175,55,.12);
+    }
+
+    #videoPage .vimeo-gallery-container iframe {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- =====================================
-       VERIFICA MAGGIORENNI
-  ===================================== -->
+  <!-- SCHERMATA MAGGIORENNI -->
 
   <div id="ageGate" class="age-gate">
     <div class="age-card">
@@ -590,9 +673,7 @@
     </div>
   </div>
 
-  <!-- =====================================
-       VIDEO INTRODUTTIVO CORRETTO
-  ===================================== -->
+  <!-- VIDEO INTRODUTTIVO -->
 
   <div
     id="introOverlay"
@@ -628,9 +709,7 @@
 
   </div>
 
-  <!-- =====================================
-       CONTENUTO PRINCIPALE
-  ===================================== -->
+  <!-- CONTENUTO PRINCIPALE -->
 
   <main id="siteContent" class="hidden">
 
@@ -643,11 +722,13 @@
       </p>
 
       <div class="deseo-logo-wrap">
+
         <img
           class="main-logo deseo-logo"
           src="assets/logo-deseo.png?v=2"
           alt="DESEO BP FAMILY Logo"
         >
+
       </div>
 
       <p class="deseo-slogan">
@@ -655,18 +736,25 @@
       </p>
 
       <div class="deseo-divider">
+
         <span class="deseo-line"></span>
         <span class="deseo-crown">♛</span>
         <span class="deseo-line"></span>
+
       </div>
 
     </header>
 
     <!-- HOME -->
 
-    <section id="homePage" class="page-section">
+    <section
+      id="homePage"
+      class="page-section"
+    >
 
       <div class="home-smoke-bg"></div>
+
+      <!-- CINQUE PULSANTI 3D -->
 
       <div class="app-grid">
 
@@ -678,11 +766,13 @@
           onclick="showPage('vetrinaPage')"
           aria-label="Apri Vetrina"
         >
+
           <img
             src="assets/bottone-vetrina.png"
             alt="VETRINA"
             class="button-3d-img"
           >
+
         </button>
 
         <!-- CHECKOUT -->
@@ -693,14 +783,16 @@
           onclick="showPage('checkoutPage')"
           aria-label="Apri Checkout"
         >
+
           <img
             src="assets/bottone-checkout.png"
             alt="CHECKOUT"
             class="button-3d-img"
           >
+
         </button>
 
-        <!-- RECENSIONI - GALLERIA VIDEO -->
+        <!-- RECENSIONI: LINK ORIGINALE CONSERVATO -->
 
         <button
           type="button"
@@ -708,11 +800,13 @@
           onclick="window.open('https://bpfam.github.io/Video-bpfam/', '_blank', 'noopener,noreferrer')"
           aria-label="Apri Recensioni e Video"
         >
+
           <img
             src="assets/bottone-recensioni.png"
             alt="RECENSIONI"
             class="button-3d-img"
           >
+
         </button>
 
         <!-- CONTATTI -->
@@ -723,11 +817,13 @@
           onclick="showPage('contactsPage')"
           aria-label="Apri Contatti"
         >
+
           <img
             src="assets/bottone-contatti.png"
             alt="CONTATTI"
             class="button-3d-img"
           >
+
         </button>
 
         <!-- INFO -->
@@ -738,11 +834,13 @@
           onclick="showPage('infoPage'); caricaInfo();"
           aria-label="Apri Info"
         >
+
           <img
             src="assets/bottone-info.png"
             alt="INFO"
             class="button-3d-img"
           >
+
         </button>
 
       </div>
@@ -750,9 +848,17 @@
       <!-- FOOTER -->
 
       <footer class="deseo-home-footer">
+
         <div class="footer-crown">♛</div>
-        <div class="footer-brand">DESEO BP FAMILY</div>
-        <div class="footer-tagline">MADE DIFFERENT</div>
+
+        <div class="footer-brand">
+          DESEO BP FAMILY
+        </div>
+
+        <div class="footer-tagline">
+          MADE DIFFERENT
+        </div>
+
       </footer>
 
     </section>
@@ -763,6 +869,7 @@
       id="infoPage"
       class="page-section hidden"
     >
+
       <button
         type="button"
         class="back-btn"
@@ -773,9 +880,13 @@
 
       <h2>ℹ️ INFORMAZIONI</h2>
 
-      <div class="info-content" id="infoContent">
+      <div
+        class="info-content"
+        id="infoContent"
+      >
         <p>Caricamento informazioni...</p>
       </div>
+
     </section>
 
     <!-- VETRINA -->
@@ -784,6 +895,7 @@
       id="vetrinaPage"
       class="page-section hidden"
     >
+
       <button
         type="button"
         class="back-btn"
@@ -792,14 +904,25 @@
         ← TORNA HOME
       </button>
 
-      <section id="vetrina" class="vetrina">
+      <section
+        id="vetrina"
+        class="vetrina"
+      >
 
         <h2>VETRINA</h2>
 
-        <div id="categories" class="categories-box"></div>
-        <div id="products" class="products-grid"></div>
+        <div
+          id="categories"
+          class="categories-box"
+        ></div>
+
+        <div
+          id="products"
+          class="products-grid"
+        ></div>
 
       </section>
+
     </section>
 
     <!-- CARRELLO E CHECKOUT -->
@@ -808,6 +931,7 @@
       id="checkoutPage"
       class="page-section hidden"
     >
+
       <button
         type="button"
         class="back-btn"
@@ -818,9 +942,13 @@
 
       <h2>CARRELLO &amp; CHECKOUT</h2>
 
-      <section id="checkout" class="checkout-section">
+      <section
+        id="checkout"
+        class="checkout-section"
+      >
 
         <div class="cart-box">
+
           <h3>Carrello</h3>
 
           <div id="cart-items"></div>
@@ -828,6 +956,7 @@
           <h3 id="cart-total">
             Totale finale: €0
           </h3>
+
         </div>
 
         <div class="checkout-card">
@@ -838,21 +967,45 @@
             id="orderMethod"
             onchange="showOrderFields()"
           >
-            <option value="">Seleziona metodo</option>
+
+            <option value="">
+              Seleziona metodo
+            </option>
+
             <option value="Incontro di Persona">
               Incontro di Persona
             </option>
-            <option value="Delivery">Delivery</option>
-            <option value="Spedizione">Spedizione</option>
+
+            <option value="Delivery">
+              Delivery
+            </option>
+
+            <option value="Spedizione">
+              Spedizione
+            </option>
+
           </select>
 
           <h3>Metodo pagamento</h3>
 
           <select id="paymentMethod">
-            <option value="">Seleziona pagamento</option>
-            <option value="Cash">Cash</option>
-            <option value="BTC">BTC</option>
-            <option value="USDT">USDT</option>
+
+            <option value="">
+              Seleziona pagamento
+            </option>
+
+            <option value="Cash">
+              Cash
+            </option>
+
+            <option value="BTC">
+              BTC
+            </option>
+
+            <option value="USDT">
+              USDT
+            </option>
+
           </select>
 
           <div id="dynamicFields"></div>
@@ -881,14 +1034,53 @@
         </div>
 
       </section>
+
     </section>
 
-    <!-- RECENSIONI - SEZIONE ORIGINALE -->
+    <!-- =====================================
+         NUOVA PAGINA VIDEO VIMEO
+         DENTRO L'APP
+    ===================================== -->
+
+    <section
+      id="videoPage"
+      class="page-section hidden"
+    >
+
+      <button
+        type="button"
+        class="back-btn"
+        onclick="tornaAllaVetrina()"
+      >
+        ← TORNA ALLA VETRINA
+      </button>
+
+      <h2>🎬 GALLERIA VIDEO</h2>
+
+      <div class="vimeo-gallery-container">
+
+        <iframe
+          id="vimeoGallery"
+          title="DESEO BP FAMILY - Galleria Video"
+          src="about:blank"
+          data-src="https://vimeo.com/showcase/12490370/embed2"
+          allow="autoplay; fullscreen; picture-in-picture; gyroscope; accelerometer; clipboard-write; encrypted-media; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+
+      </div>
+
+    </section>
+
+    <!-- RECENSIONI: SEZIONE ORIGINALE CONSERVATA -->
 
     <section
       id="reviewsPage"
       class="page-section hidden"
     >
+
       <button
         type="button"
         class="back-btn"
@@ -900,8 +1092,11 @@
       <h2>RECENSIONI</h2>
 
       <section class="contacts">
-        <p>Area recensioni in aggiornamento.</p>
+        <p>
+          Area recensioni in aggiornamento.
+        </p>
       </section>
+
     </section>
 
     <!-- CONTATTI -->
@@ -910,6 +1105,7 @@
       id="contactsPage"
       class="page-section hidden"
     >
+
       <button
         type="button"
         class="back-btn"
@@ -975,13 +1171,12 @@
         </div>
 
       </section>
+
     </section>
 
   </main>
 
-  <!-- =====================================
-       CARRELLO FISSO
-  ===================================== -->
+  <!-- CARRELLO FISSO IN ALTO -->
 
   <button
     id="floatingCart"
@@ -990,6 +1185,7 @@
     onclick="showPage('checkoutPage')"
     aria-label="Apri carrello"
   >
+
     <span class="floating-cart-icon">🛒</span>
 
     <span
@@ -997,11 +1193,10 @@
       class="floating-cart-badge"
       aria-live="polite"
     >0</span>
+
   </button>
 
-  <!-- =====================================
-       MENU INFERIORE
-  ===================================== -->
+  <!-- MENU INFERIORE -->
 
   <div class="bottom-nav">
 
@@ -1023,11 +1218,55 @@
 
   </div>
 
-  <!-- =====================================
-       JAVASCRIPT PRINCIPALE
-  ===================================== -->
+  <!-- JAVASCRIPT PRINCIPALE -->
 
   <script src="script.js?v=1014"></script>
+
+  <!-- =====================================
+       FUNZIONI GALLERIA VIMEO
+       AGGIUNTE IN INDEX
+  ===================================== -->
+
+  <script>
+
+    function apriGalleriaVideo() {
+
+      const iframe =
+        document.getElementById("vimeoGallery");
+
+      showPage("videoPage");
+
+      if (iframe) {
+        iframe.src =
+          "https://vimeo.com/showcase/12490370/embed2";
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+    }
+
+    function tornaAllaVetrina() {
+
+      const iframe =
+        document.getElementById("vimeoGallery");
+
+      if (iframe) {
+        iframe.src = "about:blank";
+      }
+
+      showPage("vetrinaPage");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+    }
+
+  </script>
 
   <!-- =====================================
        CONTROLLO VIDEO INTRO
@@ -1069,10 +1308,18 @@
         }
       }
 
-      video.addEventListener("playing", stopTimer);
-      video.addEventListener("error", chiudiSeErrore);
+      video.addEventListener(
+        "playing",
+        stopTimer
+      );
 
-      const sorgente = video.querySelector("source");
+      video.addEventListener(
+        "error",
+        chiudiSeErrore
+      );
+
+      const sorgente =
+        video.querySelector("source");
 
       if (sorgente) {
         sorgente.addEventListener(
@@ -1081,23 +1328,26 @@
         );
       }
 
-      const osservatore = new MutationObserver(() => {
-        stopTimer();
+      const osservatore =
+        new MutationObserver(() => {
 
-        if (!overlay.classList.contains("hidden")) {
+          stopTimer();
 
-          timerControllo = setTimeout(() => {
+          if (!overlay.classList.contains("hidden")) {
 
-            if (
-              video.paused ||
-              video.readyState < 2
-            ) {
-              chiudiSeErrore();
-            }
+            timerControllo = setTimeout(() => {
 
-          }, 12000);
-        }
-      });
+              if (
+                video.paused ||
+                video.readyState < 2
+              ) {
+                chiudiSeErrore();
+              }
+
+            }, 12000);
+
+          }
+        });
 
       osservatore.observe(overlay, {
         attributes: true,
@@ -1107,9 +1357,7 @@
     })();
   </script>
 
-  <!-- =====================================
-       CARICAMENTO INFO
-  ===================================== -->
+  <!-- CARICAMENTO INFO -->
 
   <script>
     async function caricaInfo() {
@@ -1196,9 +1444,7 @@
     );
   </script>
 
-  <!-- =====================================
-       VISIBILITÀ CARRELLO
-  ===================================== -->
+  <!-- VISIBILITÀ CARRELLO -->
 
   <script>
     function showFloatingCart() {
@@ -1234,9 +1480,7 @@
     showFloatingCart();
   </script>
 
-  <!-- =====================================
-       AGGIORNAMENTI APP
-  ===================================== -->
+  <!-- AGGIORNAMENTI APP -->
 
   <script>
     if ("serviceWorker" in navigator) {
