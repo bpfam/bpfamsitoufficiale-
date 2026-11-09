@@ -2,51 +2,8 @@
 {
   "sezioni": [
     {
-      "titolo": "♛ DESEO BP FAMILY",
-      "testo": "Benvenuto nella nostra pagina informativa."
-    },
-    {
-      "titolo": "📋 REGOLAMENTO",
-      "testo": "Accesso riservato ai maggiorenni.\nSerietà e rispetto obbligatori."
-    },
-    {
-      "titolo": "📦 SPEDIZIONI",
-      "testo": "DESEO BP FAMILY ♠️
-Quality. Style. Respect.
-
-SPEDIZIONI, PAGAMENTI & MEET UP
-Leggi prima di confermare.
-
-🌍 SPEDIZIONI INTERNAZIONALI
-Spediamo in Italia, in Europa e nel resto del mondo. Le partenze sono lunedì, martedì e mercoledì. Prenota entro domenica per rientrare nelle partenze della settimana. Ti invieremo il codice di tracciamento quando il pacco sarà spedito.
-
-📦 COSTI DI SPEDIZIONE
-Ti comunichiamo il costo della spedizione e il totale dell’ordine prima della conferma.
-
-✏️ MODIFICHE ALL’ORDINE
-Se devi correggere i dati, scrivici appena te ne accorgi. Se il pacco è già partito, verifichiamo con il corriere quali modifiche sono ancora possibili.
-
-🔁 RESHIIP
-Se hai un problema con la consegna, scrivici con il numero dell’ordine e il tracking. Se l’errore è nostro, puoi scegliere tra una nuova spedizione gratuita e il rimborso integrale.( NB RESHIIP solo se errore è nostro.)
-
-💳 PAGAMENTI
-Ti comunichiamo le modalità di pagamento disponibili prima della conferma. Conserva la ricevuta del pagamento e il riepilogo dell’ordine.
-
-📍 MEET UP · BISCEGLIE, PUGLIA
-09:00–13:00 e 15:00–21:00. Concordiamo l’orario in chat e ti comunichiamo in privato la zona dell’incontro.
-
-🕒 RITARDI O IMPREVISTI AL MEET UP
-Se sei in ritardo o devi spostare l’incontro, avvisaci in chat così possiamo concordare un nuovo orario.
-
-✅ SPEDIZIONE PRIMA DI CONFERMARE
-Controlla il riepilogo dell’ordine. Se hai scelto la spedizione, verifica che l’indirizzo e i recapiti siano corretti.
-    {
-      "titolo": "📲 ASSISTENZA",
-      "testo": "Qui scriveremo le informazioni sull'assistenza."
-    },
-    {
-      "titolo": "📢 COMUNICAZIONI",
-      "testo": "Qui inseriremo gli avvisi importanti."
+      "titolo": "ℹ️ INFO",
+      "testo": "DESEO BP FAMILY ♠️\nQuality. Style. Respect.\n\nSPEDIZIONI, PAGAMENTI & MEET UP\nLeggi prima di confermare.\n\n🌍 SPEDIZIONI INTERNAZIONALI\nSpediamo in Italia, in Europa e nel resto del mondo. Le partenze sono lunedì, martedì e mercoledì. Prenota entro domenica per rientrare nelle partenze della settimana. Ti invieremo il codice di tracciamento quando il pacco sarà spedito.\n\n📦 COSTI DI SPEDIZIONE\nTi comunichiamo il costo della spedizione e il totale dell’ordine prima della conferma.\n\n✏️ MODIFICHE ALL’ORDINE\nSe devi correggere i dati, scrivici appena te ne accorgi. Se il pacco è già partito, verifichiamo con il corriere quali modifiche sono ancora possibili.\n\n🔁 RESHIP\nSe hai un problema con la consegna, scrivici con il numero dell’ordine e il tracking. Se l’errore è nostro, puoi scegliere tra una nuova spedizione gratuita e il rimborso integrale. (NB: Reship solo se l’errore è nostro.)\n\n💳 PAGAMENTI\nTi comunichiamo le modalità di pagamento disponibili prima della conferma. Conserva la ricevuta del pagamento e il riepilogo dell’ordine.\n\n📍 MEET UP · BISCEGLIE, PUGLIA\n09:00–13:00 e 15:00–21:00. Concordiamo l’orario in chat e ti comunichiamo in privato la zona dell’incontro.\n\n🕒 RITARDI O IMPREVISTI AL MEET UP\nSe sei in ritardo o devi spostare l’incontro, avvisaci in chat così possiamo concordare un nuovo orario.\n\n✅ SPEDIZIONE PRIMA DI CONFERMARE\nControlla il riepilogo dell’ordine. Se hai scelto la spedizione, verifica che l’indirizzo e i recapiti siano corretti."
     }
   ]
 }
