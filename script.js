@@ -35,7 +35,6 @@ function enterSite() {
     return;
   }
 
-  // Conferma valida per la sessione corrente
   sessionStorage.setItem("bpfam_access", "yes");
 
   const ageGate = document.getElementById("ageGate");
@@ -202,7 +201,7 @@ function filterCategory(category) {
 }
 
 /* =====================================
-   VETRINA CON PULSANTE VIDEO
+   VETRINA CON GALLERIA VIMEO INTERNA
 ===================================== */
 
 function variantLabel(variant) {
@@ -316,14 +315,15 @@ function renderProducts(products) {
             AGGIUNGI AL CARRELLO
           </button>
 
-          <a
-            href="https://bpfam.github.io/Video-bpfam/"
+          <!-- GALLERIA VIDEO DENTRO L'APP -->
+
+          <button
+            type="button"
             class="video-gallery-btn"
-            target="_blank"
-            rel="noopener noreferrer"
+            onclick="apriGalleriaVideo()"
           >
             🎬 CLICCA QUI PER I VIDEO
-          </a>
+          </button>
 
         </div>
 
