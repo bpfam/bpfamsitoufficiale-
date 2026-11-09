@@ -66,8 +66,6 @@
       pointer-events: none;
     }
 
-    /* CONTENUTI SOPRA I FULMINI */
-
     #siteContent .deseo-header > * {
       position: relative;
       z-index: 1;
@@ -128,7 +126,6 @@
 
     #siteContent .deseo-header .deseo-logo-wrap::before {
       content: "" !important;
-
       position: absolute !important;
       inset: auto !important;
 
@@ -137,7 +134,6 @@
 
       width: 235px !important;
       height: 235px !important;
-
       border-radius: 50%;
 
       background: radial-gradient(
@@ -149,8 +145,8 @@
 
       filter: blur(20px) !important;
       transform: translate(-50%, -50%) !important;
-
       animation: none !important;
+
       pointer-events: none;
       z-index: -1;
     }
@@ -161,7 +157,7 @@
     }
 
     /* =====================================
-       SLOGAN
+       SLOGAN E CORONA
     ===================================== */
 
     #siteContent .deseo-slogan {
@@ -173,8 +169,6 @@
       margin: 8px auto 18px !important;
       text-align: center;
     }
-
-    /* CORONA DECORATIVA */
 
     #siteContent .deseo-divider {
       display: flex !important;
@@ -201,14 +195,11 @@
       font-size: 19px !important;
       line-height: 1;
       margin: 0 !important;
-
-      text-shadow:
-        0 0 12px rgba(212,175,55,.55);
+      text-shadow: 0 0 12px rgba(212,175,55,.55);
     }
 
     /* =====================================
-       HOME
-       FULMINI + MAPPA MONDIALE
+       HOME FULMINI + MAPPA MONDIALE
     ===================================== */
 
     #homePage {
@@ -218,11 +209,10 @@
       background: #000 !important;
     }
 
-    /* STRATO FULMINI */
+    /* FULMINI DORATI */
 
     #homePage::before {
       content: "" !important;
-
       position: absolute !important;
       inset: 0 !important;
 
@@ -241,12 +231,11 @@
       z-index: 0 !important;
     }
 
-    /* MAPPA MONDIALE ORIGINALE */
+    /* MAPPA MONDIALE */
 
     #homePage::after {
       content: "" !important;
       display: block !important;
-
       position: absolute !important;
 
       top: 40% !important;
@@ -263,7 +252,6 @@
       background-repeat: no-repeat !important;
 
       opacity: .45 !important;
-
       pointer-events: none !important;
       z-index: 0 !important;
     }
@@ -282,7 +270,6 @@
       z-index: 2;
 
       display: grid !important;
-
       grid-template-columns:
         repeat(2, minmax(0, 1fr)) !important;
 
@@ -357,7 +344,7 @@
     }
 
     /* =====================================
-       PULSANTI FOTOREALISTICI 3D
+       CINQUE PULSANTI FOTOREALISTICI 3D
     ===================================== */
 
     #homePage .app-card.image-card {
@@ -374,7 +361,6 @@
       padding: 0 !important;
 
       background: transparent !important;
-
       border: 0 !important;
       border-radius: 0 !important;
       box-shadow: none !important;
@@ -386,15 +372,11 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* DISATTIVA EFFETTI VECCHI */
-
     #homePage .app-card.image-card::before,
     #homePage .app-card.image-card::after {
       content: none !important;
       display: none !important;
     }
-
-    /* IMMAGINI DEI CINQUE PULSANTI */
 
     #homePage .app-card.image-card .button-3d-img {
       display: block !important;
@@ -414,8 +396,6 @@
       user-select: none;
       -webkit-user-drag: none;
     }
-
-    /* EFFETTO AL TOCCO */
 
     #homePage .app-card.image-card:active {
       transform: scale(.96) !important;
@@ -440,9 +420,7 @@
       color: #d4af37;
       font-size: 26px !important;
       margin-bottom: 10px !important;
-
-      text-shadow:
-        0 0 15px rgba(212,175,55,.5);
+      text-shadow: 0 0 15px rgba(212,175,55,.5);
     }
 
     #homePage .footer-brand {
@@ -468,7 +446,6 @@
 
       top: calc(14px + env(safe-area-inset-top, 0px));
       right: 14px;
-
       z-index: 9000;
 
       width: 54px;
@@ -484,9 +461,7 @@
       border: 1.5px solid #d4af37;
       border-radius: 16px;
 
-      box-shadow:
-        0 0 15px rgba(212,175,55,.25);
-
+      box-shadow: 0 0 15px rgba(212,175,55,.25);
       cursor: pointer;
     }
 
@@ -498,8 +473,6 @@
       font-size: 24px;
       line-height: 1;
     }
-
-    /* NOTIFICA ROSSA */
 
     #floatingCart #cartCount {
       position: absolute;
@@ -526,8 +499,7 @@
       font-size: 12px;
       font-weight: 900;
 
-      box-shadow:
-        0 0 12px rgba(255,59,48,.45);
+      box-shadow: 0 0 12px rgba(255,59,48,.45);
     }
 
     #floatingCart #cartCount.bump {
@@ -578,7 +550,9 @@
 
 <body>
 
-  <!-- SCHERMATA MAGGIORENNI -->
+  <!-- =====================================
+       VERIFICA MAGGIORENNI
+  ===================================== -->
 
   <div id="ageGate" class="age-gate">
     <div class="age-card">
@@ -636,7 +610,7 @@
     >
 
       <source
-        src="media/intro-bpfam.mp4?v=3"
+        src="media/Intro-bpfam.MP4?v=4"
         type="video/mp4"
       >
 
@@ -654,12 +628,11 @@
 
   </div>
 
-  <!-- CONTENUTO PRINCIPALE -->
+  <!-- =====================================
+       CONTENUTO PRINCIPALE
+  ===================================== -->
 
-  <main
-    id="siteContent"
-    class="hidden"
-  >
+  <main id="siteContent" class="hidden">
 
     <!-- HEADER -->
 
@@ -670,13 +643,11 @@
       </p>
 
       <div class="deseo-logo-wrap">
-
         <img
           class="main-logo deseo-logo"
           src="assets/logo-deseo.png?v=2"
           alt="DESEO BP FAMILY Logo"
         >
-
       </div>
 
       <p class="deseo-slogan">
@@ -693,14 +664,9 @@
 
     <!-- HOME -->
 
-    <section
-      id="homePage"
-      class="page-section"
-    >
+    <section id="homePage" class="page-section">
 
       <div class="home-smoke-bg"></div>
-
-      <!-- CINQUE PULSANTI 3D -->
 
       <div class="app-grid">
 
@@ -734,7 +700,7 @@
           >
         </button>
 
-        <!-- RECENSIONI: GALLERIA VIDEO -->
+        <!-- RECENSIONI - GALLERIA VIDEO -->
 
         <button
           type="button"
@@ -784,17 +750,9 @@
       <!-- FOOTER -->
 
       <footer class="deseo-home-footer">
-
         <div class="footer-crown">♛</div>
-
-        <div class="footer-brand">
-          DESEO BP FAMILY
-        </div>
-
-        <div class="footer-tagline">
-          MADE DIFFERENT
-        </div>
-
+        <div class="footer-brand">DESEO BP FAMILY</div>
+        <div class="footer-tagline">MADE DIFFERENT</div>
       </footer>
 
     </section>
@@ -805,7 +763,6 @@
       id="infoPage"
       class="page-section hidden"
     >
-
       <button
         type="button"
         class="back-btn"
@@ -816,13 +773,9 @@
 
       <h2>ℹ️ INFORMAZIONI</h2>
 
-      <div
-        class="info-content"
-        id="infoContent"
-      >
+      <div class="info-content" id="infoContent">
         <p>Caricamento informazioni...</p>
       </div>
-
     </section>
 
     <!-- VETRINA -->
@@ -831,7 +784,6 @@
       id="vetrinaPage"
       class="page-section hidden"
     >
-
       <button
         type="button"
         class="back-btn"
@@ -840,25 +792,14 @@
         ← TORNA HOME
       </button>
 
-      <section
-        id="vetrina"
-        class="vetrina"
-      >
+      <section id="vetrina" class="vetrina">
 
         <h2>VETRINA</h2>
 
-        <div
-          id="categories"
-          class="categories-box"
-        ></div>
-
-        <div
-          id="products"
-          class="products-grid"
-        ></div>
+        <div id="categories" class="categories-box"></div>
+        <div id="products" class="products-grid"></div>
 
       </section>
-
     </section>
 
     <!-- CARRELLO E CHECKOUT -->
@@ -867,7 +808,6 @@
       id="checkoutPage"
       class="page-section hidden"
     >
-
       <button
         type="button"
         class="back-btn"
@@ -876,15 +816,11 @@
         ← TORNA HOME
       </button>
 
-      <h2>CARRELLO & CHECKOUT</h2>
+      <h2>CARRELLO &amp; CHECKOUT</h2>
 
-      <section
-        id="checkout"
-        class="checkout-section"
-      >
+      <section id="checkout" class="checkout-section">
 
         <div class="cart-box">
-
           <h3>Carrello</h3>
 
           <div id="cart-items"></div>
@@ -892,7 +828,6 @@
           <h3 id="cart-total">
             Totale finale: €0
           </h3>
-
         </div>
 
         <div class="checkout-card">
@@ -903,45 +838,21 @@
             id="orderMethod"
             onchange="showOrderFields()"
           >
-
-            <option value="">
-              Seleziona metodo
-            </option>
-
+            <option value="">Seleziona metodo</option>
             <option value="Incontro di Persona">
               Incontro di Persona
             </option>
-
-            <option value="Delivery">
-              Delivery
-            </option>
-
-            <option value="Spedizione">
-              Spedizione
-            </option>
-
+            <option value="Delivery">Delivery</option>
+            <option value="Spedizione">Spedizione</option>
           </select>
 
           <h3>Metodo pagamento</h3>
 
           <select id="paymentMethod">
-
-            <option value="">
-              Seleziona pagamento
-            </option>
-
-            <option value="Cash">
-              Cash
-            </option>
-
-            <option value="BTC">
-              BTC
-            </option>
-
-            <option value="USDT">
-              USDT
-            </option>
-
+            <option value="">Seleziona pagamento</option>
+            <option value="Cash">Cash</option>
+            <option value="BTC">BTC</option>
+            <option value="USDT">USDT</option>
           </select>
 
           <div id="dynamicFields"></div>
@@ -970,16 +881,14 @@
         </div>
 
       </section>
-
     </section>
 
-    <!-- RECENSIONI: SEZIONE ORIGINALE -->
+    <!-- RECENSIONI - SEZIONE ORIGINALE -->
 
     <section
       id="reviewsPage"
       class="page-section hidden"
     >
-
       <button
         type="button"
         class="back-btn"
@@ -991,13 +900,8 @@
       <h2>RECENSIONI</h2>
 
       <section class="contacts">
-
-        <p>
-          Area recensioni in aggiornamento.
-        </p>
-
+        <p>Area recensioni in aggiornamento.</p>
       </section>
-
     </section>
 
     <!-- CONTATTI -->
@@ -1006,7 +910,6 @@
       id="contactsPage"
       class="page-section hidden"
     >
-
       <button
         type="button"
         class="back-btn"
@@ -1072,12 +975,13 @@
         </div>
 
       </section>
-
     </section>
 
   </main>
 
-  <!-- CARRELLO FISSO IN ALTO -->
+  <!-- =====================================
+       CARRELLO FISSO
+  ===================================== -->
 
   <button
     id="floatingCart"
@@ -1086,7 +990,6 @@
     onclick="showPage('checkoutPage')"
     aria-label="Apri carrello"
   >
-
     <span class="floating-cart-icon">🛒</span>
 
     <span
@@ -1094,36 +997,35 @@
       class="floating-cart-badge"
       aria-live="polite"
     >0</span>
-
   </button>
 
-  <!-- MENU INFERIORE -->
+  <!-- =====================================
+       MENU INFERIORE
+  ===================================== -->
 
   <div class="bottom-nav">
 
     <button onclick="showPage('homePage')">
-      🏠
-      <span>Home</span>
+      🏠 <span>Home</span>
     </button>
 
     <button onclick="showPage('vetrinaPage')">
-      📸
-      <span>Vetrina</span>
+      📸 <span>Vetrina</span>
     </button>
 
     <button onclick="showPage('checkoutPage')">
-      🛒
-      <span>Checkout</span>
+      🛒 <span>Checkout</span>
     </button>
 
     <button onclick="showPage('contactsPage')">
-      📲
-      <span>Contatti</span>
+      📲 <span>Contatti</span>
     </button>
 
   </div>
 
-  <!-- JAVASCRIPT PRINCIPALE -->
+  <!-- =====================================
+       JAVASCRIPT PRINCIPALE
+  ===================================== -->
 
   <script src="script.js?v=1014"></script>
 
@@ -1143,65 +1045,58 @@
 
       if (!video || !overlay) return;
 
-      let avvioRiuscito = false;
       let timerControllo = null;
 
+      function stopTimer() {
+        if (timerControllo !== null) {
+          clearTimeout(timerControllo);
+          timerControllo = null;
+        }
+      }
+
       function chiudiSeErrore() {
+        stopTimer();
+
         if (
           !overlay.classList.contains("hidden") &&
           typeof finishIntro === "function"
         ) {
+          console.warn(
+            "Video intro non disponibile: apertura Home."
+          );
+
           finishIntro();
         }
       }
 
-      function avviaControllo() {
-        avvioRiuscito = false;
-
-        clearTimeout(timerControllo);
-
-        timerControllo = setTimeout(() => {
-          if (!avvioRiuscito) {
-            console.warn(
-              "Intro non avviata: apertura Home."
-            );
-
-            chiudiSeErrore();
-          }
-        }, 12000);
-      }
-
-      video.addEventListener("playing", () => {
-        avvioRiuscito = true;
-        clearTimeout(timerControllo);
-      });
-
-      video.addEventListener("error", () => {
-        clearTimeout(timerControllo);
-        chiudiSeErrore();
-      });
+      video.addEventListener("playing", stopTimer);
+      video.addEventListener("error", chiudiSeErrore);
 
       const sorgente = video.querySelector("source");
 
       if (sorgente) {
-        sorgente.addEventListener("error", () => {
-          console.warn(
-            "File video introduttivo non disponibile."
-          );
-
-          clearTimeout(timerControllo);
-          chiudiSeErrore();
-        });
+        sorgente.addEventListener(
+          "error",
+          chiudiSeErrore
+        );
       }
 
       const osservatore = new MutationObserver(() => {
+        stopTimer();
 
         if (!overlay.classList.contains("hidden")) {
-          avviaControllo();
-        } else {
-          clearTimeout(timerControllo);
-        }
 
+          timerControllo = setTimeout(() => {
+
+            if (
+              video.paused ||
+              video.readyState < 2
+            ) {
+              chiudiSeErrore();
+            }
+
+          }, 12000);
+        }
       });
 
       osservatore.observe(overlay, {
@@ -1212,7 +1107,9 @@
     })();
   </script>
 
-  <!-- CARICAMENTO INFO -->
+  <!-- =====================================
+       CARICAMENTO INFO
+  ===================================== -->
 
   <script>
     async function caricaInfo() {
@@ -1294,11 +1191,14 @@
         ) {
           caricaInfo();
         }
+
       }
     );
   </script>
 
-  <!-- VISIBILITÀ CARRELLO -->
+  <!-- =====================================
+       VISIBILITÀ CARRELLO
+  ===================================== -->
 
   <script>
     function showFloatingCart() {
@@ -1334,7 +1234,9 @@
     showFloatingCart();
   </script>
 
-  <!-- AGGIORNAMENTI APP -->
+  <!-- =====================================
+       AGGIORNAMENTI APP
+  ===================================== -->
 
   <script>
     if ("serviceWorker" in navigator) {
