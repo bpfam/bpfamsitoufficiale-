@@ -43,6 +43,7 @@ function enterSite() {
     ageGate.style.display = "none";
   }
 
+  // Il video parte dal tocco sul pulsante ENTRA
   playIntro();
 }
 
@@ -83,6 +84,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 /* =====================================
    VIDEO INTRO BPFAM
+   AUDIO ATTIVO
 ===================================== */
 
 let introFinished = false;
@@ -100,20 +102,36 @@ function playIntro() {
 
   overlay.classList.remove("hidden");
 
-  video.muted = true;
-  video.currentTime = 0;
-  video.load();
+  // ATTIVA L'AUDIO
+  video.muted = false;
+  video.defaultMuted = false;
+  video.removeAttribute("muted");
+  video.volume = 1;
 
+  // RIPARTE DALL'INIZIO
+  try {
+    video.currentTime = 0;
+  } catch (error) {
+    console.warn("Ripristino video:", error);
+  }
+
+  // Avvia direttamente durante il tocco su ENTRA
+  // Non richiama load() per non interrompere il gesto
   const playback = video.play();
 
   if (playback && typeof playback.catch === "function") {
     playback.catch(error => {
       console.warn("Video intro non avviato:", error);
+
+      // Evita che l'app rimanga sulla schermata nera
+      finishIntro();
     });
   }
 }
 
-/* APERTURA AUTOMATICA HOME */
+/* =====================================
+   APERTURA AUTOMATICA HOME
+===================================== */
 
 function finishIntro() {
   if (introFinished) return;
