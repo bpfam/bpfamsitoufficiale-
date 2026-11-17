@@ -67,6 +67,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/yVMwYHHz/IMG-3854.jpg",
     "variants": [
+      { "size": "1 g", "price": 40 },
       { "size": "5 g", "price": 180 },
       { "size": "10 g", "price": 300 },
       { "size": "50 g", "price": 1450 },
@@ -96,6 +97,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/VYkqh7Z0/IMG-3860.jpg",
     "variants": [
+      { "size": "1 g", "price": 25 },
       { "size": "5 g", "price": 125 },
       { "size": "10 g", "price": 230 },
       { "size": "50 g", "price": 1100 },
@@ -110,6 +112,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/4sRzG4Fx/IMG-3861.jpg",
     "variants": [
+      { "size": "1 g", "price": 20 },
       { "size": "5 g", "price": 80 },
       { "size": "10 g", "price": 150 },
       { "size": "50 g", "price": 700 },
@@ -124,6 +127,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/4s5FkG0q/IMG-3762.jpg",
     "variants": [
+      { "size": "1 g", "price": 40 },
       { "size": "5 g", "price": 190 },
       { "size": "10 g", "price": 350 },
       { "size": "25 g", "price": 850 },
@@ -139,6 +143,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/QsDbXP1p/IMG-3767.jpg",
     "variants": [
+      { "size": "1 g", "price": 30 },
       { "size": "5 g", "price": 135 },
       { "size": "10 g", "price": 240 },
       { "size": "25 g", "price": 575 },
@@ -154,6 +159,7 @@
     "badge": "HOT",
     "image": "https://i.postimg.cc/hKD6fvmH/IMG-3769.jpg",
     "variants": [
+      { "size": "1 g", "price": 40 },
       { "size": "5 g", "price": 200 },
       { "size": "10 g", "price": 380 },
       { "size": "25 g", "price": 880 },
@@ -168,6 +174,7 @@
     "status": "IN ARRIVO",
     "image": "https://i.postimg.cc/v8Q2c82p/IMG-3855.jpg",
     "variants": [
+      { "size": "1 g", "price": 30 },
       { "size": "5 g", "price": 150 },
       { "size": "10 g", "price": 280 },
       { "size": "25 g", "price": 660 },
@@ -184,8 +191,8 @@
     "badge": "HOT",
     "image": "immagine12.jpg",
     "variants": [
-      { "size": "5 g", "price": 130 },
-      { "size": "10 g", "price": 240 },
+      { "size": "1 g", "price": 25},
+      { "size": "10 g", "price": 235 },
       { "size": "25 g", "price": 580 },
       { "size": "50 g", "price": 1100 },
       { "size": "100 g", "price": 2100 },
