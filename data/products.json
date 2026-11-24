@@ -171,16 +171,16 @@
     "name": "CALI MELTS Premium Static sift new season",
     "category": "HASH DIRECT USA🇺🇸",
     "origin": "USA 🇺🇸",
-    "status": "IN ARRIVO",
+    "status": "Disponibile",
     "image": "https://i.postimg.cc/v8Q2c82p/IMG-3855.jpg",
     "variants": [
-      { "size": "1 g", "price": 30 },
-      { "size": "5 g", "price": 150 },
-      { "size": "10 g", "price": 280 },
-      { "size": "25 g", "price": 660 },
-      { "size": "50 g", "price": 1225 },
-      { "size": "100 g", "price": 2350 },
-      { "size": "500 g", "price": 11000 }
+      { "size": "1 g", "price": 25 },
+      { "size": "5 g", "price": 120 },
+      { "size": "10 g", "price": 230 },
+      { "size": "25 g", "price": 550 },
+      { "size": "50 g", "price": 1050 },
+      { "size": "100 g", "price": 2000 },
+      { "size": "500 g", "price": 9350 }
     ]
   },
   {
@@ -189,14 +189,14 @@
     "origin": "USA 🇺🇸",
     "status": "DISPONIBILE",
     "badge": "HOT",
-    "image": "immagine12.jpg",
+    "image": "https://i.postimg.cc/6w8kbSgK/CALI-MELTS-static-sift.jpg",
     "variants": [
-      { "size": "1 g", "price": 25},
-      { "size": "10 g", "price": 235 },
-      { "size": "25 g", "price": 580 },
-      { "size": "50 g", "price": 1100 },
-      { "size": "100 g", "price": 2100 },
-      { "size": "500 g", "price": 9250 }
+      { "size": "1 g", "price": 20},
+      { "size": "10 g", "price": 190 },
+      { "size": "25 g", "price": 465 },
+      { "size": "50 g", "price": 900 },
+      { "size": "100 g", "price": 1750 },
+      { "size": "500 g", "price": 8500 }
     ]
   },
   {
